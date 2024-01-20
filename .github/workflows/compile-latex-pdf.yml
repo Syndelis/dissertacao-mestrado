@@ -1,0 +1,37 @@
+name: Compile LaTeX PDF
+
+on:
+  push:
+    paths:
+      - '**.tex'
+      - 'imgs/**'
+      - '.github/**/*.yml'
+
+jobs:
+  latexbuild:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build PDF
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: ufsj-abntex2.tex
+
+      - name: Commit PDF
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update PDF
+          branch: ${{ github.ref_name }}
+          commit_user_name: actions-user
+          commit_user_email: actions@github.com
+          commit_author: actions-user <actions@github.com>
+          file_pattern: ufsj-abntex2.pdf
