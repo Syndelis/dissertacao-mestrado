@@ -46,6 +46,12 @@
 % - imagens do software na metodologia
 % - sec "Geração de Código e Simulação interativa": 
 
+% Fix taken from: https://build.opensuse.org/request/show/973887
+% Apparently, hyperref doesn't ship with htmladdnormallink anymore
+\ifdefined\htmladdnormallink\relax\else%
+\def\htmladdnormallink#1#2{\href{#2}{#1}}
+\fi
+
 \documentclass[
 	% -- opções da classe memoir --
 	12pt,				% tamanho da fonte
