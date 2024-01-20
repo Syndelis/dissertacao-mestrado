@@ -1,0 +1,130 @@
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \includepdf{folhadeaprovacao_final.pdf}
+%
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    {\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+    \vspace*{\fill}
+    
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+   \end{center}
+    
+   \imprimirlocal, \today
+   % Caso prefira fixar a data, basta mudar o comando \today pela data,
+   %   como no exemplo abaixo:
+   %Trabalho aprovado. \imprimirlocal, 7 de setembro de 1822:
+
+   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+   \assinatura{\textbf{Rafael Sachetto Oliveira} \\ Convidado 1}
+   \assinatura{\textbf{Marcelo Lobosco} \\ Convidado 2}   
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+      
+   \begin{center}
+    \vspace*{0.5cm}
+    {\large\imprimirlocal}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+  
+\end{folhadeaprovacao}
+
+% % ---------------------------------------------------------------------------------------------
+% % ---------------------------------------------------------------------------------Dedicatória-
+% % ---------------------------------------------------------------------------------------------
+% \begin{dedicatoria}
+% 	\vspace*{\fill}
+% 	\centering
+% 	\noindent
+% 	\textit{ Este trabalho é dedicado às crianças adultas que,\\
+% 		quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+% \end{dedicatoria}
+
+% ---------------------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------Agradecimentos-
+% ---------------------------------------------------------------------------------------------
+\begin{agradecimentos}
+Gostaria de agradecer e dedicar este trabalho:
+
+\noindent
+Aos meus pais, pelas oportunidades que me deram, pelo apoio nas escolhas que fiz para chegar aqui, pelo companheirismo e pelo amor incondicional que me proporcionaram.
+
+\noindent
+Ao meu orientador, Alexandre Pigozzo, que me introduziu ao meio científico, ao tema deste trabalho e me auxiliou não somente neste trabalho, mas na minha trajetória desta universidade.
+
+\noindent
+Aos servidores do DCOMP-UFSJ, que mantém um alto nível de educação e demonstram respeito e empatia pelos docentes do curso. Em especial, um agradecimento aos servidores(as) Carolina Xavier, Leonardo Rocha, Marcos Laia, Michelli Loureiro e Douglas Dinalli.
+
+\noindent
+Aos meus amigos de Guarapari, que sempre estiveram ao meu lado.
+
+\noindent
+À minha namorada, Keina Takashiba, minha melhor amiga, que me ajuda a me organizar e me apoia em tudo que for.
+
+\noindent
+Aos amigos que fiz aqui, na UFSJ, Arthur Gabriel Matos, Ana Clara Medina, Lucas Grandolpho e Wesley Guimarães, meus grandes companheiros de trabalhos.
+
+\noindent
+À FAPEMIG, que apoiou este e os projetos anteriores.
+
+\noindent
+À todos aqueles que apoiam, defendem e lutam por uma educação gratuita e de qualidade para todos.
+	
+\end{agradecimentos}
+
+% ---------------------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------------Epígrafe-
+% ---------------------------------------------------------------------------------------------
+\begin{epigrafe}
+	\vspace*{\fill}
+	\begin{flushright}
+
+		
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---------------------------------------------------------------------------------------------
+% -------------------------------------------------------------------------resumo em português-
+% ---------------------------------------------------------------------------------------------
+\begin{resumo}
+	
+	% TODO: Está exatamente igual ao trabalho de AC, com exceção da nomenclatura. Devemos mudar?
+	
+	\vspace{\onelineskip}
+	
+	\noindent
+	\textbf{Palavras-chaves}: modelagem, simulação, modelos computacionais, modelos matemáticos, software de interface gráfica.
+	
+	As áreas de Modelagem Matemática e Computacional têm se tornado cada vez mais importantes no mundo atual, no qual estudos científicos devem trazer resultados cada vez mais rápidos. Os modelos matemáticos e computacionais surgem como ferramentas poderosas no estudo e compreensão de sistemas complexos e que podem ser usados por pesquisadores de diversas áreas diferentes. Contudo, os modelos comumente requerem extensivo conhecimento matemático para serem criados, o que resulta em uma grande barreira de entrada para cientistas sem formação relacionada diretamente com a matemática, como biólogos, e estudantes iniciando carreiras acadêmicas. Apesar de existirem softwares para esses fins, estes frequentemente apresentam interfaces muito complexas em sua busca para se tornarem genéricos o suficiente. Enquanto estes softwares têm seus casos de uso, este trabalho visa entregar uma alternativa simplificada mas funcional, voltada aos iniciantes sem comprometer o funcionamento para usuários avançados. Para isto, neste trabalho foi desenvolvido um software que facilita a construção e simulação de Equações Diferenciais Ordinárias (EDOs).  EDOs são alguns dos modelos computacionais mais comuns, que conseguem representar com acurácia diversos fenômenos. O software apresenta uma interface gráfica simples e intuitiva, que possibilita o usuário exportar uma simulação, realizá-las interativamente e, inclusive, gerar o código que implementa computacionalmente o modelo.
+
+\end{resumo}
+
+% ---------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------resumo em inglês-
+% ---------------------------------------------------------------------------------------------
+\begin{resumo}[Abstract]
+	\begin{otherlanguage*}{english}
+    
+    
+		\vspace{\onelineskip}
+		
+		\noindent 
+		\textbf{Key-words}: modelling, simulation, automata, computational models, mathematical models, graphical interface software.
+		
+		The Computational and Mathematical modelling areas have been increasingly becoming more important nowadays, in which scientific studies need to bring results faster by the day. These models serve as powerful tools in the study and comprehension of complex systems, and can be used by researchers of different areas. However, these models commonly require extensive mathematical knowledge in order to be created, which results in a big entry barrier for scientists with no mathematical-related background, like biologists, and students ingressing in the academical field. Although softwares exist for these purposes, they often bring complex interfaces in their attempt of becoming generic enough for any usage. While theses softwares certainly have their use cases, the work presented here aims to bring a simpler but functional alternative, aimed towards beginners without compromising functionality for advanced users. In order to do that, a software was developed for making it easier to construct and simulate ordinary differential equations (ODEs). ODEs are some of the most common computational models, which can represent with accuracy different phenomenons. The software presents a simple and intuitive interface, which enables the user to export a simulation, simulate interactively and even generate the code that implements the model.
+	\end{otherlanguage*}
+\end{resumo}
