@@ -804,20 +804,6 @@ Equations:
 
 \section{Geração de Código e Simulação interativa}
 
-%Falar sobre a árvore de expressões 
-%Todo modelo construído no software é representado na memória utilizando uma árvore de expressões.   
-
-%importância da representação em árvore:
- % - Representação hierárquica do modelo; (melhor organização das informações) 
- % - Facilita a propagação de modificações; Exemplo: troca de sinal de um termo, remoção de um termo  (explicar embaixo)
- % - Todas as informações sobre o modelo podem ser obtidas percorrendo a árvore facilitando a construção das equações do código; 
- % - Permite que novos modelos sejam definidos utilizando a estrutura atual. 
-
-% O código gerado para a exportação e simulação das EDOs baseia-se na substituição de \textit{strings} em \textit{templates}, dado que o software sempre armazena as EDOs do mesmo jeito e as EDOs em si possuem uma representação simples. O código de Python utiliza a biblioteca [[ NOME DA BIBLIOTECA ]] para simular o conjunto de equações e a biblioteca \textit{matplotlib} para plotar o resultado.
-
-%O código em Python resolve numericamente o modelo utilizando a função solve_ivp da biblioteca scipy (Colocar link para a página da biblioteca). 
-% Exemplo de código em Python no anexo da dissertação
-
 Após o usuário terminar de construir o modelo, será possível simulá-lo diretamente no software. Uma vez que qualquer modelo desenhado na interface representa um conjunto válido de EDOs, a simulação interativa é apresentada para o usuário em um gráfico direto na interface gráfica e que pode refletir alterações no modelo em tempo real. 
 
 \section{Implementação e Tecnologias utilizadas}
