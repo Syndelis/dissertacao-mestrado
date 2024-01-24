@@ -13,7 +13,7 @@
 - Mover seção 4.2.1 [Programação Visual] para a primeira seção do "Referencial Teórico";
     - Acrescentar na seção que existem trabalhos (outros na seção 3) com propostas semelhantes;
 
-- Na introdução:
+- [x] Na introdução:
     - Diferencial: nessa dissertação foi desenvolvido uma nova forma de representação de modelos baseado em editor de nós (exemplos da seção 4.2.1 [Programação Visual]) e a criação de uma representação intermediária extensível, *humanamente legível* e de fácil tradução de/para o código-alvo;
         - Objetivo: simplicidade, naturalidade;
 

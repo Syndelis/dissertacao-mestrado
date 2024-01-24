@@ -320,15 +320,27 @@ Modelos matemáticos e computacionais estão se tornando cada vez mais relevante
 
 As simulações computacionais podem auxiliar experimentos \textit{in vitro} e \textit{in vivo} na explicação de diversos fenômenos. As simulações permitem testar vários cenários diferentes, o que poderia ser muito custoso ou até inviável de ser testado \textit{in vitro} e \textit{in vivo}. Além disso, elas podem fornecer previsões testando hipóteses que ainda não foram investigadas. 
 
-O desenvolvimento de modelos computacionais requer um conjunto de etapas importantes que começam com a definição do objetivo do modelo e terminam com a validação do modelo. Geralmente, um bom modelo é obtido após sucessivas iterações melhorando o primeiro modelo desenvolvido. Uma das etapas mais desafiadoras é a implementação do modelo. Essa etapa requer o conhecimento de métodos numéricos, programação, estruturas de dados, bibliotecas, entre outros recursos que serão necessários para o desenvolvimento do código. Um erro na implementação pode comprometer todo o trabalho. Neste trabalho, será apresentado um software que está sendo desenvolvido para auxiliar pesquisadores na implementação de alguns tipos de modelos computacionais. 
+O desenvolvimento de modelos computacionais requer um conjunto de etapas importantes que começam com a definição de seu objetivo e terminam com sua validação, passando por múltiplas iterações e melhorias. Dentre estas etapas, uma das mais desafiadoras é a implementação do modelo. Essa etapa requer o conhecimento de métodos numéricos, programação, estruturas de dados, bibliotecas, entre outros recursos. Um erro na implementação pode comprometer todo o trabalho. Visando a simplificação desta etapa, neste trabalho será apresentado um software  desenvolvido para auxiliar pesquisadores na implementação de alguns tipos de modelos computacionais. 
 
-O principal objetivo deste trabalho é desenvolver um software para facilitar a criação e simulação de modelos computacionais. A partir do ``desenho'' de um modelo feito em uma interface gráfica, o software é capaz de gerar o código que implementa o modelo. A descrição da representação utilizada para a construção dos modelos e do passo a passo para a geração de código serão explicados no Capítulo \ref{chap:metodologia}. 
+O principal objetivo deste trabalho é desenvolver um software para facilitar a criação e simulação de modelos computacionais, dimiuindo a barreira de entrada nesta área e permitindo que menos tempo seja necessário investir na implementação do modelo. A partir do ``desenho'' de um modelo feito em sua interface gráfica, o software é capaz de gerar o código que implementa o modelo, simulá-lo e até exportar gráficos.
 
-O software será aplicado, por exemplo, no desenvolvimento e simulação de modelos da resposta imune humana. Serão construídos diversos modelos de diferentes complexidades para testar as funcionalidades do software.  
+O software desenvolvido possui alguns diferencias em relação a outros desenvolvidos com propósitos similares:
 
-Uma das principais motivações para o desenvolvimento do software é auxiliar as etapas de construção e implementação do modelo de forma que o pesquisador possa dedicar mais tempo na formulação e teste de várias hipóteses através da simulação de vários cenários. 
+\begin{itemize}
+    \item Em sua interface gráfica é apresentado um editor baseado em nós que fornece ao usuário uma forma de programação visual \ref{sec:programacao-visual}, possibilitando um grau de liberdade limitado apenas para operações consideradas incorretas;
+    
+    \item Em seu formato de representação intermediária para salvamento e carregamento dos modelos, o software utiliza uma estrutura extensível para outros tipos de modelo. Esta estrutura também foi projetada para ser humanamente legível, a ponto de ser possível que uma pessoa decodifique o modelo representado apenas lendo o arquivo. Assim, caso o software se prove insuficiente ou indisponível, ainda é possível reverter o arquivo nas equações o compõe. % TODO: Este parágrafo fez sentido?
+\end{itemize}
 
-Entre as contribuições esperadas com este trabalho, destaca-se as seguintes: 
+% A descrição da representação utilizada para a construção dos modelos e do passo a passo para a geração de código serão explicados no Capítulo \ref{chap:metodologia}. TODO: isso foi confirmado no diferencial?
+
+% O software será aplicado, por exemplo, no desenvolvimento e simulação de modelos da resposta imune humana. Serão construídos diversos modelos de diferentes complexidades para testar as funcionalidades do software. TODO: confirmar este trecho
+
+% Uma das principais motivações para o desenvolvimento do software é auxiliar as etapas de construção e implementação do modelo de forma que o pesquisador possa dedicar mais tempo na formulação e teste de várias hipóteses através da simulação de vários cenários. TODO: idem
+
+% TODO: Isso (abaixo) ficou repetivivo?
+Entre as contribuições esperadas com este trabalho, destacam-se as seguintes: 
+
 \begin{itemize}
     \item A criação de uma representação intuitiva para modelos matemáticos baseados em Equações Diferenciais; 
     \item O desenvolvimento de um gerador de código baseado em \textit{templates} para gerar os códigos que implementam os modelos; 
@@ -336,10 +348,9 @@ Entre as contribuições esperadas com este trabalho, destaca-se as seguintes:
     \item A utilização do software no processo ensino-aprendizagem de Modelagem Computacional. 
 \end{itemize}
 
-Uma das aplicações do software que foi desenvolvido é no processo de ensino-aprendizagem de modelagem computacional. Os usuários poderão aprender sobre modelagem computacional por meio de um processo de aprendizado ativo através da construção e simulação dos modelos na prática.  
+Uma das aplicações do software que foi desenvolvido é no processo de ensino-aprendizagem de modelagem computacional. Os usuários poderão aprender sobre modelagem computacional por meio de um processo de aprendizado ativo com a construção e simulação dos modelos na prática.  
 
-%Acrescentar refs 
-O restante do texto deste trabalho está organizado da seguinte forma: no Capítulo \ref{chap:referencial} são apresentados alguns conceitos teóricos para um melhor entendimento do trabalho. No Capítulo \ref{chap:relacionados}, são descritos os trabalhos relacionados. O software desenvolvido é descrito no Capítulo \ref{chap:metodologia}. No Capítulo \ref{chap:resultados} são discutidos os resultados até o momento presente e os próximos passos para a conclusão do trabalho, bem como um cronograma para tal.
+O restante do texto deste trabalho está organizado da seguinte forma: no Capítulo \ref{chap:referencial} são apresentados alguns conceitos teóricos para um melhor entendimento do trabalho. No Capítulo \ref{chap:relacionados}, são descritos os trabalhos relacionados. O software desenvolvido é descrito no Capítulo \ref{chap:metodologia}. No Capítulo \ref{chap:resultados} são discutidos os resultados e, no Capítulo \ref{chap:conclusao}, a conclusão e planejamentos para trabalhos futuros;
 
 %Compiladores \cite{aho1995compiladores}
 
@@ -617,6 +628,7 @@ A plotagem é feita utilizando a biblioteca \textbf{ImPlot}\footnote{\href{https
 \section{Uma representação visual para EDOs}
 
 \subsection{Editores baseados em Nós / Programação Visual}
+\label{sec:programacao-visual}
 
 Tão velhos quanto 1963\footnote{Documentado por Eric Hosick em \href{http://blog.interfacevision.com/design/design-visual-progarmming-languages-snapshots/}{seu blog}}, editores baseados em nós se tornaram ubíquos recentemente. Estes editores estão comumente relacionados com o conceito de Programação Visual \cite{VisualProgramming}, e possuem como maiores referências a linguagem Scratch \cite{scratchlang}, os editores de \textit{Shaders} dos motores de jogos Godot \footnote{\href{https://godotengine.org/}{Godot}} e Unreal Engine \footnote{\href{https://www.unrealengine.com/}{Unreal Engine}}, o simulador de circuitos lógicos Logisim \cite{logisim} e a linguagem GRaIL\footnote{\href{https://www.youtube.com/watch?v=QQhVQ1UG6aM}{Alan Kay Demos GRaIL - YouTube}}.
 
@@ -853,11 +865,12 @@ Estes testes tornam a vida do desenvolvedor mais fácil, uma vez que garantem qu
 %As dependências para a execução da App Image são somente um conjunto de bibliotecas padrão disponível em todos os sistemas baseados em Linux. 
 
 \chapter{Resultados}
+\label{chap:resultados}
 %Mostrar exemplos de modelos construídos e simulados com a ferramenta 
 
 %-----------------------------//----------------------------
 \chapter{Conclusão e trabalhos futuros}
-\label{chap:resultados}
+\label{chap:conclusao}
 %e modelos estocásticos com o algoritmo de Gillespie
 
 Desde o início do Mestrado até o presente momento, foram realizadas as seguintes atividades: 
