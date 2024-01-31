@@ -10,7 +10,7 @@
         - Facilidade de instalação;
         - Sugestão de melhorias;
 
-- Mover seção 4.2.1 [Programação Visual] para a primeira seção do "Referencial Teórico";
+- [x] Mover seção 4.2.1 [Programação Visual] para a primeira seção do "Referencial Teórico";
     - Acrescentar na seção que existem trabalhos (outros na seção 3) com propostas semelhantes;
 
 - [x] Na introdução:

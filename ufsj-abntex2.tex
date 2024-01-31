@@ -436,6 +436,27 @@ Na Figura \ref{fig:hostprey}, é dado um exemplo de resultado obtido com a simul
 
 %\subsection{Modelo SIR de transmissão de doenças}
 
+\section{Programação Visual e Editores baseados em Nós}
+\label{sec:programacao-visual}
+
+Programação visual é uma maneira do usuário programar a máquina por meio de elementos gráficos que abstraem instruções do computador. Comumente, estes elementos representam múltiplas operações por vez, com o objetivo de facilitar a programação.
+
+Um dos primeiros exemplos da aplicação prática da programação visual foi com a linguagem GRAIL (\textit{GRAphical Input Language}) \cite{grail}, desenvolvida em 1969 junto a um dispositivo semelhante a uma caneta e uma tela sensível ao seu toque. O conjunto do \textit{hardware} e do \textit{software} permitia que o usuário desenhasse letras e formas geométricas que se traduziriam em elementos de fluxograma. O objetivo era realizar um estudo sobre a comunicação humano-computador.
+
+O conceito de utilizar elementos visuais para a assistência da programação não se restringiu somente a dispositivos especializados, contudo, e hoje se encontra em diversos \textit{softwares} de finalidades distintas que podem ser instalados em qualquer computador. Como um exemplo de aplicação de propósito similar ao GRAIL, a linguagem Scratch \cite{scratchlang} foi criada com o objetivo de facilitar o ensino de lógica de programação para crianças sem comprometer em funcionalidades. A linguagem apresenta comandos, funções e estruturas de controle como blocos que podem ser ``montados'' para compor um programa.
+
+Outras aplicações se especializam em algum nicho da computação, como é o caso do simulador lógico Logisim \cite{logisim}, que abstrai componentes lógicos e permite o usuário criar circuitos em uma espécie de \textit{protoboard} digital.
+
+Muitas vezes, \textit{softwares} que incluem programação visual para a abstração de operações utilizam uma interface conhecida como editor de nós:
+
+\begin{itemize}
+    \item O \textit{software} de modelagem, animação e edição de vídeos, Blender \cite{blender}, utiliza um editor de nós para abstrair operações de manipulação de imagens e materiais;
+
+    \item O motor de jogos proprietário Unreal Engine\footnote{\href{https://www.unrealengine.com/}{Documentação da Unreal Engine}} utiliza editores de nós para múltiplas finalidades e, entre elas, está a escrita de \textit{shaders} e a programação de lógica geral dos jogos.
+\end{itemize}
+
+Existem diversos motivos pelos os quais a programação visual se encontra em tão amplo uso. Principalmente, pode-se atribuir o sucesso de sua aplicação à facilidade de utilização. Em geral, não se faz necessário a leitura de manuais da mesma forma que se faz com linguagens de programação tradicionais; todas as operações possíveis no software estão modeladas como elementos visuais com parâmetros de entrada e saída bem definidos. Implementações exemplares também proibirão o usuário de realizar ligações inválidas diretamente na interface, realizando uma etapa mais comum em compiladores ou analizadores estáticos de código, que geralmente permitem que o usuário cometa um ou mais erros e só descubra-os posteriormente.
+
 \section{Geração de código}
 
 A fase de geração de código geralmente é a última fase da compilação. Na maioria dos compiladores, o gerador de código recebe como entrada uma ou mais representações intermediárias do código/texto de entrada e retorna como saída o código/texto na linguagem alvo \cite{dragonBook}. 
@@ -662,16 +683,6 @@ O gerador de código irá injetar os dados disponíveis na RI em pontos específ
 A plotagem é feita utilizando a biblioteca \textbf{ImPlot}\footnote{\href{https://github.com/epezent/implot}{https://github.com/epezent/implot}}.
 
 \section{Uma representação visual para EDOs}
-
-\subsection{Editores baseados em Nós / Programação Visual}
-\label{sec:programacao-visual}
-
-Tão velhos quanto 1963\footnote{Documentado por Eric Hosick em \href{http://blog.interfacevision.com/design/design-visual-progarmming-languages-snapshots/}{seu blog}}, editores baseados em nós se tornaram ubíquos recentemente. Estes editores estão comumente relacionados com o conceito de Programação Visual \cite{VisualProgramming}, e possuem como maiores referências a linguagem Scratch \cite{scratchlang}, os editores de \textit{Shaders} dos motores de jogos Godot \footnote{\href{https://godotengine.org/}{Godot}} e Unreal Engine \footnote{\href{https://www.unrealengine.com/}{Unreal Engine}}, o simulador de circuitos lógicos Logisim \cite{logisim} e a linguagem GRaIL\footnote{\href{https://www.youtube.com/watch?v=QQhVQ1UG6aM}{Alan Kay Demos GRaIL - YouTube}}.
-
-O motivo de por tal popularidade deve-se ao fato de que a programação visual não requer que o usuário leia manuais ou aprenda novas sintaxes; todas as possibilidades de ações estão disponíveis para serem conferidas na interface a qualquer momento.
-
-Não coincidentemente, as EDOs podem ser naturalmente representadas por nós e ligações, de forma a lembrar uma linguagem de programação funcional. No software, os nós representam todas as estruturas que compõem equações diferencias: variáveis (às vezes chamadas de populações), constantes e termos combinatórios. Variáveis e constantes não interagem diretamente; ao invés, nós combinatórios devem ser criados e utilizados como pontes entre outros nós. Assim, são criadas as expressões que definem uma população.
-
 
 \subsection{Representação intermediária}\label{subsection:RI}
 
