@@ -82,6 +82,7 @@
 \usepackage{xcolor}
 \usepackage{colortbl}
 \usepackage{nicefrac, xfrac}
+\usepackage{attachfile2}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -620,28 +621,23 @@ O software Cytoscape \cite{shannon2003cytoscape} é uma plataforma de software d
 \label{chap:metodologia}
 \label{chap:software-para-modelagem}
 
-%A representação deve ser rica o suficiente para permitir a especificação de um modelo, mas também deve ser simples para que pessoas com diferentes formações possam utilizá-la. Nesse contexto, um dos objetivos deste trabalho é apresentar uma representação de modelos de autômatos celulares simples e fácil de trabalhar que é utilizada para gerar o código que implementa o modelo computacionalmente. Além disso, será apresentado um software que foi desenvolvido que permite a construção de um autômato celular utilizando essa representação. A partir da representação, é gerado o código que implementa o modelo e as simulações computacionais com o código gerado podem ser realizadas através de uma interface gráfica. 
-
-% O software que foi desenvolvido possui três módulos principais: 
-
-% \begin{enumerate}
-%     \item Uma interface gráfica e um Grafo para manipulação e armazenamento do modelo;
-%     \item Um gerador de código baseado em \textit{templates};
-%     \item Um módulo para simulação interativa e visualização dos resultados.
-% \end{enumerate}
-
-%Citar o ImGui 
-
-O software desenvolvido consiste em uma interface gráfica de usuário (mais comumente referida pelo acrônimo em inglês, \textit{GUI}, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós podem representar constantes, populações ou termos/componentes combinatórios que servem para abstrair e auxiliar a reutilização de termos comuns nas equações diferenciais.
+O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário \ref{fig:gui-predador-presa} (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes e variáveis. Em \ref{sec:representacao-visual-edo}, serão discutidos os tipos de nós presentes na interface.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.42]{imgs/exemplo_gui.png} 
-    \caption{Exemplo de modelo construído na \textit{GUI}.}
-    \label{fig::exemplo_gui}
+    \includegraphics[scale=0.35]{imgs/ode-designer/predador-presa.png} 
+    \caption{Exemplo do modelo Predador-Presa (\ref{eq:predadorpresa}) construído no \textit{software}.}
+    \label{fig:gui-predador-presa}
 \end{figure}
 
-Após criado o modelo, o usuário pode simulá-lo direto no software, ou exportar um código de Python equivalente para o modelo desenhado. A experiência de usuário pode ser resumida ao fluxograma \ref{fig::experiencia_usuario}.
+Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI \ref{fig:gui-grafico-all}, exportar um PDF dos resultados, ou exportar um código de Python equivalente para o modelo desenhado \ref{code:predador-presa}. A experiência de usuário pode ser resumida ao fluxograma \ref{fig::experiencia_usuario}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.35]{imgs/ode-designer/grafico-all.png} 
+    \caption{Plotagem dos resultados da simulação do modelo Predador-Presa.}
+    \label{fig:gui-grafico-all}
+\end{figure}
 
 \begin{figure}[h]
     \centering
@@ -651,6 +647,8 @@ Após criado o modelo, o usuário pode simulá-lo direto no software, ou exporta
 \end{figure}
 
 Dessa forma, o usuário pode criar e simular modelos sem a necessidade de iniciar a implementação computacional do zero e também sem a necessidade de ter muito conhecimento dos métodos que são utilizados na implementação. O usuário terá acesso aos códigos gerados e poderá utilizá-los, por exemplo, como base para desenvolver o seu próprio código. 
+
+A simulação das EDOs, tanto pela GUI quanto pelo código de Python exportado, é feita utilizando métodos especializados da biblioteca ciêntífica \texttt{scipy} \cite{scipy}. % Devemos entrar em detalhes de como isso é feito? Se sim, precisamos de uma explicação do método RK45
 
 \section{Arquitetura do software}
 
@@ -682,6 +680,7 @@ O gerador de código irá injetar os dados disponíveis na RI em pontos específ
 A plotagem é feita utilizando a biblioteca \textbf{ImPlot}\footnote{\href{https://github.com/epezent/implot}{https://github.com/epezent/implot}}.
 
 \section{Uma representação visual para EDOs}
+\label{sec:representacao-visual-edo}
 
 \subsection{Representação intermediária}\label{subsection:RI}
 
@@ -963,6 +962,15 @@ Por último, destaca-se que uma outra possibilidade de extensão do trabalho é 
 % % ------------------------------------------------------Apêndices - Caso não existam, comentar-
 % % ---------------------------------------------------------------------------------------------
 %\include{99_apendices}
+
+\appendix {
+
+\section{Código de Python gerado para o modelo Predador-Presa}
+\label{code:predador-presa}
+\textattachfile{code/dhdp.py}{código completo}
+\lstinputlisting[language=Python]{code/dhdp-part.py}
+
+}
 
 % % ---------------------------------------------------------------------------------------------
 % % ---------------------------------------------------------Anexos - Caso não existam, comentar-
