@@ -29,11 +29,12 @@
         - Confiabilidade (não crashar por motivos aleatórios);
         - Segurança (menos brechas de ataque / acesso ilegal, etc.);
         - Facilidade e portabilidade do desenvolvimento;
-            - Poucas coisas dependem de um sistema Unix no software atual;
+            - Poucas coisas dependem de um sistema Unix no software atual; (na verdade, nenhuma!)
             - Programação paralela menos propensa a introdução de erros motivados por condições de corrida (*borrow checker*);
         - Dificuldade de conciliar (interop) as duas linguagens (C++ e Rust);
         - Crescimento do ecossistema com a maior disponibilização de bibliotecas para os mais variados propósitos (IoT, Graphics, Web, Frontend);
     - Atualizar seção com novas bibliotecas, remover não-mais utilizadas;
+    - Incluir UML geral sobre a organização do software;
 
 - 4.4.3 [Distribuição do software]:
     - Falar sobre AppImages construídas em contêiner;
