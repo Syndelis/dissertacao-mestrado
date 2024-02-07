@@ -690,7 +690,7 @@ A RI evita que mudanças realizadas no código da interface gráfica tenham um g
 
 A alternativa a esta abordagem seria passar as informações em memória do modelo diretamente para o gerador de código. Neste caso, o acoplamento dos módulos seria maior, e o impacto disto seria maior tempo de desenvolvimento para cada nova transformação adicionada (por exemplo, novas linguagens de programação).
 
-Para permitir que o usuário salve e carregue os modelos, a RI assumida se baseia num formato JSON que representa de forma direta as classes de C++ que formam a GUI. Para a serialização e deserialização em JSON, utilizou-se uma biblioteca da linguagem Rust chamada \textit{serde} (que será explicada em detalhes na Seção \ref{sec:tecnologias}), que permite que esta conversão seja feita de forma declarativa. Na listagem a seguir, é mostrado um exemplo de arquivo JSON que é referente ao modelo Predador-Presa (Figura \ref{fig::exemplo_gui}). As EDOs desse modelo foram apresentadas na Equação \ref{eq:predadorpresa}. 
+Para permitir que o usuário salve e carregue os modelos, a RI assumida se baseia num formato JSON que representa de forma direta as classes de C++ que formam a GUI. Para a serialização e deserialização em JSON, utilizou-se uma biblioteca da linguagem Rust chamada \textit{serde} (que será explicada em detalhes na Seção \ref{sec:tecnologias}), que permite que esta conversão seja feita de forma declarativa. Na listagem a seguir, é mostrado um exemplo de arquivo JSON que é referente ao modelo Predador-Presa (Figura \ref{fig:gui-predador-presa}). As EDOs desse modelo foram apresentadas na Equação \ref{eq:predadorpresa}. 
 
 %TO DO: Colocar a RI com os dados do modelo predador-presa 
 
