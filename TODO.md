@@ -58,3 +58,5 @@
 - Trabalhos futuros:
     - Feedback de alunos;
     - "Solução: Uma ideia é oferecer a possibilidade de agrupar um grupo de nós e as ligações entre eles em um submodelo. Os submodelos seriam combinados para formar o modelo completo.";
+
+- Fazer tabela descrevendo os tipos de nós da representação visual desenvolvida.

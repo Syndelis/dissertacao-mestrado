@@ -621,7 +621,7 @@ O software Cytoscape \cite{shannon2003cytoscape} é uma plataforma de software d
 \label{chap:metodologia}
 \label{chap:software-para-modelagem}
 
-O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário \ref{fig:gui-predador-presa} (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes e variáveis. Em \ref{sec:representacao-visual-edo}, serão discutidos os tipos de nós presentes na interface.
+O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário \ref{fig:gui-predador-presa} (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes, variáveis e expressões matemáticas. Na Seção \ref{sec:representacao-visual-edo}, serão apresentados os tipos de nós presentes na interface.
 
 \begin{figure}[h]
     \centering
@@ -630,7 +630,7 @@ O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfi
     \label{fig:gui-predador-presa}
 \end{figure}
 
-Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI \ref{fig:gui-grafico-all}, exportar um PDF dos resultados, ou exportar um código de Python equivalente para o modelo desenhado \ref{code:predador-presa}. A experiência de usuário pode ser resumida ao fluxograma \ref{fig::experiencia_usuario}.
+Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI \ref{fig:gui-grafico-all}, exportar um PDF dos resultados, ou exportar um código de Python que implementa computacionalmente o modelo desenhado \ref{code:predador-presa}. A experiência de usuário pode ser resumida ao fluxograma \ref{fig::experiencia_usuario}.
 
 \begin{figure}[h]
     \centering
@@ -661,7 +661,7 @@ A simulação das EDOs, tanto pela GUI quanto pelo código de Python exportado, 
 
 Na Figura \ref{fig::arquitetura_software}, é apresentada uma visão geral do software onde são destacados os módulos principais, suas interações e suas entradas e saídas. A \textbf{Interface Gráfica} é o módulo que implementa toda a parte visual do software através da qual o usuário interagirá. Este módulo pode ter seus dados transformados de e para a \textbf{Representação Intermediária} (RI), que será explicada na Seção \ref{subsection:RI}. Por meio desta, o software pode salvar e carregar os dados da interface no computador, além de ser a entrada para o \textbf{Gerador de Código} baseado em \textbf{\textit{Templates}}.
 
-O gerador de código irá injetar os dados disponíveis na RI em pontos específicos do \textit{template} para gerar o código que implementa o modelo computacionalmente. Por exemplo, caso o usuário deseje gerar o o código em Python, o \textit{template} correspondente será carregado e terá seus marcadores substituídos por trechos específicos da RI. Destaca-se que a ferramenta irá gerar códigos em outras linguagens como C++ e C, podendo ser estendida e modificada para gerar código para mais linguagens ou até códigos/arquivos que são entrada para outros simuladores. 
+O gerador de código irá injetar os dados disponíveis na RI em pontos específicos do \textit{template} para gerar o código que implementa o modelo computacionalmente. Por exemplo, caso o usuário deseje gerar o o código em Python, o \textit{template} correspondente será carregado e terá seus marcadores substituídos por trechos específicos da RI. Destaca-se que a ferramenta poderá ser estendida e modificada para gerar código para mais linguagens ou até códigos/arquivos que são entrada para outros simuladores. 
 
 %TO DO: diagrama com os principais módulos do software e falar no texto das estruturas de cada módulo 
 
@@ -677,7 +677,7 @@ O gerador de código irá injetar os dados disponíveis na RI em pontos específ
 % 
 %A interface gráfica será capaz de realizar duas plotagens diferentes. A primeira será feita em tempo real levando em consideração as alterações do usuário. 
 
-A plotagem é feita utilizando a biblioteca \textbf{ImPlot}\footnote{\href{https://github.com/epezent/implot}{https://github.com/epezent/implot}}.
+A plotagem dos resultados da simulação é feita utilizando a biblioteca \textbf{ImPlot}\footnote{\href{https://github.com/epezent/implot}{https://github.com/epezent/implot}}.
 
 \section{Uma representação visual para EDOs}
 \label{sec:representacao-visual-edo}
