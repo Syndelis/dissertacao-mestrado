@@ -586,7 +586,7 @@ O software desenvolvido possui alguns diferencias em relação a outros desenvol
 \begin{itemize}
     \item Em sua interface gráfica é apresentado um editor baseado em nós que fornece ao usuário uma forma de programação visual \ref{sec:programacao-visual}, possibilitando um grau de liberdade limitando apenas operações consideradas incorretas;
     
-    \item Em seu formato de representação intermediária para salvamento e carregamento dos modelos, o software utiliza uma estrutura extensível para outros tipos de modelos como, por exemplo, equações diferenciais parciais. Esta estrutura também foi projetada para ser humanamente legível, a ponto de ser possível que uma pessoa decodifique o modelo representado apenas lendo o arquivo. Assim, caso o software se prove insuficiente ou indisponível, ainda é possível reverter o arquivo nas equações que o compõe. % TODO: Este parágrafo fez sentido? Fez sentido para mim. Ficou muito bom.  
+    \item Em seu formato de representação intermediária para salvamento e carregamento dos modelos, o software utiliza uma estrutura extensível para outros tipos de modelos como, por exemplo, equações diferenciais parciais. Esta estrutura também foi projetada para ser humanamente legível, a ponto de ser possível que uma pessoa decodifique o modelo representado apenas lendo o arquivo. Assim, caso o software se prove insuficiente ou indisponível, ainda é possível reverter o arquivo nas equações que o compõe.  
 \end{itemize}
 
 A seguir, são descritos em mais detalhes os trabalhos relacionados. 
@@ -621,7 +621,7 @@ O software Cytoscape \cite{shannon2003cytoscape} é uma plataforma de software d
 \label{chap:metodologia}
 \label{chap:software-para-modelagem}
 
-O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário \ref{fig:gui-predador-presa} (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes, variáveis e expressões matemáticas. Na Seção \ref{sec:representacao-visual-edo}, serão apresentados os tipos de nós presentes na interface.
+O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário [\ref{fig:gui-predador-presa}] (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes e variáveis. Em \ref{sec:representacao-visual-edo}, serão discutidos os tipos de nós presentes na interface.
 
 \begin{figure}[h]
     \centering
@@ -630,7 +630,9 @@ O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfi
     \label{fig:gui-predador-presa}
 \end{figure}
 
-Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI \ref{fig:gui-grafico-all}, exportar um PDF dos resultados, ou exportar um código de Python que implementa computacionalmente o modelo desenhado \ref{code:predador-presa}. A experiência de usuário pode ser resumida ao fluxograma \ref{fig::experiencia_usuario}.
+O modelo é construído a partir da criação de nós e suas ligações. Uma equação pode ser expressada por um ou mais termos e combinações, e uma variável alvo para a atribuição do valor.
+
+Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI [\ref{fig:gui-grafico-all}], exportar um PDF dos resultados, ou exportar um código de Python equivalente para o modelo desenhado [\ref{code:predador-presa}]. A experiência de usuário pode ser resumida ao fluxograma \ref{fig::experiencia_usuario}.
 
 \begin{figure}[h]
     \centering
@@ -646,9 +648,9 @@ Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI \
     \label{fig::experiencia_usuario}
 \end{figure}
 
-Dessa forma, o usuário pode criar e simular modelos sem a necessidade de iniciar a implementação computacional do zero e também sem a necessidade de ter muito conhecimento dos métodos que são utilizados na implementação. O usuário terá acesso aos códigos gerados e poderá utilizá-los, por exemplo, como base para desenvolver o seu próprio código. 
+Dessa forma, o usuário pode criar e simular modelos sem a necessidade de iniciar a implementação computacional do zero e também sem a necessidade de ter conhecimentos dos métodos que são utilizados na implementação. Pelo contrário, o usuário terá acesso aos códigos gerados e poderá aprender com estes e utilizá-los, por exemplo, como base para desenvolver o seu próprio código. 
 
-A simulação das EDOs, tanto pela GUI quanto pelo código de Python exportado, é feita utilizando métodos especializados da biblioteca ciêntífica \texttt{scipy} \cite{scipy}. % Devemos entrar em detalhes de como isso é feito? Se sim, precisamos de uma explicação do método RK45
+A simulação das EDOs, tanto pela GUI quanto pelo código de Python exportado, é feita utilizando métodos especializados da biblioteca ciêntífica \texttt{scipy} \cite{scipy}. % TODO: Devemos entrar em detalhes de como isso é feito? Se sim, precisamos de uma explicação do método RK45
 
 \section{Arquitetura do software}
 
@@ -967,7 +969,7 @@ Por último, destaca-se que uma outra possibilidade de extensão do trabalho é 
 
 \section{Código de Python gerado para o modelo Predador-Presa}
 \label{code:predador-presa}
-\textattachfile{code/dhdp.py}{código completo}
+Código completo \attachfile{code/dhdp.py}
 \lstinputlisting[language=Python]{code/dhdp-part.py}
 
 }
