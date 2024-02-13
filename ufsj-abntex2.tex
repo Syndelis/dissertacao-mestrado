@@ -652,39 +652,40 @@ Dessa forma, o usuário pode criar e simular modelos sem a necessidade de inicia
 
 A simulação das EDOs, tanto pela GUI quanto pelo código de Python exportado, é feita utilizando métodos especializados da biblioteca ciêntífica \texttt{scipy} \cite{scipy}. % TODO: Devemos entrar em detalhes de como isso é feito? Se sim, precisamos de uma explicação do método RK45
 
-\section{Arquitetura do software}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.125]{imgs/passos_divisao_software.png} 
-    \caption{Visão arquitetural do software.}
-    \label{fig::arquitetura_software}
-\end{figure}
-
-Na Figura \ref{fig::arquitetura_software}, é apresentada uma visão geral do software onde são destacados os módulos principais, suas interações e suas entradas e saídas. A \textbf{Interface Gráfica} é o módulo que implementa toda a parte visual do software através da qual o usuário interagirá. Este módulo pode ter seus dados transformados de e para a \textbf{Representação Intermediária} (RI), que será explicada na Seção \ref{subsection:RI}. Por meio desta, o software pode salvar e carregar os dados da interface no computador, além de ser a entrada para o \textbf{Gerador de Código} baseado em \textbf{\textit{Templates}}.
-
-O gerador de código irá injetar os dados disponíveis na RI em pontos específicos do \textit{template} para gerar o código que implementa o modelo computacionalmente. Por exemplo, caso o usuário deseje gerar o o código em Python, o \textit{template} correspondente será carregado e terá seus marcadores substituídos por trechos específicos da RI. Destaca-se que a ferramenta poderá ser estendida e modificada para gerar código para mais linguagens ou até códigos/arquivos que são entrada para outros simuladores. 
-
-%TO DO: diagrama com os principais módulos do software e falar no texto das estruturas de cada módulo 
-
-%    pub labels: Vec<String>,
-%    pub lines: Vec<Vec<f64>>,
-%    pub time: Vec<f64>,
-%    pub title: String,
-%    pub xlabel: String,
-%    pub ylabel: String,
-%    pub data: CSVData,
-%Falar por alto das estruturas que armazenam as informações do plot 
-%Os resultados da simulação e os metadados são armazenadas em estruturas específicas que servem de entrada para a plotagem do gráfico. 
-% 
-%A interface gráfica será capaz de realizar duas plotagens diferentes. A primeira será feita em tempo real levando em consideração as alterações do usuário. 
-
-A plotagem dos resultados da simulação é feita utilizando a biblioteca \textbf{ImPlot}\footnote{\href{https://github.com/epezent/implot}{https://github.com/epezent/implot}}.
-
 \section{Uma representação visual para EDOs}
 \label{sec:representacao-visual-edo}
 
-\subsection{Representação intermediária}\label{subsection:RI}
+Uma representação visual foi desenvolvida para minimizar a necessidade de um conhecimento técnico prévio pelo usuário, assim como a dependência de documentos e manuais. Para atingir este objetivo, foi necessário modelar esta representação utilizando conceitos que fossem naturais para o público-alvo e a forma com a qual este desenvolve EDOs.
+
+% TODO: Esse parágrafo precisa de alguma introdução prévia? Alguma citação?
+% Quando eu escrevo "Entende-se", não quero necessariamente introduzí-lo como um fato, mas como uma premissa.
+% Podemos escrever em primeira pessoa? "Tomamos como premissa..."
+Entende-se que EDOs são construídas seguindo padrões. Por exemplo, dado duas populações $A$ e $B$, caso seja desejado simular uma condição que seja mais provável de acontecer dado altas concentrações de ambas as populações, é possível representá-la simplesmente multiplicando ambas as populações. Opcionalmente, adiciona-se uma constante para controlar a taxa de ocorrência.
+
+No sistema de EDOs \ref{eq:predadorpresa}, é possível visualizar este fenômeno: na equação da presa, a expressão \(-a.H.P\) é utilizada para controlar a taxa de predação, isto é, o quanto a concentração desta população é afetada negativamente pela atividade de predação realizada pelos predadores. Naturalmente, a predação ocorrerá mais frequentemente dado altas concentrações de ambos presa e predador, assim como descrito acima.
+
+A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinação das expressões que representam as interações das populações entre si e o meio. Assim, a representação visual foi modelada em um editor de nós, de forma que todas as interações visassem a construção destas expressões. a tabela \ref{tab:tipos-de-nos} descreve os tipos de nós presentes no software e sua relação com o objetivo de construir as expressões.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ |m{0.12\textwidth}|m{0.35\textwidth}|m{0.5\textwidth}| }
+    \hline
+    \rowcolor{lightgray} Tipo de nó & Usado para representar & Exemplo \\
+    \hline
+    Termo & Variáveis, parâmetros e constantes. & Em uma expressão \(k.x.y\), os termos são o parâmetro $k$ e as variáveis $x$ e $y$. \\
+    \hline
+    Expressão & Qualquer expressão matemática para a construção das equações do modelo. & Na equação da presa [\ref{eq:predadorpresa}], as expressões são: 1) \(r.H\); 2) \(a.H.P\); e 3) \(r.H - a.H.P\) (combinação de 1 e 2). \\
+    \hline
+    Equação & É um nó especial usado para atribuir uma expressão, que representa todo o lado direito de uma EDO, a uma variável. & A expressão \(r.H - a.H.P\) pode ser usada como entrada de um nó de equação associado à variável $H$. \\
+    \hline 
+\end{tabular}
+\end{center}
+\caption{Tipos de nós presentes no software.}
+\label{tab:tipos-de-nos}
+\end{table}
+
+\subsection{Uma representação intermediária humanamente legível}
+\label{subsection:RI}
 
 Neste trabalho, a representação intermediária (RI) foi utilizada com dois propósitos: (1) Separar o \textit{front-end} (interface gráfica) do \textit{back-end} (gerador de código) e (2) Permitir que os modelos construídos sejam salvos e carregados da unidade de armazenamento.
 
