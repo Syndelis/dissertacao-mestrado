@@ -1,0 +1,13 @@
+@startuml
+!theme vibrant
+repeat :**GUI**\n Criação do modelo via interface;
+
+:**Simulção**
+Simualção //on-site//;
+
+repeat while (O usuário está contente com o modelo?) is (    não)
+-> sim;
+
+:**Exportação**
+Simulação //off-site//;
+@enduml
