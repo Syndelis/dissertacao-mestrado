@@ -864,7 +864,11 @@ Equations:
 
 \section{Geração de Código e Simulação interativa}
 
-Após o usuário terminar de construir o modelo, será possível simulá-lo diretamente no software. Uma vez que qualquer modelo desenhado na interface representa um conjunto válido de EDOs, a simulação interativa é apresentada para o usuário em um gráfico direto na interface gráfica e que pode refletir alterações no modelo em tempo real. 
+Além de apresentar uma interface capaz de criar, salvar e carregar sistemas de EDOs, o software também possibilita o usuário de simular as equações (plotando na interface), gerar o código equivalente em Python ou exportar um PDF com os resultados.
+
+A geração de código é feita por meio da interpolação e substituição de \textit{strings} em \textit{templates}. Estes \textit{templates} incluem o código base necessário para a simulação e plotagem com as bibliotecas corretas inclusas, ecrito de maneira sucinta e legível com o objetivo de servir como um material de aprendizagem estensível.
+
+Este código gerado, além de ser aprensentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao} assim como será discutida a solução implementada.
 
 \section{Implementação e Tecnologias utilizadas}
 \label{sec:tecnologias}
@@ -905,7 +909,8 @@ O software atualmente também implementa testes unitários em C++ utilizando o \
 
 Estes testes tornam a vida do desenvolvedor mais fácil, uma vez que garantem que alterações no código não quebram funcionalidades pré-existentes. Os testes possuem execução automatizada por meio de \textbf{GitHub Actions}\footnote{\href{https://github.com/features/actions}{GitHub Actions}}, que fornecem máquinas em nuvem sob demanda, assim impedindo que o desenvolvedor se descuide e esqueça de executá-los.
 
-\subsection{Distribuição do software}
+\section{Distribuição do software}
+\label{sec:distribuicao}
 
 %TO DO: 
 %Apesar do software utilizar diversas bibliotecas externas, foi criado uma App Image (Fuse 3, ref) 
