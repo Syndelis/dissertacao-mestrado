@@ -349,7 +349,7 @@
 }
 
 \colorlet{punct}{red!60!black}
-\definecolor{background}{HTML}{EEEEEE}
+\definecolor{background}{HTML}{FAFAFA}
 \definecolor{delim}{RGB}{20,105,176}
 \colorlet{numb}{magenta!60!black}
 
@@ -379,7 +379,17 @@
       {\{}{{{\color{delim}{\{}}}}{1}
       {\}}{{{\color{delim}{\}}}}}{1}
       {[}{{{\color{delim}{[}}}}{1}
-      {]}{{{\color{delim}{]}}}}{1},
+      {]}{{{\color{delim}{]}}}}{1}
+      {name}{{{\color{template_keyword}name}}}{4}
+      {value}{{{\color{template_keyword}value}}}{5}
+      {operation}{{{\color{template_keyword}operation}}}{9}
+      {contribution}{{{\color{template_keyword}contribution}}}{12}
+      {composition}{{{\color{template_keyword}composition}}}{11}
+      {*}{{{\textbf{*}}}}{1}
+      {+}{{{\textbf{+}}}}{1}
+      {-}{{{\textbf{-}}}}{1}
+      {/}{{{\textbf{/}}}}{1}
+      ,
 }
 
 \chapter{Introdução}
@@ -754,112 +764,42 @@ A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinaç�
 \subsection{Uma representação intermediária humanamente legível}
 \label{subsection:RI}
 
-Neste trabalho, a representação intermediária (RI) foi utilizada com dois propósitos: (1) Separar o \textit{front-end} (interface gráfica) do \textit{back-end} (gerador de código) e (2) Permitir que os modelos construídos sejam salvos e carregados da unidade de armazenamento.
+Com a finalidade de possibilitar a escrita e leitura em disco dos modelos desenhados na GUI, uma RI foi definida. O formato JSON foi escolhido por sua popularização com a \textit{web} e com sua clara representação de estruturas de dados como listas e tabelas \textit{hash} que facilitam o desenvolvimento do software. A escolha de um formato pré-estabelecido também torna a RI mais resiliente a futuras mudanças, uma vez que não será necessário modificar a sintaxe do formato e nem as bibliotecas que o interpretam.
 
-A RI evita que mudanças realizadas no código da interface gráfica tenham um grande impacto na implementação do gerador de código. Desta forma, o gerador de código somente será impactado por alguma mudança na \textit{GUI} quando a mudança tiver como efeito a inserção, modificação ou remoção de informações da representação intermediária.
+Apesar de ser usada como forma de armazenar informações do modelo, a RI possui um formato projetado para ser humanamente legível. Esta decisão foi tomada para possibilitar a recuperação do modelo construído sem a necessidade de ter o software instalado. Assim, caso o software caia em desuso, se torne impossível de instalar por algum motivo (um sistema operacional diferente, por exemplo) ou simplesmente tenha mudanças que quebrem compatibilidade implementadas, não significa que o usuário tenha perdido seu 
+modelo.
 
-A alternativa a esta abordagem seria passar as informações em memória do modelo diretamente para o gerador de código. Neste caso, o acoplamento dos módulos seria maior, e o impacto disto seria maior tempo de desenvolvimento para cada nova transformação adicionada (por exemplo, novas linguagens de programação).
-
-Para permitir que o usuário salve e carregue os modelos, a RI assumida se baseia num formato JSON que representa de forma direta as classes de C++ que formam a GUI. Para a serialização e deserialização em JSON, utilizou-se uma biblioteca da linguagem Rust chamada \textit{serde} (que será explicada em detalhes na Seção \ref{sec:tecnologias}), que permite que esta conversão seja feita de forma declarativa. Na listagem a seguir, é mostrado um exemplo de arquivo JSON que é referente ao modelo Predador-Presa (Figura \ref{fig:gui-predador-presa}). As EDOs desse modelo foram apresentadas na Equação \ref{eq:predadorpresa}. 
-
-%TO DO: Colocar a RI com os dados do modelo predador-presa 
-
-\begin{lstlisting}[language=json]
-{
-    "meta_data": {
-        "start_time": 0,
-        "end_time": 10.50,
-        "delta_time": 0.1
-    },
-    "nodes": {
-        "1": {
-            "id": 1,
-            "name": "Population 1",
-            "related_constant_name": "Population 1_0",
-            "links": [
-                {
-                    "sign": "+",
-                    "node_id": 30
-                }
-            ],
-        },
-        "2": {
-            "id": 2,
-            "name": "Population 2",
-            "related_constant_name": "Population 2_0"
-        },
-        "30": {
-            "id": 30,
-            "name": "Pop1 + Pop2",
-            "operation": "+",
-            "inputs": [1, 2]
-        }
-    }, 
-    "constants": [
-        {
-            "name": "gravity",
-            "value": 9.81
-        },
-        {
-            "name": "Population 1_0",
-            "value": 100
-        },
-        {
-            "name": "Population 2_0",
-            "value": 100
-        },
-        {
-            "name": "a",
-            "value": 1.6
-        }
-    ]
-}
-\end{lstlisting}
-
-Neste exemplo de RI, pode-se observar 3 seções:
+Em \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa [\ref{ri:predador-presa}] que implementa a equação da presa. Note que é possível reconstruir a equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode sesr construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
 
 \begin{itemize}
-    \item \texttt{"meta\_data"}: Esta seção inclui os meta dados da simulação que não fazem parte de nenhuma construção específica. Entre estes dados, estão o tempo inicial da simulação (\texttt{"start\_time"}), tempo final (\texttt{"end\_time"}) e o passo de tempo (\texttt{"delta\_time"});
-
-    \item \texttt{"nodes"}: Esta seção inclui os nós como vistos interface gráfica. Estes nós podem ser do tipo ``população'' ou ``combinação''.
-    
-    No primeiro caso, o nó define as relações que ele possui com outros nós pelo atributo \texttt{"links"}. As ligações possuem os dados de sinal (se a relação é positiva (+) ou negativa (-) para a população) e o identificador do nó combinatório relacionado.
-
-    No segundo caso, o nó define o atributo \texttt{"inputs"}, que é uma lista dos identificadores dos nós que se ligam a este. Diferentemente do sub-atributo \texttt{"node\_id"} do nó anterior, estes identificadores podem ser de qualquer tipo de nó.
-
-    A partir desta estrutura, é possível montar as equações de qualquer população através de uma resolução recursiva de identificadores. Em \ref{code::equation-template-jinja} é apresentado um \textit{template} na linguagem Jinja2\footnote{\href{https://jinja.palletsprojects.com/en/3.1.x/}{Jinja2 Homepage}} capaz de realizar a construção das equações como descrito;
-
-    \item \texttt{"constants"}: Esta seção inclui as constantes que podem ser utilizadas em equações, com seus nomes e valores.
+    \item \texttt{"Predacao/Presa"}: \((+a)*(+H)*(+P)\), que simplificando se resume a \(a*H*P\);
+    \item \texttt{"Reprodução"}: \((+r)*(+H)\), que simplificando se resume a \(r*H\);
+    \item \texttt{"Eq/Presa"}: A subtração de \texttt{"Predacao/Presa"} e \texttt{"Reprodução"}, que resulta em \(r*H-a*H*P\);
 \end{itemize}
 
-\begin{lstlisting}[language=jinja2, label={code::equation-template-jinja}][H]
-Equations:
-{% for node_id, node in model.nodes|items -%}
- {% if node.related_constant_name %}
-  - d{{ node.name }}/dt =
-  {%- for link in node.links -%}
-   {%- set link_node = model.nodes[link.node_id] -%}
-   {%- if link_node.related_constant_name -%}
-    ({{ link.sign }} {{ link_node.name }}) {% if not loop.last %} + {% endif %}
-   {%- else -%}
-    {{ link.sign }} (
-     {%- for input in link_node.inputs recursive -%}
-      {%- set inner_link_node = model.nodes[input] %}
-      {%- if inner_link_node.related_constant_name -%}
-       {{ inner_link_node.name }} {% if not loop.last %} {{ link_node.operation }} {% endif %}
-      {%- else -%}
-       {%- set old_link_node = link_node -%}
-       {%- set link_node = inner_link_node -%}
-       {{ loop(inner_link_node.inputs) }}
-       {%- set link_node = old_link_node -%}
-       {% if not loop.last %} {{ link_node.operation }} {% endif %}
-      {%- endif -%}
-     {%- endfor -%}
-    ) +
-   {%- endif -%}
-  {% endfor -%}
- {% endif %}
-{%- endfor -%}
+\begin{lstlisting}[language=json, label=ri:presa, caption=Trecho da RI que define termos e combinações usadas para definir a equação da presa.][H]
+"arguments": [
+    { "name": "Eq/Presa", "operation": "-",
+        "composition": [
+        { "name": "Reproducao", "contribution": "+" },
+        { "name": "Predacao/Presa", "contribution": "+" }
+    ]},
+    { "name": "Reproducao", "operation": "*",
+        "composition": [
+        { "name": "r", "contribution": "+" },
+        { "name": "H", "contribution": "+" }
+    ]},
+    { "name": "Predacao/Presa", "operation": "*",
+        "composition": [
+        { "name": "a", "contribution": "+" },
+        { "name": "H", "contribution": "+" },
+        { "name": "P", "contribution": "+" }
+    ]},
+    { "name": "H", "value": 100.0 },
+    { "name": "P", "value": 5.0 },
+    { "name": "r", "value": 0.2 },
+    { "name": "a", "value": 0.015 }
+]
 \end{lstlisting}
 
 \section{Geração de Código e Simulação interativa}
@@ -977,6 +917,10 @@ Por último, destaca-se que uma outra possibilidade de extensão do trabalho é 
 \label{code:predador-presa}
 Código completo \attachfile{code/dhdp.py}
 \lstinputlisting[language=Python]{code/dhdp-part.py}
+
+\section{RI do modelo Predador-Presa}
+\label{ri:predador-presa}
+Arquivo JSON \attachfile{code/dhdp.json}
 
 }
 

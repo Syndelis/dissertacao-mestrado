@@ -1,0 +1,209 @@
+{
+  "metadata": {
+    "name": "TODO",
+    "type": "ode",
+    "start_time": 0.0,
+    "delta_time": 0.0,
+    "end_time": 0.0,
+    "positions": {
+      "Eq/Predador": {
+        "x": 962.0,
+        "y": 702.0
+      },
+      "Eq/Presa": {
+        "x": 984.0,
+        "y": -10.0
+      },
+      "H": {
+        "x": 159.0,
+        "y": 115.0
+      },
+      "Mortalidade": {
+        "x": 576.1239013671875,
+        "y": 714.0438232421875
+      },
+      "P": {
+        "x": 165.0,
+        "y": 328.0
+      },
+      "Predação": {
+        "x": 497.0,
+        "y": 329.0
+      },
+      "Predação/Predador": {
+        "x": 743.1011962890625,
+        "y": 462.2484130859375
+      },
+      "Predação/Presa": {
+        "x": 750.0,
+        "y": 239.0
+      },
+      "Reprodução": {
+        "x": 547.0,
+        "y": -40.0
+      },
+      "a": {
+        "x": 518.0,
+        "y": 198.0
+      },
+      "b": {
+        "x": 518.0,
+        "y": 570.0
+      },
+      "dH/dt": {
+        "x": 1161.0,
+        "y": 212.0
+      },
+      "dP/dt": {
+        "x": 1160.0,
+        "y": 374.0
+      },
+      "m": {
+        "x": 167.0,
+        "y": 697.0
+      },
+      "r": {
+        "x": 289.0,
+        "y": -70.0
+      }
+    }
+  },
+  "arguments": [
+    {
+      "name": "Predação/Predador",
+      "operation": "*",
+      "composition": [
+        {
+          "name": "Predação",
+          "contribution": "+"
+        },
+        {
+          "name": "b",
+          "contribution": "+"
+        }
+      ]
+    },
+    {
+      "name": "Predação",
+      "operation": "*",
+      "composition": [
+        {
+          "name": "H",
+          "contribution": "+"
+        },
+        {
+          "name": "P",
+          "contribution": "+"
+        }
+      ]
+    },
+    {
+      "name": "Eq/Predador",
+      "operation": "-",
+      "composition": [
+        {
+          "name": "Predação/Predador",
+          "contribution": "+"
+        },
+        {
+          "name": "Mortalidade",
+          "contribution": "+"
+        }
+      ]
+    },
+    {
+      "name": "r",
+      "value": 0.2
+    },
+    {
+      "name": "P",
+      "value": 5.0
+    },
+    {
+      "name": "b",
+      "value": 0.0125
+    },
+    {
+      "name": "Mortalidade",
+      "operation": "*",
+      "composition": [
+        {
+          "name": "P",
+          "contribution": "+"
+        },
+        {
+          "name": "m",
+          "contribution": "+"
+        }
+      ]
+    },
+    {
+      "name": "Reprodução",
+      "operation": "*",
+      "composition": [
+        {
+          "name": "r",
+          "contribution": "+"
+        },
+        {
+          "name": "H",
+          "contribution": "+"
+        }
+      ]
+    },
+    {
+      "name": "m",
+      "value": 0.8
+    },
+    {
+      "name": "a",
+      "value": 0.015
+    },
+    {
+      "name": "Predação/Presa",
+      "operation": "*",
+      "composition": [
+        {
+          "name": "a",
+          "contribution": "+"
+        },
+        {
+          "name": "Predação",
+          "contribution": "+"
+        }
+      ]
+    },
+    {
+      "name": "Eq/Presa",
+      "operation": "-",
+      "composition": [
+        {
+          "name": "Reprodução",
+          "contribution": "+"
+        },
+        {
+          "name": "Predação/Presa",
+          "contribution": "+"
+        }
+      ]
+    },
+    {
+      "name": "H",
+      "value": 100.0
+    }
+  ],
+  "equations": [
+    {
+      "name": "dP/dt",
+      "operates_on": "P",
+      "argument": "Eq/Predador",
+      "contribution": "+"
+    },
+    {
+      "name": "dH/dt",
+      "operates_on": "H",
+      "argument": "Eq/Presa",
+      "contribution": "+"
+    }
+  ]
+}
