@@ -24,7 +24,7 @@
     | --- | --- | --- | --- | --- |
     | ODE-Designer | ... | ... | ... | ... |
 
-- Na 4.4 [Implementação e Tecnologias utilizadas]:
+- Na 4.3 [Implementação e Tecnologias utilizadas]:
     - Comentar que começamos em C++, mudamos para Rust. Motivos:
         - Confiabilidade (não crashar por motivos aleatórios);
         - Segurança (menos brechas de ataque / acesso ilegal, etc.);
@@ -36,20 +36,22 @@
     - Atualizar seção com novas bibliotecas, remover não-mais utilizadas;
     - Incluir UML geral sobre a organização do software;
 
+- [x] Na 4.1.2 [Representação de expressões]
+    - [x] Falar sobre a árvore de expressões;
+        - "Todo modelo construído no software é representado na memória utilizando uma árvore de expressões."
+    - Importância da representação em árvore:
+        - Representação hierárquica do modelo (melhor organização das informações);
+        - Facilita a propagação de modificações. Exemplo: troca sinal de um termo, remoção de um termo  (explicar embaixo);
+        - [x] Todas as informações sobre o modelo podem ser obtidas percorrendo a árvore facilitando a construção das equações do código; 
+        - [x] Permite que novos modelos sejam definidos utilizando a estrutura atual. Exemplo: EDP, AC, Modelos Estocásticos baseados em Gillespie.
+
 - 4.4.3 [Distribuição do software]:
     - Falar sobre AppImages construídas em contêiner;
         - ```
         ./t: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found (required by ./t)
         ```
-- 4.3 [Geração de Código e Simulação Interativa]:
-    - Falar sobre a árvore de expressões;
-        - "Todo modelo construído no software é representado na memória utilizando uma árvore de expressões."
-    - Importância da representação em árvore:
-        - Representação hierárquica do modelo (melhor organização das informações);
-        - Facilita a propagação de modificações. Exemplo: troca sinal de um termo, remoção de um termo  (explicar embaixo);
-        - Todas as informações sobre o modelo podem ser obtidas percorrendo a árvore facilitando a construção das equações do código; 
-        - Permite que novos modelos sejam definidos utilizando a estrutura atual. Exemplo: EDP, AC, Modelos Estocásticos baseados em Gillespie.
 
+- [x] 4.2 [Geração de Código e Simulação Interativa]:
     - "O código gerado para a exportação e simulação das EDOs baseia-se na substituição de *strings* em *templates*. O código de Python utiliza a biblioteca `scipy` para simular o conjunto de equações e a biblioteca `matplotlib` para plotar o resultado."
 
     - O código em Python resolve numericamente o modelo utilizando a função solve_ivp da biblioteca scipy (Colocar link para a página da biblioteca);

@@ -1,0 +1,28 @@
+@startwbs
+!theme vibrant
+
+* Modelo
+
+** Eq/Presa
+***< Reprodução
+**** r
+**** H
+***> Predação/Presa
+****> a
+****(aHP)> Predação
+
+**(HP) Predação
+*** H
+*** P
+
+** Eq/Predador
+***> Mortalidade
+**** m
+**** P
+***< Predação/Predador
+****< b
+****(bHP)< Predação
+
+aHP -> HP
+bHP -> HP
+@endwbs

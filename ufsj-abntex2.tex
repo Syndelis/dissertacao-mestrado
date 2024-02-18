@@ -761,6 +761,22 @@ A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinaç�
 \label{tab:tipos-de-nos}
 \end{table}
 
+\subsection{Representação de expressões na interface}
+\label{subsec:exprtree}
+
+Na GUI, os nós de expressão apresentam a expressão que estão construindo, para que o usuário não tenha que inspecionar cada nó individiualmente para determinar como uma expressão está sendo formada. Desta forma, não é necessário observar apenas a equação final. Isto é feito por meio de árvores de expressões que cada um destes nós carrega consigo.
+
+Na imagem \ref{fig:expr-tree} são apresentadas as árvores de expressões de todos os nós presentes em \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e adição.
+
+Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da estensibilidade serão apresentados em \ref{subsec:extensibilidade}, enquanto o futuro será discutido em \ref{sec:futuro}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.65]{diagrams/img/expr-tree.png} 
+    \caption{Árvores de expressões para cada nó de expressão no modelo predador-presa [\ref{fig:gui-predador-presa}]}
+    \label{fig:expr-tree}
+\end{figure}
+
 \subsection{Uma representação intermediária humanamente legível}
 \label{subsection:RI}
 
