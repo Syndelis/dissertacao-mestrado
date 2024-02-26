@@ -735,10 +735,7 @@ A simulação das EDOs, tanto pela GUI quanto pelo código de Python exportado, 
 
 Uma representação visual foi desenvolvida para minimizar a necessidade de um conhecimento técnico prévio pelo usuário, assim como a dependência de documentos e manuais. Para atingir este objetivo, foi necessário modelar esta representação utilizando conceitos que fossem naturais para o público-alvo e a forma com a qual este desenvolve EDOs.
 
-% TODO: Esse parágrafo precisa de alguma introdução prévia? Alguma citação?
-% Quando eu escrevo "Entende-se", não quero necessariamente introduzí-lo como um fato, mas como uma premissa.
-% Podemos escrever em primeira pessoa? "Tomamos como premissa..."
-Entende-se que EDOs são construídas seguindo padrões. Por exemplo, dado duas populações $A$ e $B$, caso seja desejado simular uma condição que seja mais provável de acontecer dado altas concentrações de ambas as populações, é possível representá-la simplesmente multiplicando ambas as populações. Opcionalmente, adiciona-se uma constante para controlar a taxa de ocorrência.
+A construção de EDOs se baseia em alguns princípios gerais, como a Lei de Ação de Massas. Por exemplo, dado duas populações $A$ e $B$, caso seja desejado simular uma condição que seja mais provável de acontecer dado altas concentrações de ambas as populações, é possível representá-la simplesmente multiplicando ambas as populações. Opcionalmente, adiciona-se uma constante para controlar a taxa de ocorrência.
 
 No sistema de EDOs \ref{eq:predadorpresa}, é possível visualizar este fenômeno: na equação da presa, a expressão \(-a.H.P\) é utilizada para controlar a taxa de predação, isto é, o quanto a concentração desta população é afetada negativamente pela atividade de predação realizada pelos predadores. Naturalmente, a predação ocorrerá mais frequentemente dado altas concentrações de ambos presa e predador, assim como descrito acima.
 
