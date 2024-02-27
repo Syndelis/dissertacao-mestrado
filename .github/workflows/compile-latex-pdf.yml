@@ -1,4 +1,4 @@
-name: Compile LaTeX PDF
+name: Compile LaTeX PDF and PlantUML diagrams
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
         with:
           root_file: ufsj-abntex2.tex
 
-      - name: Commit PDF
+      - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update PDF
