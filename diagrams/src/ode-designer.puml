@@ -1,0 +1,69 @@
+@startuml ode-designer
+
+skinparam groupInheritance 2
+
+package nodes {
+
+!include parts/nodes.puml
+
+}
+
+package pins {
+
+!include parts/pins.puml
+
+}
+
+package app {
+
+!include parts/app.puml
+
+}
+
+package plot {
+
+!include parts/plot.puml
+
+}
+
+package extensions {
+
+!include parts/extensions.puml
+
+}
+
+package messages {
+
+!include parts/messages.puml
+
+}
+
+package exprtree {
+
+!include parts/exprtree.puml
+
+}
+
+App "1" *-- "N" Node
+App "1" *-- "N" Extension
+SimulationState "1" *-left- "1" PlotInfo
+SimulationState "1" *-left- "1" PlotLayout
+
+Term "1" *-- "1" OutputPin
+Expression "1" *-- "1" OutputPin
+CustomFunctionNode "1" *-- "1" OutputPin
+
+Expression "1" *-- "N" InputPin
+Assigner "1" *-- "1" InputPin
+CustomFunctionNode "1" *-- "N" InputPin
+
+CustomFunctionNode "1" *-- "1" CustomNodeSpecification
+
+Assigner "1" *-- "1" ExpressionTree
+Expression "1" *-- "1" ExpressionTree
+Term "1" *-- "1" Leaf
+
+NodeImpl -up-o Message
+App --o Message
+
+@enduml

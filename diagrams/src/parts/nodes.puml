@@ -1,0 +1,78 @@
+@startuml nodes
+
+interface NodeImpl {
+ .. Getters ..
+ + id()
+ + name()
+ + name_mut()
+ + inputs()
+ + inputs_mut()
+ + outputs()
+ + outputs_mut()
+ .. Coloring ..
+ + color()
+ + selected_color()
+ + hovered_color()
+ .. IR ..
+ + from_model_fragment()
+ + to_model_fragment()
+ .. User Interaction ..
+ + state_changed()
+ + trigger_app_state_change()
+ + draw()
+ + process_node()
+ .. Node-to-Node Communication ..
+ + send_data()
+ + broadcast_data()
+ + should_link()
+ + on_link_event()
+ + notify()
+ ...
+}
+
+struct Term {
+ ~ id: NodeId
+ ~ leaf: Leaf
+ ~ initial_value: f64
+ ~ output: OutputPin
+}
+
+struct Expression {
+ ~ id: NodeId
+ ~ name: String
+ ~ expr_wrapper: ExprWrapper<ExpressionTree<InputPinId>>
+ ~ inputs: Vec<InputPin>
+ ~ output: OutputPin
+ - message_buffer: Vec<Message>
+}
+
+struct Assigner {
+ ~ id: NodeId
+ ~ name: String
+ ~ input: InputPin
+ ~ expr_node: ExprWrapper<Option<ExpressionNode<InputPinId>>>
+ ~ operates_on: Option<(NodeId, String)>
+}
+
+struct CustomFunctionNode {
+    + id: NodeId
+    + name: String
+    ~ inputs: Vec<InputPin>
+    ~ output: OutputPin
+    ~ expr_wrapper: ExprWrapper<ExpressionTree<InputPinId>>
+    - spec: Rc<CustomNodeSpecification>
+}
+
+enum Node
+
+Term --|> NodeImpl
+Expression --|> NodeImpl
+Assigner --|> NodeImpl
+CustomFunctionNode --|> NodeImpl
+
+Node "1" *-- "1" Term
+Node "1" *-- "1" Expression
+Node "1" *-- "1" Assigner
+Node "1" *-- "1" CustomFunctionNode
+
+@enduml

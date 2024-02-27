@@ -1,0 +1,28 @@
+@startuml
+
+struct MessageQueue {
+    + messages: Vec<TaggedMessage>
+    current_tag: usize
+}
+
+struct TaggedMessage {
+ tag: usize
+ message: Message
+}
+
+enum Message {
+ SendData
+ AddLink
+ RemoveLink
+ AttributeAssignerOperatesOn
+ SetNodePos
+ RegisterPin
+ UnregisterPin
+ RemoveNode
+ RenameNode
+}
+
+TaggedMessage "1" *-right- "1" Message
+MessageQueue "1" *-up- "N" TaggedMessage
+
+@enduml

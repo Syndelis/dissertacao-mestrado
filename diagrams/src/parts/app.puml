@@ -1,0 +1,51 @@
+@startuml app
+
+struct App {
+ - nodes: HashMap<NodeId, Node>
+ - state: Option<AppState>
+ - links: Vec<Link>
+ - simulation_state: Option<SimulationState>
+ - sidebar_state: SideBarState
+ + extensions: Vec<Extension>
+ ...
+ .. User Interactions ..
+ + draw()
+ + draw_main_tab()
+ + add_node()
+ + add_link()
+ + remove_link()
+ ...
+ .. Save/Load/Export ..
+ + save_state()
+ + load_state()
+ + generate_code()
+ ...
+}
+
+enum AppState {
+ AddingNode
+ AttributingAssignerNodeOperatesOn
+ ManagingExtensions
+}
+
+struct SimulationState {
+ + plot: PlotInfo
+ + plot_layout: PlotLayout
+ + colors: Vec<ImVec4>
+ + flag_simulation: bool
+ + flag_plot_all: bool
+ + set_focus_to_tab: bool
+ + draw_tabs()
+ + from_csv()
+ ...
+}
+
+struct SideBarState {
+ - node_name: String
+}
+
+App "1" *-right- "1" AppState
+App "1" *--left- "1" SimulationState
+App "1" *-up- "1" SideBarState
+
+@enduml

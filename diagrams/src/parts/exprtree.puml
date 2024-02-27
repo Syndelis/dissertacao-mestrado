@@ -1,0 +1,29 @@
+@startuml exprtree
+
+enum ExpressionNode<OriginType> {
+ Leaf(Leaf)
+ SubExpr(ExpressionTree<OriginType>)
+}
+
+struct ExpressionTree<OriginType> {
+ + unary_op: Sign
+ - join_op: Operation
+ + format: Format
+ + members: BTreeMap<OriginType, ExpressionNode<OriginType>>
+}
+
+struct Leaf {
+ + symbol: String
+ + unary_op: Sign
+}
+
+enum Sign {
+ Positive
+ Negative
+}
+
+ExpressionNode "1" *--* "1" ExpressionTree
+ExpressionNode "1" *-- "1" Leaf
+Leaf "1" *-- "1" Sign
+
+@enduml

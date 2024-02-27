@@ -1,0 +1,35 @@
+@startuml pins
+
+interface Pin<SelfIdType, LinkedToIdType> {
+ + id()
+ + new()
+ + draw()
+ + is_linked_to()
+ + has_links()
+ + link_to()
+ + unlink()
+ ...
+}
+
+struct InputPin {
+ + id: InputPinId
+ - node_id: NodeId
+ + sign: Sign
+ + linked_to: Option<OutputPinId>
+ - label: Option<String>
+ - draw_sign: bool
+ + map_data()
+}
+
+struct OutputPin {
+ + id: OutputPinId
+ - node_id: NodeId
+ + sign: Sign
+ + linked_to: Option<InputPinId>
+ - label: Option<String>
+}
+
+Pin <|-up- InputPin
+Pin <|-up- OutputPin
+
+@enduml

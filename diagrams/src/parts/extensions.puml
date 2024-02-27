@@ -1,0 +1,45 @@
+@startuml
+
+struct Extension {
+ + filename: String
+ + file_path: PathBuf
+ + file_hash: u32
+ + nodes: Vec<Rc<CustomNodeSpecification>>
+}
+
+struct CustomNodeSpecification {
+ + function: NodeFunction
+ + format: Format
+ + input_count()
+}
+
+struct NodeFunction {
+ + name: String
+ + required_arguments: Vec<String>
+ + features_variadic: bool
+ + format: Option<String>
+}
+
+struct Format {
+ + : Vec<FormatPart>
+}
+
+enum FormatPart {
+ Static(String)
+ Dynamic(ArgumentSpecifier)
+}
+
+enum ArgumentSpecifier {
+ Indexed(usize)
+ Named(String)
+ All
+}
+
+Extension "1" *-- "N" CustomNodeSpecification
+CustomNodeSpecification "1" *-- "1" NodeFunction
+CustomNodeSpecification "1" *-- "1" Format
+FormatPart "1" *-left- "1" ArgumentSpecifier
+
+Format "1" *-- "N" FormatPart
+
+@enduml
