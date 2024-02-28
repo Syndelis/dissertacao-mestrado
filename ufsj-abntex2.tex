@@ -177,7 +177,7 @@
 \tipotrabalho{Dissertação de Mestrado}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
 % o nome da instituição e a área de concentração 
-\preambulo{Dissertação apresentada como requisito para obtenção do título de Mestre em Ciência da Computação do curso de mestrado do Programa de Pós Graduação em Ciência da Computação (PPGCC) da UFSJ.}
+\preambulo{Dissertação apresentada como requisito para obtenção do título de Mestre em Ciência da Computação do Programa de Pós Graduação em Ciência da Computação (PPGCC) da UFSJ.}
 % ---
 
 
@@ -398,13 +398,12 @@ Modelos matemáticos e computacionais estão se tornando cada vez mais relevante
 
 As simulações computacionais podem auxiliar experimentos \textit{in vitro} e \textit{in vivo} na explicação de diversos fenômenos. As simulações permitem testar vários cenários diferentes, o que poderia ser muito custoso ou até inviável de ser testado \textit{in vitro} e \textit{in vivo}. Além disso, elas podem fornecer previsões testando hipóteses que ainda não foram investigadas. 
 
-O desenvolvimento de modelos computacionais requer um conjunto de etapas importantes que começam com a definição de seu objetivo e terminam com sua validação, passando por múltiplas iterações e melhorias. Dentre estas etapas, uma das mais desafiadoras é a implementação do modelo. Essa etapa requer o conhecimento de métodos numéricos, programação, estruturas de dados, bibliotecas, entre outros recursos. Um erro na implementação pode comprometer todo o trabalho. Visando a simplificação desta etapa, neste trabalho é apresentado um software que foi desenvolvido para auxiliar pesquisadores na implementação de alguns tipos de modelos computacionais. 
+O desenvolvimento de modelos computacionais requer um conjunto de etapas importantes que começam com a definição de seu objetivo e terminam com sua validação, passando por múltiplas iterações e melhorias. Dentre estas etapas, uma das mais desafiadoras é a implementação do modelo. Essa etapa requer o conhecimento de métodos numéricos, programação, estruturas de dados, bibliotecas, entre outros recursos. Um erro na implementação pode comprometer todo o trabalho. 
+Nesse contexto, foi desenvolvido um software para auxiliar as etapas de implementação e simulação de modelos de 
+Equações Diferenciais Ordinárias (EDOs).
 
-O principal objetivo deste trabalho é desenvolver um software para facilitar a criação e simulação de modelos computacionais, dimiuindo a barreira de entrada na área de Modelagem Computacional e permitindo que seja necessário investir menos tempo na implementação do modelo. A partir do ``desenho'' de um modelo feito na interface gráfica, o software é capaz de gerar o código que implementa o modelo, simulá-lo e até exportar gráficos.
+O principal objetivo deste trabalho foi desenvolver um software para facilitar a criação e simulação de modelos computacionais, dimiuindo a barreira de entrada na área de Modelagem Computacional e permitindo que seja necessário investir menos tempo na implementação do modelo. A partir do ``desenho'' de um modelo, o software é capaz de gerar o código que implementa o modelo, simulá-lo e até exportar gráficos.
 
-% A descrição da representação utilizada para a construção dos modelos e do passo a passo para a geração de código serão explicados no Capítulo \ref{chap:metodologia}. TODO: isso foi confirmado no diferencial?
-
-% TODO: As contribuições são destacadas na introdução. Os diferenciais listados foram movidos para a Seção de Trabalhos Relacionados 
 Entre as contribuições deste trabalho, destacam-se as seguintes: 
 
 \begin{itemize}
@@ -414,23 +413,8 @@ Entre as contribuições deste trabalho, destacam-se as seguintes:
 \end{itemize}
 
 Uma das aplicações do software que foi desenvolvido é no processo de ensino-aprendizagem de modelagem computacional. Os usuários poderão aprender sobre modelagem computacional por meio de um processo de aprendizado ativo com a construção e simulação dos modelos na prática. 
-%Outra aplicação é na pesquisa através do desenvolvimento de modelos de EDOs da resposta imunológica. 
-%Serão construídos alguns modelos de diferentes complexidades para testar as funcionalidades do software.
 
 O restante do texto deste trabalho está organizado da seguinte forma: no Capítulo \ref{chap:referencial} são apresentados alguns conceitos teóricos para um melhor entendimento do trabalho. No Capítulo \ref{chap:relacionados}, são descritos os trabalhos relacionados. O software desenvolvido é descrito no Capítulo \ref{chap:metodologia}. No Capítulo \ref{chap:resultados} são apresentados e discutidos os resultados e, por fim, a conclusão e os trabalhos futuros são descritos no Capítulo \ref{chap:conclusao}. 
-
-%Compiladores \cite{aho1995compiladores}
-
-%PageRank \cite{Page98thepagerank}, exemplo de funcionamento de referência à Figura \ref{fig:referencia} e à Tabela \ref{tab:tabela1}.
-
-%\textbf{Exemplo de Figura}
-
-%\begin{figure}[h]
-%\centering
-%\includegraphics[scale=0.25]{imgs/pagerank-Example.png} 
-%\caption{Ilustração de funcionamento do PageRank}
-%\label{fig:referencia}
-%\end{figure}
 
 %\begin{table}[h!]
 %  \begin{center}
@@ -677,11 +661,11 @@ A seguir, são descritos em mais detalhes os trabalhos relacionados.
 
 Um \textit{software} que serviu como inspiração para este trabalho foi o software para construção, animação e simulação de redes de Petri chamado Snoopy \cite{Heiner2008,Heiner2012,Liu2012}. Além da rede de Petri clássica, o software permite modelar e simular vários tipos de redes de Petri como, por exemplo, redes de Petri estocásticas e coloridas que são extensões da rede clássica. O modelo construído é representado como um grafo que tem dois tipos de nós chamados \textit{places} (locais) e \textit{transitions} (transições) e quatro tipos de arestas (estocástica, imediata, determinística e planejada) com suas semânticas associadas. Os \textit{places} representam populações de um certo tipo e transições representam eventos que podem aumentar ou diminuir as quantidades das populações que estão armazenadas nos locais. 
 
-O modelo gráfico utilizado pelo software Snoopy serviu de inspiração para a criação da representação utilizada neste trabalho. A partir do software Snoopy, foi possível observar que modelos gráficos, além do atrativo visual, facilitam a construção de um modelo e um melhor entendimento do que está sendo feito, o que está sendo modelado. A possibilidade de simular interativamente as Redes de Petri estocásticas foi um fato que serviu de inspiração para a ideia da simulação interativa no software desenvolvido neste trabalho. 
+O modelo gráfico utilizado pelo software Snoopy serviu de inspiração para a criação da representação visual utilizada neste trabalho. A partir do software Snoopy, foi possível observar que modelos gráficos, além do atrativo visual, facilitam a construção do modelo, e um melhor entendimento do que está sendo feito e o que está sendo modelado. A possibilidade de simular interativamente as Redes de Petri estocásticas foi um fato que serviu de inspiração para a ideia da simulação interativa no software desenvolvido neste trabalho. 
 
 \section{Insight maker}
     
-O InsightMaker \cite{insightmaker} é um \textit{software} de simulação baseado em nuvem. Todo o modelo é feito através de um navegador de internet e, quando executado, é simulado no próprio servidor, sem a necessidade de que o usuário possua uma máquina potente. O InsightMaker \cite{insightmaker} permite a construção de modelos utilizando diagramas de Dinâmica de Sistemas e modelos baseados em agentes. O site possui diversas facilidades para a construção do modelo em um Canvas. A partir do modelo de Dinâmica de Sistemas construído no Canvas, o InsightMaker \cite{insightmaker} gera internamente um modelo de EDOs e executa este modelo utilizando o método de Euler ou o método de Runge-Kutta de quarta ordem conforme escolha do usuário. Através da interface web, também é possível definir os valores de todas as variáveis e parâmetros, e é possível realizar as simulações computacionais. Os resultados são exibidos de forma interativa onde é possível controlar a velocidade com que os valores são exibidos nos gráficos. 
+O InsightMaker \cite{insightmaker} é um \textit{software} de simulação baseado em nuvem. Todo o modelo é feito através de um navegador de internet e, quando executado, é simulado no próprio servidor, sem a necessidade de que o usuário possua uma máquina potente. O InsightMaker \cite{insightmaker} permite a construção de modelos utilizando diagramas de Dinâmica de Sistemas e modelos baseados em agentes. O site possui diversos recursos para a construção do modelo em um Canvas. A partir do modelo de Dinâmica de Sistemas construído no Canvas, o InsightMaker \cite{insightmaker} gera internamente um modelo de EDOs e executa este modelo utilizando o método de Euler ou o método de Runge-Kutta de quarta ordem conforme escolha do usuário. Através da interface web, também é possível definir os valores de todas as variáveis e parâmetros, e é possível realizar as simulações computacionais. Os resultados são exibidos de forma interativa onde é possível controlar a velocidade com que os valores são exibidos nos gráficos. 
 
 \section{VCell}
 
