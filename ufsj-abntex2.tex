@@ -861,6 +861,10 @@ def pow(x, y):
 
 Como estes nós são definidos utilizando Python, não há impacto na capacidade do software de simular o modelo e plotar os gráficos; as funções definidas nas extensões são diretamente incluídas no código final que será utilizado pela simulação. Ademais, os modelos salvos pela interface mantém uma referência aos arquivos de extensões utilizados na construção do modelo, tornando possível que o software auto-importe as extensões necessárias quando carregar um modelo do disco.
 
+\subsection{Carregamento de extensões}
+
+Como mencionado anteriormente, os nós de extensões são definidos por funções que utilizam um decorador específico. Durante o carregemanto de um arquivo de extensões, o software injeta um trecho especial de código que define o decorador \texttt{@node} para inspecionar a função que está sendo decorada e emitir um JSON com as informações relevantes sobre a função como nome, quantidade e nome dos parâmetros e o formato da representação na interface. Essas informações servem como especificações para novos construtores de nós.
+
 \section{Implementação e Tecnologias utilizadas}
 \label{sec:tecnologias}
 
