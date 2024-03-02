@@ -727,7 +727,7 @@ A construção de EDOs se baseia em alguns princípios gerais, como a Lei de Aç
 
 No sistema de EDOs \ref{eq:predadorpresa}, é possível visualizar este fenômeno: na equação da presa, a expressão \(-a.H.P\) é utilizada para controlar a taxa de predação, isto é, o quanto a concentração desta população é afetada negativamente pela atividade de predação realizada pelos predadores. Naturalmente, a predação ocorrerá mais frequentemente dado altas concentrações de ambos presa e predador, assim como descrito acima.
 
-A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinação das expressões que representam as interações das populações entre si e o meio. Assim, a representação visual foi modelada em um editor de nós, de forma que todas as interações visassem a construção destas expressões. a tabela \ref{tab:tipos-de-nos} descreve os tipos de nós presentes no software e sua relação com o objetivo de construir as expressões.
+A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinação das expressões que representam as interações das populações entre si e o meio. Assim, a representação visual foi modelada em um editor de nós, de forma que todas as interações visassem a construção destas expressões. A tabela \ref{tab:tipos-de-nos} descreve os tipos de nós presentes no software e sua relação com o objetivo de construir as expressões.
 
 \begin{table}
 \begin{center}
@@ -752,9 +752,9 @@ A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinaç�
 
 Na GUI, os nós de expressão apresentam a expressão que estão construindo, para que o usuário não tenha que inspecionar cada nó individiualmente para determinar como uma expressão está sendo formada. Desta forma, não é necessário observar apenas a equação final. Isto é feito por meio de árvores de expressões que cada um destes nós carrega consigo.
 
-Na imagem \ref{fig:expr-tree} são apresentadas as árvores de expressões de todos os nós presentes em \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e adição.
+Na imagem \ref{fig:expr-tree} são apresentadas as árvores de expressões de todos os nós presentes em \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
 
-Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da estensibilidade serão apresentados em \ref{subsec:extensibilidade}, enquanto o futuro será discutido em \ref{sec:futuro}.
+Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da estensibilidade serão apresentados em \ref{sub:estensibilidade}, enquanto o futuro será discutido em \ref{sec:futuro}.
 
 \begin{figure}[h]
     \centering
@@ -771,7 +771,7 @@ Com a finalidade de possibilitar a escrita e leitura em disco dos modelos desenh
 Apesar de ser usada como forma de armazenar informações do modelo, a RI possui um formato projetado para ser humanamente legível. Esta decisão foi tomada para possibilitar a recuperação do modelo construído sem a necessidade de ter o software instalado. Assim, caso o software caia em desuso, se torne impossível de instalar por algum motivo (um sistema operacional diferente, por exemplo) ou simplesmente tenha mudanças que quebrem compatibilidade implementadas, não significa que o usuário tenha perdido seu 
 modelo.
 
-Em \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa [\ref{ri:predador-presa}] que implementa a equação da presa. Note que é possível reconstruir a equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode sesr construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
+Em \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa [\ref{ri:predador-presa}] que implementa a equação da presa. Note que é possível reconstruir a equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode ser construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
 
 \begin{itemize}
     \item \texttt{"Predacao/Presa"}: \((+a)*(+H)*(+P)\), que simplificando se resume a \(a*H*P\);
@@ -808,9 +808,25 @@ Em \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa [\re
 
 Além de apresentar uma interface capaz de criar, salvar e carregar sistemas de EDOs, o software também possibilita o usuário de simular as equações (plotando na interface), gerar o código equivalente em Python ou exportar um PDF com os resultados.
 
-A geração de código é feita por meio da interpolação e substituição de \textit{strings} em \textit{templates}. Estes \textit{templates} incluem o código base necessário para a simulação e plotagem com as bibliotecas corretas inclusas, ecrito de maneira sucinta e legível com o objetivo de servir como um material de aprendizagem estensível.
+A geração de código é feita por meio da interpolação e substituição de \textit{strings} em \textit{templates}. Estes \textit{templates} incluem o código base necessário para a simulação e plotagem com as bibliotecas corretas inclusas, ecritos de maneira sucinta e legível com o objetivo de servir como um material de aprendizagem estensível.
 
-Este código gerado, além de ser aprensentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao} assim como será discutida a solução implementada.
+Em \ref{code:jinja-template}, observa-se parte do template que extrai o valor de variáveis e constantes para serem usados na simulação do próximo passo de tempo. Neste trecho, nota-se o uso de estruturas de controle como condicionais (\texttt{if}) e laços de repetição (\texttt{for}). Baseando a geração de código no sistema de \textit{templates}, é possível adicionar novas formas de simulações sem alterar o código do programa. Por exemplo, é possível adicionar um \textit{template} para gerar o código do modelo que o simulará baseado no método de Gillespie.
+
+\begin{lstlisting}[language=Python, label=code:jinja-template, caption=Trecho do \textit{template} responsável por extrair o valor de variáveis e constantes][H]
+def system(t: np.float64, y: np.ndarray, *constants) -> np.ndarray:
+    {% for arg in populations -%}
+    {{- arg.name }},
+    {%- endfor %} = y
+
+    {%- if constants %}
+    {% for arg in constants -%}
+    {{- arg.name }},
+    {%- endfor %} = constants
+    {% endif -%}
+    # ...
+\end{lstlisting}
+
+O código gerado, além de ser aprensentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao} assim como será discutida a solução implementada.
 
 \section{Implementação e Tecnologias utilizadas}
 \label{sec:tecnologias}
