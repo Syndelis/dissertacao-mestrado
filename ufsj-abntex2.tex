@@ -815,27 +815,42 @@ Este código gerado, além de ser aprensentado como opção de exportação do m
 \section{Implementação e Tecnologias utilizadas}
 \label{sec:tecnologias}
 
-%O software criado está separado em dois módulos, sendo eles: (1) a interface gráfica de usuário e (2) um conjunto de funções e estruturas capazes de lidar e transformar a representação intermediária. As tecnologias usadas para estes módulos estão descritas nas subseções seguintes.
+O software desenvolvido foi dividido em dois módulos: (1) o responsável pela interface gráfica e (2) o responsável pela representação intermediária. Este primeiro lida com a apresentação de gráficos, interações com o usuário e a plotagem dos resultados, enquanto o segundo define a representação em JSON dos modelos e realiza a transformação em código de Python.
 
-O software principal que contém a interface gráfica está sendo construído na linguagem C++ utilizando, principalmente \textbf{OpenGL}\footnote{\href{https://www.opengl.org/}{https://www.opengl.org/}} e \textbf{ImGui}\footnote{\href{https://github.com/ocornut/imgui}{https://github.com/ocornut/imgui}}.
+\subsection{O módulo de GUI}
+\label{sub:gui}
 
-O contexto de OpenGL é gerenciado pela biblioteca multi-plataforma \textbf{GLFW}\footnote{\href{https://www.glfw.org/}{https://www.glfw.org/}}. A interface foi desenvolvida com ImGui, uma biblioteca de gráficos de modo imediato. Ao contrário da maioria dos \textit{frameworks} de interface gráficas que utilizam pesadamente de orientações a objeto e vários níveis de heranças, a biblioteca ImGui fornece uma interface imperativa, na qual os componentes são definidos (em sua maioria) por funções e a ordem de aparição na tela é definida pela ordem de chamada dessas funções.
+TODO
 
-Para o editor de nós, a extensão \textbf{ImNodes}\footnote{\href{https://github.com/Nelarius/imnodes}{https://github.com/Nelarius/imnodes}} foi utilizada. Ela apresenta uma interface que segue a mesma filosofia da ImGui, permitindo a definição de nós e pinos de forma imperativa, facilitando a manipulação da interface.
+\subsection{A utilização de Rust para a GUI}
+\label{sub:cpp-rust}
 
-Foi feito o uso de classes e subclasses para definir os nós e pinos utilizados na interface. Nessa estrutura, os nós são donos dos pinos de saída e entrada, e as passagens de informações são feitas ou entre nós e seus pinos, ou entre pinos de diferentes nós, como na Figura \ref{fig::fluxo_dados_gui}.
+O módulo de GUI [\ref{sub:gui}] foi inicialmente desenvolvido em C++. Entretanto, rapidamente se tournou desafiador manter uma grande base de código livre de \textit{bugs} relacionados a ponteiros nulos e liberações duplas (\textit{double frees}). Esta mesma dificuldade foi ressaltada pela agência de segurança nacional dos EUA em novembro de 2022\footnote{\href{https://media.defense.gov/2022/Nov/10/2003112742/-1/-1/0/CSI_SOFTWARE_MEMORY_SAFETY.PDF}{Software Memory Safety | U/OO/219936-22}}, que recomendou que a linguagem fosse evitada.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.175]{imgs/fluxo_dados_gui.png} 
-    \caption{Fluxo da passagem de dados entre nós e pinos na interface gráfica.}
-    \label{fig::fluxo_dados_gui}
-\end{figure}
+Ademais, o módulo de RI [\ref{sub:ri}], escrito em Rust, demandava códigos \textit{wrappers} para que fosse possível utilizar a biblioteca em C++, dado que as linguagens não compartilham das mesmas estruturas de dados. Por exemplo, não é possível usar uma \textit{string} de C++ (\texttt{std::string}) em Rust, ou vice-versa (\texttt{\&str}/\texttt{String}).
 
-A Figura \ref{fig::fluxo_dados_gui} ilustra como o nome da população ``A'' é levada até um nó combinatório que monta a expressão ``A * ...'' (assumindo nós omitidos) e retorna-o para a população, por meio de conexões entre pinos. É importante que as populações recebam as expressões montadas pelos combinadores para que o usuário consiga facilmente observar as equações completas a qualquer momento.
+Algumas abordagens podem ser usadas para circunventar o problema, mas cada uma trouxe sua própria série de complicações:
+
+\begin{itemize}
+    \item O projeto \href{https://github.com/mozilla/cbindgen}{cbindgen} provê um binário capaz de gerar cabeçalhos de C ou C++ a partir de arquivos fontes de Rust e um arquivo de configuração.
+    
+    Para que a geração dos cabeçalhos seja possível, macros especiais devem ser usados para declarar estruturas, enumeradores e funções com representações válidas na ABI (\textit{Application Binary Interface}) de C/C++.
+
+    Apesar do valor da geração automática dos cabeçalhos, alguns problemas se destascam:
+
+    \subitem Todas as funções que oferecem interoperabilidade entre as linguagens devem usar ponteiros para tipos abstratos. Isto significa abdicar da segurança provida pelo Rust, e re-introduz problemas relacionados ao gerenciamento de memória e ponteiros nulos;
+
+    \subitem Ponteiros só podem ser liberados pela mesma linguagem que os alocou, uma vez que os modelos de alocação são diferentes entre as linguagens. Isto torna o problema de gerenciamento de memória manual ainda mais complicado do que o usual;
+
+    \subitem Em versões modernas de C++, as regras de 3/5/0 causadas pelo RAII (\textit{Resource Acquisition Is Initialization}) muitas vezes tornam estruturas e enumeradores com tipos opacos impossíveis de serem construídos na linguagem.
+
+    \item O projeto \href{https://github.com/rust-lang/rust-bindgen}{bindgen} Um projeto que almeija ser a contra-parte do cbindgen, gerando definições em Rust para estruturas de C/C++. Como a biblioteca de RI é escrita em Rust, isto significaria acoplá-la ao projeto da interface gráfica, conhecendo seus detalhes de implementação;
+    
+    \item \href{https://github.com/dtolnay/cxx}{cxx.rs}: TODO
+\end{itemize}
 
 \subsection{A biblioteca de RI}
-\label{subsec:biblioteca_RI}
+\label{sub:ri}
 
 Para realizar todas as conversões mencionadas ao longo deste texto, foi desenvolvida uma biblioteca em Rust. A linguagem Rust foi escolhida por trazer maior segurança, confiabilidade e facilidade de desenvolvimento. Como Rust é uma linguagem compilada, é possível compilar bibliotecas estáticas ou dinâmicas para utilizar em C ou C++. No caso deste software, a biblioteca expõe algumas \texttt{structs} e funções utilizando a \textit{FFI} (acrônimo para Interface de Funções Estrangeiras, em inglês) de C, e os arquivos \textit{headers} são gerados automaticamente pelo programa \textbf{cbindgen}\footnote{\href{https://github.com/eqrion/cbindgen}{https://github.com/eqrion/cbindgen}} e \textbf{GitHub Actions}\footnote{\href{https://github.com/marketplace/actions/cbindgen-action}{cbindgen-action}}.
 
