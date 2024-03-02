@@ -754,7 +754,7 @@ Na GUI, os nós de expressão apresentam a expressão que estão construindo, pa
 
 Na imagem \ref{fig:expr-tree} são apresentadas as árvores de expressões de todos os nós presentes em \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
 
-Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da estensibilidade serão apresentados em \ref{sub:estensibilidade}, enquanto o futuro será discutido em \ref{sec:futuro}.
+Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da estensibilidade serão apresentados em \ref{sec:estensibilidade}, enquanto o futuro será discutido em \ref{sec:futuro}.
 
 \begin{figure}[h]
     \centering
@@ -827,6 +827,39 @@ def system(t: np.float64, y: np.ndarray, *constants) -> np.ndarray:
 \end{lstlisting}
 
 O código gerado, além de ser aprensentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao} assim como será discutida a solução implementada.
+
+\section{Estensibilidade}
+\label{sec:estensibilidade}
+
+É improvável que seja possível construir um software que atenda todas as necessidades de um público-alvo, e o software desenvolvido neste trabalho não é exceção; seria difícil determinar quais são as funcionalidades mínimas necessárias para que seja possível construir qualquer sistema de EDOs. Visando, então, maximizar os casos de uso nos quais este software pode ser utilizado, foi desenvolvido um sistema de extensões de usuário. 
+
+Além de prover os nós padrões [\ref{tab:tipos-de-nos}] para a construção das EDOs exemplificadas, o software permite que o usuário desenvolva e utilize extensões para realizar operações que não estão prontamente disponíveis pela interface. Estas extensões são desenvolvidas em Python e incluem funções que serão interpretadas como nós na interface.
+
+As funções decoradas por \texttt{@node} num arquivo de extensões serão interpretadas como nós. Seus nomes são usados em sua identificação na interface, e a quantidade de parâmetros que recebem determinam a quantidade de pinos de entradas. Por padrão, estes nós `customizados' construirão expressões mais próximas da representação destas funções em linguagens de programação (como \texttt{funcao(param1, param2, ...)}), porém este comportamento pode ser sobrescrito com o parâmetro \texttt{format} no decorador.
+
+Em \ref{code:ext-sin-pow} é apresentado um exemplo de arquivo de extensões contendo um nó para calcular o seno de um parâmetro e um nó que eleva um parâmetro ao valor de outro. Este arquivo pode ser importado na interface, que possibilitará o uso dos nós como na figura \ref{fig:ext-sin-pow}.
+
+\begin{lstlisting}[language=Python, label=code:ext-sin-pow, caption=Exemplo de definição dos nós de extensão seno e potência com código Python válido.][H]
+import math
+
+@node
+def sin(x):
+    return math.sin(x)
+
+@node(format='$1 ^ $2')
+def pow(x, y):
+    return x ** y
+
+\end{lstlisting}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.45]{imgs/ode-designer/ext-sin-pow.png} 
+    \caption{Os nós definidos em \ref{code:ext-sin-pow} sendo utilizados na interface.}
+    \label{fig:ext-sin-pow}
+\end{figure}
+
+Como estes nós são definidos utilizando Python, não há impacto na capacidade do software de simular o modelo e plotar os gráficos; as funções definidas nas extensões são diretamente incluídas no código final que será utilizado pela simulação. Ademais, os modelos salvos pela interface mantém uma referência aos arquivos de extensões utilizados na construção do modelo, tornando possível que o software auto-importe as extensões necessárias quando carregar um modelo do disco.
 
 \section{Implementação e Tecnologias utilizadas}
 \label{sec:tecnologias}
