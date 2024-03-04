@@ -806,11 +806,11 @@ Em \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa [\re
 
 \section{Geração de Código e Simulação interativa}
 
-Além de apresentar uma interface capaz de criar, salvar e carregar sistemas de EDOs, o software também possibilita o usuário de simular as equações (plotando na interface), gerar o código equivalente em Python ou exportar um PDF com os resultados.
+Além de apresentar uma interface capaz de criar, salvar e carregar sistemas de EDOs, o software também possibilita ao usuário simular o modelo (plotando os resultados na interface), gerar o código equivalente em Python ou exportar um PDF com os resultados.
 
-A geração de código é feita por meio da interpolação e substituição de \textit{strings} em \textit{templates}. Estes \textit{templates} incluem o código base necessário para a simulação e plotagem com as bibliotecas corretas inclusas, ecritos de maneira sucinta e legível com o objetivo de servir como um material de aprendizagem estensível.
+A geração de código é feita por meio da injeção de informações do modelo em marcações presentes no \textit{template} e se baseia na substituição de \textit{strings}. Os \textit{templates} incluem o código base necessário para a resolução numérica, simulação e plotagem dos resultados com a inclusão de todas as bibliotecas necessárias. Os templates são escritos de maneira sucinta e legível com o objetivo de servir como um material de aprendizagem estensível.
 
-Em \ref{code:jinja-template}, observa-se parte do template que extrai o valor de variáveis e constantes para serem usados na simulação do próximo passo de tempo. Neste trecho, nota-se o uso de estruturas de controle como condicionais (\texttt{if}) e laços de repetição (\texttt{for}). Baseando a geração de código no sistema de \textit{templates}, é possível adicionar novas formas de simulações sem alterar o código do programa. Por exemplo, é possível adicionar um \textit{template} para gerar o código do modelo que o simulará baseado no método de Gillespie.
+Na listagem de código \ref{code:jinja-template}, observa-se parte do template que extrai o valor de variáveis e constantes para serem usados na simulação do próximo passo de tempo. Neste trecho, nota-se o uso de estruturas de controle como condicionais (\texttt{if}) e laços de repetição (\texttt{for}). Baseando a geração de código no sistema de \textit{templates}, é possível adicionar novas formas de simulações sem alterar o código do programa. Por exemplo, é possível adicionar um \textit{template} para gerar o código que simulará o modelo de forma estocástica usando o algoritmo de Gillespie.
 
 \begin{lstlisting}[language=Python, label=code:jinja-template, caption=Trecho do \textit{template} responsável por extrair o valor de variáveis e constantes][H]
 def system(t: np.float64, y: np.ndarray, *constants) -> np.ndarray:
@@ -826,7 +826,7 @@ def system(t: np.float64, y: np.ndarray, *constants) -> np.ndarray:
     # ...
 \end{lstlisting}
 
-O código gerado, além de ser aprensentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao} assim como será discutida a solução implementada.
+O código gerado, além de ser aprensentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao}, assim como será discutida a solução implementada.
 
 \section{Estensibilidade}
 \label{sec:estensibilidade}
@@ -837,7 +837,7 @@ Além de prover os nós padrões [\ref{tab:tipos-de-nos}] para a construção da
 
 As funções decoradas por \texttt{@node} num arquivo de extensões serão interpretadas como nós. Seus nomes são usados em sua identificação na interface, e a quantidade de parâmetros que recebem determinam a quantidade de pinos de entradas. Por padrão, estes nós `customizados' construirão expressões mais próximas da representação destas funções em linguagens de programação (como \texttt{funcao(param1, param2, ...)}), porém este comportamento pode ser sobrescrito com o parâmetro \texttt{format} no decorador.
 
-Em \ref{code:ext-sin-pow} é apresentado um exemplo de arquivo de extensões contendo um nó para calcular o seno de um parâmetro e um nó que eleva um parâmetro ao valor de outro. Este arquivo pode ser importado na interface, que possibilitará o uso dos nós como na figura \ref{fig:ext-sin-pow}.
+Na listagem \ref{code:ext-sin-pow}, é apresentado um exemplo de arquivo de extensões contendo um nó para calcular o seno de um parâmetro e um nó que eleva um parâmetro ao valor de outro. Este arquivo pode ser importado na interface, que possibilitará o uso dos nós como na figura \ref{fig:ext-sin-pow}.
 
 \begin{lstlisting}[language=Python, label=code:ext-sin-pow, caption=Exemplo de definição dos nós de extensão seno e potência com código Python válido.][H]
 import math
