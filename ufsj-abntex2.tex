@@ -878,35 +878,11 @@ TODO
 \subsection{A utilização de Rust para a GUI}
 \label{sub:cpp-rust}
 
-\textbf{
-O módulo de GUI [\ref{sub:gui}] foi inicialmente desenvolvido em C++ e depois todo o código do software foi migrado para Rust (\url{https://www.rust-lang.org/pt-BR}). Um dos motivos foi o fato de que rapidamente se tornou desafiador manter uma grande base de código livre de \textit{bugs} relacionados a ponteiros nulos e liberações duplas (\textit{double frees}) porque manter o software livre desses erros exige experiência de programação e um profundo conhecimento da linguagem sendo usada. }
+O módulo de GUI [\ref{sub:gui}] foi inicialmente desenvolvido em C++ e depois todo o código do software foi migrado para Rust (\url{https://www.rust-lang.org/pt-BR}). Um dos motivos foi o fato de que rapidamente se tornou desafiador manter uma grande base de código livre de \textit{bugs} relacionados a ponteiros nulos e liberações duplas (\textit{double frees}) porque manter o software livre desses erros exige experiência de programação e um profundo conhecimento da linguagem sendo usada. 
 
-\textbf{
-A importância de evitar \textit{bugs} relacionados à segurança de memória foi ressaltada pela agência de segurança nacional dos EUA em novembro de 2022\footnote{\href{https://media.defense.gov/2022/Nov/10/2003112742/-1/-1/0/CSI_SOFTWARE_MEMORY_SAFETY.PDF}{Software Memory Safety | U/OO/219936-22}}, que, no documento citado, recomendou o uso das chamadas linguagens seguras no uso da memória (\textit{memory safety languages}) como, por exemplo, Rust, C\#, Go, Java, Python and Swift. A segurança de memória é uma propriedade de algumas linguagens de programação que evita que os programadores introduzam certos tipos de \textit{bugs} relacionados ao uso da memória como ponteiros pendentes, ponteiros nulos, \textit{buffer overflow}, entre outros. Outro motivo para a mudança de linguagem foi a disponibilidade de bibliotecas na linguagem Rust que facilitaram bastante o trabalho de salvar e carregar a RI, e também de gerar código. }
+A importância de evitar \textit{bugs} relacionados à segurança de memória foi ressaltada pela agência de segurança nacional dos EUA em novembro de 2022\footnote{\href{https://media.defense.gov/2022/Nov/10/2003112742/-1/-1/0/CSI_SOFTWARE_MEMORY_SAFETY.PDF}{Software Memory Safety | U/OO/219936-22}}, que, no documento citado, recomendou o uso das chamadas linguagens seguras no uso da memória (\textit{memory safety languages}) como, por exemplo, Rust, C\#, Go, Java, Python and Swift. A segurança de memória é uma propriedade de algumas linguagens de programação que evita que os programadores introduzam certos tipos de \textit{bugs} relacionados ao uso da memória como ponteiros pendentes, ponteiros nulos, \textit{buffer overflow}, entre outros. Outro motivo para a mudança de linguagem foi a disponibilidade de bibliotecas na linguagem Rust que facilitaram bastante o trabalho de salvar e carregar a RI, e também de gerar código. 
 
-\textcolor{red}{
-Outra questão importante, o módulo de RI [\ref{sub:ri}], escrito em Rust, demandava códigos \textit{wrappers} para que fosse possível utilizar a biblioteca em C++, dado que as linguagens não compartilham das mesmas estruturas de dados. Por exemplo, não é possível usar uma \textit{string} de C++ (\texttt{std::string}) em Rust, ou vice-versa (\texttt{\&str}/\texttt{String}).}
-
-
-Algumas abordagens podem ser usadas para solucionar o problema, mas cada uma trouxe sua própria série de complicações:
-
-\begin{itemize}
-    \item O projeto \href{https://github.com/mozilla/cbindgen}{cbindgen} provê um binário capaz de gerar cabeçalhos de C ou C++ a partir de arquivos fontes de Rust e um arquivo de configuração.
-    
-    Para que a geração dos cabeçalhos seja possível, macros especiais devem ser usados para declarar estruturas, enumeradores e funções com representações válidas na ABI (\textit{Application Binary Interface}) de C/C++.
-
-    Apesar do valor da geração automática dos cabeçalhos, alguns problemas se destascam:
-
-    \subitem Todas as funções que oferecem interoperabilidade entre as linguagens devem usar ponteiros para tipos abstratos. Isto significa abdicar da segurança provida pelo Rust, e re-introduz problemas relacionados ao gerenciamento de memória e ponteiros nulos;
-
-    \subitem Ponteiros só podem ser liberados pela mesma linguagem que os alocou, uma vez que os modelos de alocação são diferentes entre as linguagens. Isto torna o problema de gerenciamento de memória manual ainda mais complicado do que o usual;
-
-    \subitem Em versões modernas de C++, as regras de 3/5/0 causadas pelo RAII (\textit{Resource Acquisition Is Initialization}) muitas vezes tornam estruturas e enumeradores com tipos opacos impossíveis de serem construídos na linguagem.
-
-    \item O projeto \href{https://github.com/rust-lang/rust-bindgen}{bindgen} Um projeto que almeija ser a contra-parte do cbindgen, gerando definições em Rust para estruturas de C/C++. Como a biblioteca de RI é escrita em Rust, isto significaria acoplá-la ao projeto da interface gráfica, conhecendo seus detalhes de implementação;
-    
-    \item \href{https://github.com/dtolnay/cxx}{cxx.rs}: TODO
-\end{itemize}
+Durante o desenvolvimento, tentou-se uma solução que combinava C++ para a interface gráfica e Rust para a geração de código e gerenciamento da representação intermediária. Porém, foram encontradas complicações na implementação da interoperabilidade entre as linguagens. Uma dessas complicações se referiu ao fato de que qualquer mudança na RI impactava consideravelmente o código responsável pela comunicação entre as linguagens. Devido a todas essas questões mencionadas, optou-se por migrar o código para Rust. 
 
 
 \subsection{A biblioteca de RI}
@@ -914,13 +890,13 @@ Algumas abordagens podem ser usadas para solucionar o problema, mas cada uma tro
 
 Para realizar todas as conversões mencionadas ao longo deste texto, foi desenvolvida uma biblioteca em Rust. A linguagem Rust foi escolhida por trazer maior segurança, confiabilidade e facilidade de desenvolvimento. 
 
-\textcolor{red}{Como Rust é uma linguagem compilada, é possível compilar bibliotecas estáticas ou dinâmicas para utilizar em C ou C++. No caso deste software, a biblioteca expõe algumas \texttt{structs} e funções utilizando a \textit{FFI} (acrônimo para Interface de Funções Estrangeiras, em inglês) de C, e os arquivos \textit{headers} são gerados automaticamente pelo programa \textbf{cbindgen}\footnote{\href{https://github.com/eqrion/cbindgen}{https://github.com/eqrion/cbindgen}} e \textbf{GitHub Actions}\footnote{\href{https://github.com/marketplace/actions/cbindgen-action}{cbindgen-action}}.}
+%\textcolor{red}{Como Rust é uma linguagem compilada, é possível compilar bibliotecas estáticas ou dinâmicas para utilizar em C ou C++. No caso deste software, a biblioteca expõe algumas \texttt{structs} e funções utilizando a \textit{FFI} (acrônimo para Interface de Funções Estrangeiras, em inglês) de C, e os arquivos \textit{headers} são gerados automaticamente pelo programa \textbf{cbindgen}\footnote{\href{https://github.com/eqrion/cbindgen}{https://github.com/eqrion/cbindgen}} e \textbf{GitHub Actions}\footnote{\href{https://github.com/marketplace/actions/cbindgen-action}{cbindgen-action}}.}
 
 O software utiliza a biblioteca \textbf{serde}\footnote{\href{https://serde.rs/}{https://serde.rs/}} para declarativamente criar as conversões das \texttt{structs} de/para o formato JSON por meio do macro \textit{derive} de Rust. Este macro permite que estruturas implementem certos métodos automaticamente, puramente pela leitura dos campos que esta possui. Este é o caso das \texttt{structs} \texttt{Model}, \texttt{MetaData}, \texttt{Node} e \texttt{Constant}.
 
 Uma outra vantagem da linguagem Rust é possuir um ecossistema de bibliotecas com pequenos escopos e bem integradas. Neste caso, o motor de \textit{templates} utilizado, \textbf{minijinja}\footnote{\href{https://github.com/mitsuhiko/minijinja}{https://github.com/mitsuhiko/minijinja}}, recebe como entrada para suas conversões estruturas que implementam métodos de serialização e desserialização da biblioteca serde.
 
-Pelos motivos mencionados acima, a implementação das conversões de/para JSON e para o modelo de EDOs foi tão simples quanto declarar as estruturas e escrever o \textit{template} de EDOs, apresentado em \ref{code::equation-template-jinja}.
+Pelos motivos mencionados acima, a implementação das conversões de/para JSON e para o modelo de EDOs foi tão direta quanto declarar as estruturas e escrever o \textit{template} de EDOs, apresentado em \ref{ri:predador-presa}.
 
 \subsection{Testes unitários}
 
