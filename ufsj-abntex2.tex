@@ -831,7 +831,7 @@ O código gerado, além de ser aprensentado como opção de exportação do mode
 \section{Estensibilidade}
 \label{sec:estensibilidade}
 
-É improvável que seja possível construir um software que atenda todas as necessidades de um público-alvo, e o software desenvolvido neste trabalho não é exceção; seria difícil determinar quais são as funcionalidades mínimas necessárias para que seja possível construir qualquer sistema de EDOs. Visando, então, maximizar os casos de uso nos quais este software pode ser utilizado, foi desenvolvido um sistema de extensões de usuário. 
+É improvável que seja possível construir um software que atenda todas as necessidades de um público-alvo, e o software desenvolvido neste trabalho não é exceção; seria difícil determinar quais são as funcionalidades mínimas necessárias para construir qualquer sistema de EDOs. Visando, então, maximizar os casos de uso aos quais este software atende, foi desenvolvido um sistema de extensões de usuário. 
 
 Além de prover os nós padrões [\ref{tab:tipos-de-nos}] para a construção das EDOs exemplificadas, o software permite que o usuário desenvolva e utilize extensões para realizar operações que não estão prontamente disponíveis pela interface. Estas extensões são desenvolvidas em Python e incluem funções que serão interpretadas como nós na interface.
 
@@ -839,7 +839,7 @@ As funções decoradas por \texttt{@node} num arquivo de extensões serão inter
 
 Na listagem \ref{code:ext-sin-pow}, é apresentado um exemplo de arquivo de extensões contendo um nó para calcular o seno de um parâmetro e um nó que eleva um parâmetro ao valor de outro. Este arquivo pode ser importado na interface, que possibilitará o uso dos nós como na figura \ref{fig:ext-sin-pow}.
 
-\begin{lstlisting}[language=Python, label=code:ext-sin-pow, caption=Exemplo de definição dos nós de extensão seno e potência com código Python válido.][H]
+\begin{lstlisting}[language=Python, label=code:ext-sin-pow, caption=Exemplo de definição dos nós de extensão seno e potência com código Python válido., float, xleftmargin=.35\textwidth]
 import math
 
 @node
@@ -859,7 +859,7 @@ def pow(x, y):
     \label{fig:ext-sin-pow}
 \end{figure}
 
-Como estes nós são definidos utilizando Python, não há impacto na capacidade do software de simular o modelo e plotar os gráficos; as funções definidas nas extensões são diretamente incluídas no código final que será utilizado pela simulação. Ademais, os modelos salvos pela interface mantém uma referência aos arquivos de extensões utilizados na construção do modelo, tornando possível que o software auto-importe as extensões necessárias quando carregar um modelo do disco.
+Como estes nós são definidos utilizando Python, não há impacto na capacidade do software de simular o modelo e plotar os gráficos; as funções definidas nas extensões são diretamente incluídas no código final que será utilizado pela simulação. Ademais, os modelos salvos pela interface mantém uma referência aos arquivos de extensões utilizados na construção do modelo, tornando possível que o software auto-importe as extensões necessárias quando carregar um modelo do disco. Isto permite que usuários não-técnicos utilizem extensões desenvolvidas por outras pessoas.
 
 \subsection{Carregamento de extensões}
 
