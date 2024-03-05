@@ -901,7 +901,7 @@ Pelos motivos mencionados acima, a implementação das conversões de/para JSON 
 \section{Distribuição do software}
 \label{sec:distribuicao}
 
-A distriuição de software é um tema complexo porque não existe uma única maneira correta de ser feita; todas as abordagens trazem seus prós e cons. Contudo, dependendo de como for feita, pode aumentar ou diminuir o alcance do software e seu público-alvo. Por exemplo, desenvolvedores de softwares cujo público-alvo é composto de programadores experientes em uma certa linguagem de programação podem supor que seus usuários tenham as ferramentas necessárias instaladas e, portanto, podem compilar o código fonte ou instalá-lo por algum gerenciador de pacotes. Exemplos de softwares distribuídos dessa maneira são os compiladores das linguagens de programação C, C++ e Rust.
+A distriuição de software é um tema complexo porque não existe uma única maneira correta de ser feita; todas as abordagens trazem seus prós e contras. Contudo, dependendo de como for feita, pode aumentar ou diminuir o alcance do software e seu público-alvo. Por exemplo, desenvolvedores de softwares cujo público-alvo é composto de programadores experientes em uma certa linguagem de programação podem supor que seus usuários tenham as ferramentas necessárias instaladas e, portanto, podem compilar o código fonte ou instalá-lo por algum gerenciador de pacotes. Exemplos de softwares distribuídos dessa maneira são os compiladores das linguagens de programação C, C++ e Rust.
 
 Por outro lado, é impensável que desenhistas possuam as dependências necessárias para compilar softwares como o Krita\footnote{\href{https://krita.org/en/}{Krita Website}}. Por isso, o software disponibiliza instaladores e executáveis portáteis diretamente pelo site para todos os sistemas operacionais suportados.
 
@@ -909,7 +909,7 @@ Como os objetivos do software desenvolvido neste trabalho são (1) auxiliar no e
 
 Contudo, como explicado no capítulo \ref{chap:software-para-modelagem}, o software depende externamente de um interpretador de Python e a biblioteca \texttt{scipy}. Seria necessário que o usuário instalasse estas dependências por conta própria, o que poderia impactar negativamente a sua facilidade de uso. Ademais, instalações manuais de versões incorretas das dependências poderiam afetar o funcionamento do software, o que causaria confusão para o usuário final.
 
-Com isto em mente, foi decidido distribuir o software em conjunto a todas as dependências ``vendorizáveis'', isto é, dependências que podem ser distribuídas em versões específicas e possivelmente diferentes das encontradas no sistema operacional.
+Com isto em mente, foi decidido distribuir o software em conjunto com todas as dependências ``vendorizáveis'', isto é, dependências que podem ser distribuídas em versões específicas e possivelmente diferentes das encontradas no sistema operacional.
 
 \subsection{Empacotamento de AppImages para sistemas Linux}
 
@@ -926,9 +926,10 @@ Um arquivo seguindo a especificação do formato inclui múltiplos arquivos arma
     \label{fig:appimage}
 \end{figure}
 
-Como mencionado, essa AppImage contém a maioria das dependências de bibliotecas dinâmicas e inclui o interpretador de Python com as dependências necessárias pré-instaladas. Notáveis exceções às bibliotecas dinâmicas inclusas são as relacionadas às bibliotecas padrões de C e C++, que não devem ser utilizadas em sistemas com versões mais novas. Como estas bibliotecas mantém retro-compatibilidade em novas versões, o software deve ser compilado numa distribuição com a menor versão suportada, garantindo funcionamento com versões mais novas.
+A AppImage contém a maioria das dependências de bibliotecas dinâmicas e inclui o interpretador de Python com as dependências necessárias pré-instaladas. Exceções às bibliotecas dinâmicas inclusas são as relacionadas às bibliotecas padrões de C e C++, que não devem ser 
+distribuídas em versões mais novas. Como estas bibliotecas mantém retro-compatibilidade em novas versões, o software deve ser compilado numa distribuição com a menor versão suportada, garantindo funcionamento com versões mais novas.
 
-Com o intuito de realizar este processo automaticamente, uma esteira de lançamento de versões foi desenvolvida. Esta se encarrega de compilar o software em um contêiner de Docker \cite{merkel2014docker} com uma versão de 2021 do sistema Debian.
+Com o intuito de realizar este processo automaticamente, uma esteira de lançamento de versões foi desenvolvida. Ela se encarrega de compilar o software em um contêiner de Docker \cite{merkel2014docker} com uma versão de 2021 do sistema Debian.
 
 \chapter{Resultados}
 \label{chap:resultados}
