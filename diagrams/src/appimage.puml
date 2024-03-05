@@ -1,0 +1,30 @@
+@startwbs
+!theme vibrant
+
+* / (AppImage File)
+
+** AppRun (Main Executable)
+
+** /bin
+*** ode-designer-rs
+
+** /lib
+*** ... (Dynamic Shared Libraries)
+*** /x86_64-linux-gnu
+**** ... (Dynamic Shared Libraries)
+
+** /usr
+*** /bin
+****(pylink) python3
+*** /lib
+**** ... (Dynamic Shared Libraries)
+
+** /opt/python3.11
+***(pysrc) /bin/python3.11
+*** /lib/python3.11/site-packages
+**** /matplotlib
+**** /scipy
+
+pylink -> pysrc
+
+@endwbs
