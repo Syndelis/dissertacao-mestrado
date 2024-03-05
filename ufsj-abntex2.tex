@@ -929,7 +929,7 @@ Um arquivo seguindo a especificação do formato inclui múltiplos arquivos arma
 A AppImage contém a maioria das dependências de bibliotecas dinâmicas e inclui o interpretador de Python com as dependências necessárias pré-instaladas. Exceções às bibliotecas dinâmicas inclusas são as relacionadas às bibliotecas padrões de C e C++, que não devem ser 
 distribuídas em versões mais novas. Como estas bibliotecas mantém retro-compatibilidade em novas versões, o software deve ser compilado numa distribuição com a menor versão suportada, garantindo funcionamento com versões mais novas.
 
-Com o intuito de realizar este processo automaticamente, uma esteira de lançamento de versões foi desenvolvida. Ela se encarrega de compilar o software em um contêiner de Docker \cite{merkel2014docker} com uma versão de 2021 do sistema Debian.
+Com o intuito de realizar este processo automaticamente, uma esteira de lançamento de versões foi desenvolvida. Ela se encarrega de compilar o software em um contêiner de Docker \cite{merkel2014docker} com uma versão de 2021 do sistema Debian com todas as dependências necessárias para fazer o software funcionar em sistemas Linux e Windows. 
 
 \chapter{Resultados}
 \label{chap:resultados}
