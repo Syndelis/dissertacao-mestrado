@@ -938,26 +938,23 @@ Com o intuito de realizar este processo automaticamente, uma esteira de lançame
 %-----------------------------//----------------------------
 \chapter{Conclusão e trabalhos futuros}
 \label{chap:conclusao}
-%e modelos estocásticos com o algoritmo de Gillespie
 
-Desde o início do Mestrado até o presente momento, foram realizadas as seguintes atividades: 
+%TODO: conclusões
+Neste trabalho, foi desenvolvido um software para automatizar a criação e simulação de modelos computacionais baseados em EDOs. ... 
+
+Destaca-se as seguintes possibilidades de trabalhos futuros: 
 \begin{itemize}
-    \item Iterações de design para layout da interface gráfica;
-    \item Prototipagem da interface gráfica;
-    \item Implementação das principais funcionalidades e classes da interface gráfica utilizando a biblioteca ImGui;
-    \item Implementação da Representação Intermediária e salvamento/carregamento de arquivos do computador;
+    \item Geração do código do modelo em Rust e simulação das EDOs em "tempo real";
+    \item Simulação de modelos estocásticos com o algoritmo de Gillespie utilizando o mesmo editor baseado em nós. O software utilizará outra representação intermediária como entrada para a geração de código do modelo estocástico; 
+    \item Suporte a ajuste de parâmetros fornecendo recursos para carregamento dos dados experimentais, escolha das variáveis e parâmetros a serem ajustados e plotagem dos gráficos e dos dados experimentais após a execução do ajuste; 
+    \item Adição de recursos para a análise de sensibilidade de parâmetros;
+    \item Criação e implementação de uma representação baseada em grafos para uma visualização mais alto nível das interações do modelo. O foco será na visualização de modelos do sistema imune; 
+    \item Adição de novos nós como, por exemplo, nós para difusão, quimiotaxia, para dar suporte a criação de modelos de Equações Diferenciais Parciais (EDPs). Implementação da geração de código para as EDPs utilizando o método de diferenças finitas. Essa implementação exigiria uma mudança maior na interface e na representação intermediária para acomodar características e recursos que são próprios de modelos de EDPs; 
+    \item Desenvolvimento de uma versão Web do software para que ele possa ser utilizado por um número maior de pessoas. A criação do modelo será feita através do navegador Web e todo o processamento incluindo a geração de código, execução, geração dos resultados e imagens será feita no servidor. As tecnologias usadas pelo projeto até então são todas compatíveis com a Web. A linguagem Rust, baseada na LLVM, possui suporte nativo à WebAssembly.
 \end{itemize}
 
-Espera-se que, até o final deste ano, o software seja capaz de realizar o fluxo completo de salvamento/carregamento, criação do modelo, simulação \textit{onsite}, geração de código e exportação dos resultados das simulações em PDF.
-
-Um trabalho futuro é desenvolver uma versão Web do software para que ele possa ser utilizado por um número maior de pessoas. A criação do modelo será feita através do navegador Web e todo o processamento incluindo a geração de código, execução, geração dos resultados e imagens será feita no servidor. As tecnologias usadas pelo projeto até então são todas compatíveis com a Web; para as linguagens C e C++ existe o projeto \textbf{Emscripten}\footnote{\href{https://emscripten.org/}{https://emscripten.org/}}, um compilador baseado na LLVM que é capaz de gerar WebAssembly. Já o Rust, também baseado na LLVM, possui suporte nativo à WebAssembly.
-
-Outro trabalho futuro é a implementação da geração de código para modelos de Equações Diferenciais Parciais (EDPs) utilizando o método de diferenças finitas. Essa implementação iria exigir uma mudança maior na interface e na representação intermediária para acomodar características e recursos que são próprios de modelos de EDPs. 
-
-Por último, destaca-se que uma outra possibilidade de extensão do trabalho é a implementação de funcionalidades para realizar a estimativa de parâmetros do modelo de EDOs e a análise de sensibilidade do modelo. Essas novas funcionalidades seriam integradas ao software existente.  
-
-%TO DO: Falar das limitações do trabalho 
-%Limitação da representação visual: Modelos mais complexos, muitos nós e ligações (fica difícil entender o modelo). 
+%TODO: Falar das limitações do trabalho 
+Como limitações do software, destaca-se que atualmente é difícil criar modelos muito complexos porque dependendo da quantidade de nós e ligações do modelo, fica difícil entender como cada parte do modelo é combinada para formar as EDOs, sendo uma limitação da representação visual.  
 
 %Solução: Uma ideia é oferecer a possibilidade de agrupar um grupo de nós e as ligações entre eles em um submodelo. Os submodelos seriam combinados para formar o modelo completo. 
 
