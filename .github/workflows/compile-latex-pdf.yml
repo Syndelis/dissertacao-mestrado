@@ -34,10 +34,10 @@ jobs:
         if: steps.changes.outputs.diagrams_src == 'true'
         shell: bash
         run: |
-          docker run ghcr.io/plantuml/plantuml \
-            -v diagrams/src:/src \
-            -v diagrams/img:/img \
-            plantuml/plantuml /src -o /img
+          docker run \
+            -v ./diagrams/src:/src \
+            -v ./diagrams/img:/img \
+            ghcr.io/plantuml/plantuml /src -o /img
 
       - name: Build PDF
         uses: xu-cheng/latex-action@v2
