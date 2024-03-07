@@ -671,13 +671,16 @@ O InsightMaker \cite{insightmaker} é um \textit{software} de simulação basead
 
 O software VCell (Virtual Cell) \cite{vcell,VCellref1} é uma plataforma para modelar sistemas biológicos celulares que é construída em torno de um banco de dados central e disseminada como um aplicativo da web. Os modelos são construídos com base em regras (\textit{Rule-based modelling}). VCell tem os seguintes tipos de simulações disponíveis: determinística (EDO compartimental ou EDP de reação-difusão-advecção com suporte para cinemática 2D), reações estocásticas (solvers de SSA), estocástica espacial (reação-difusão com Smoldyn), híbrida determinística/estocástica e simulações baseadas em agentes. O software permite simular vários processos metabólicos que ocorre dentro das células e através das membranas celulares. Com relação às membranas, há suporte para os seguintes processos: Eletrofisiologia, suporte para o fluxo da membrana e difusão lateral da membrana. 
 
+Durante alguns testes com o VCell \cite{vcell,VCellref1}, sentiu-se a necessidade da leitura de um manual dado o fato de que o software apresenta muitas opções nas diferentes telas que são abertas para a construção de um modelo de EDOs. Durante os testes, não foi possível entender como o modelo de EDOs é construído e qual é o sistema de equações final que é usado na simulação. Acredita-se que isso tenha ocorrido devido ao software apresentar muitas telas com muitas opções diferentes o que torna difícil entender e navegar pelas diferentes opções. 
+
 \section{EpiFire}
 
 O EpiFire \cite{epifire} não é um \textit{software} completo, mas uma biblioteca em C++ para simulação de modelos de redes complexas com aplicação na área de Epidemiologia. Ele é uma interface de programação de aplicativos (API) implementado em C++, projetado para gerar de forma eficiente redes com uma distribuição de grau especificada, medir características fundamentais da rede e realizar simulações computacionais eficientes das redes geradas com base nos métodos \textit{percolation} e \textit{chain-binomial}. 
 
 \section{Cytoscape}
 
-O software Cytoscape \cite{shannon2003cytoscape} é uma plataforma de software de código aberto para visualizar redes de interação molecular e vias biológicas e integrar essas redes com anotações, perfis de expressão gênica e outros dados. Atualmente, o Cytoscape é utilizado como uma plataforma geral para análise e visualização de redes complexas. 
+O software Cytoscape \cite{shannon2003cytoscape} é uma plataforma de software de código aberto para visualizar redes de interação molecular e vias biológicas e integrar essas redes com anotações, perfis de expressão gênica e outros dados. O software permite carregar conjuntos de dados de interação molecular e genética em vários formatos padrão. O sistema de \textit{plugins} permite a extensão do software através de diversas aplicações desenvolvidas seguindo uma API baseada no modelo OSGi. O Cytoscape também é utilizado como uma plataforma geral para análise e visualização de redes complexas. 
+
 
 %OpenFOAM (https://www.openfoam.com/)
 %Stella (https://www.iseesystems.com/store/products/stella-online.aspx)
