@@ -893,11 +893,41 @@ O módulo da GUI, desenvolvido em Rust, é a aplicação principal, e é respons
 Entre seus submódulos principais, estão:
 
 \begin{itemize}
-    \item O submódulo da aplicação, que renderiza o editor de nós e gerencia o estado global. A aplicação também controla as janelas auxiliares que podem ser abertas, como as abas de plotagem de resultados, o gerenciador de extensões e o atribuidor de variáveis;
-    \item O submódulo de nós, que define os possíveis tipos de nós. Estes possuem métodos para receber e enviar mensagens (notificando mudanças de estados, como alteração na árvore de expressão) e definir suas cores na interface;
-    \item O submódulo de extensão, que define as estruturas necessárias para analisar e carregar a definição de nós customizados em forma de funções de Python;
-    \item O submódulo de expressão, que define a árvore de expressões que representa o modelo e as estruturas que podem ser usadas durante a passagem de mensagens para comunicar mudanças parciais;
-    \item O submódulo de mensagens, que implementa a estrutura utilizada pelos outros módulos durante a comunicação intra-aplicação.
+    \item O submódulo da aplicação, que renderiza o editor de nós e gerencia o estado global. A aplicação também controla as janelas auxiliares que podem ser abertas, como as abas de plotagem de resultados, o gerenciador de extensões e o atribuidor de variáveis. A figura \ref{fig:uml-app} contém o diagrama de classes desse módulo;
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{diagrams/img/app.png} 
+        \caption{Diagrama de classes do módulo da aplicação.}
+        \label{fig:uml-app}
+    \end{figure}
+    \item O submódulo de nós, que define os possíveis tipos de nós. Estes possuem métodos para receber e enviar mensagens (notificando mudanças de estados, como alteração na árvore de expressão) e definir suas cores na interface. A figura \ref{fig:uml-nodes} contém o diagrama de classes desse módulo;
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.3]{diagrams/img/nodes.png} 
+        \caption{Diagrama de classes do módulo de nós.}
+        \label{fig:uml-nodes}
+    \end{figure}
+    \item O submódulo de extensão, que define as estruturas necessárias para analisar e carregar a definição de nós customizados em forma de funções de Python. A figura \ref{fig:uml-extensions} contém o diagrama de classes desse módulo;
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.45]{diagrams/img/extensions.png} 
+        \caption{Diagrama de classes do módulo de extensões.}
+        \label{fig:uml-extensions}
+    \end{figure}
+    \item O submódulo de expressão, que define a árvore de expressões que representa o modelo e as estruturas que podem ser usadas durante a passagem de mensagens para comunicar mudanças parciais. A figura \ref{fig:uml-expr} contém o diagrama de classes desse módulo;
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.6]{diagrams/img/exprtree.png} 
+        \caption{Diagrama de classes do módulo da árvor de expressões.}
+        \label{fig:uml-expr}
+    \end{figure}
+    \item O submódulo de mensagens, que implementa a estrutura utilizada pelos outros módulos durante a comunicação intra-aplicação. A figura \ref{fig:uml-msg} contém o diagrama de classes desse módulo.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.45]{diagrams/img/messages.png} 
+        \caption{Diagrama de classes do módulo de mensagens.}
+        \label{fig:uml-msg}
+    \end{figure}
 \end{itemize}
 
 \subsection{A utilização de Rust para a GUI}
