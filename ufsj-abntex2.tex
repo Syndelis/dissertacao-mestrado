@@ -37,15 +37,6 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
-% TODO: Comentários da primeira apresentação
-% - Fazer quadro comparativo com trabalhos mais semelhantes da literatura;
-%   Colunas para o quadro: Representação gráfica do modelo | Distribuição do Software (web, desktop) | Tipos de modelos simulados | Acesso ao código usado na simulação | Simulação interativa
-%      VCell, InsightMaker, Snoopy, BioDynaMo
-% - Destacar o ensino-aprendizagem: introdução
-% - explicar o template (ex: o Jinja possuí estruturas de controles, laços, breve explicação do código sendo executado)
-% - imagens do software na metodologia
-% - sec "Geração de Código e Simulação interativa": 
-
 % Fix taken from: https://build.opensuse.org/request/show/973887
 % Apparently, hyperref doesn't ship with htmladdnormallink anymore
 \ifdefined\htmladdnormallink\relax\else%
@@ -83,6 +74,7 @@
 \usepackage{colortbl}
 \usepackage{nicefrac, xfrac}
 \usepackage{attachfile2}
+\usepackage{lscape}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -638,9 +630,29 @@ A ideia dessa abordagem é colocar o aluno como protagonista no processo de cons
 
 Com o avanço de tecnologias para o desenvolvimento de aplicações gráficas e também da internet, ocorreu um aumento expressivo na quantidade de \textit{softwares} desenvolvidos para modelagem e simulação computacional. 
 
-Na Tabela ... é apresentado um quadro comparativo entre o software deste trabalho e softwares similares. Para realizar a comparação, foram selecionadas algumas características consideradas relevantes no contexto de softwares para modelagem e simulação computacional. 
+Na Tabela \ref{tab:comparativo} é apresentado um quadro comparativo entre o software deste trabalho e softwares similares. Para realizar a comparação, foram selecionadas algumas características consideradas relevantes no contexto de softwares para modelagem e simulação computacional. 
 
-%TODO: TABELA (Quadro comparativo)
+\begin{landscape}
+\begin{table}[h]
+    \centering
+        \begin{tabular}{m{0.2\textwidth}m{0.25\textwidth}m{0.3\textwidth}m{0.2\textwidth}m{0.15\textwidth}m{0.15\textwidth}m{0.15\textwidth}}
+        \toprule
+        \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{2}{c}{\textbf{Acesso}} & \multicolumn{3}{c}{\textbf{Funcionalidades}} \\
+        \cmidrule(rl){3-4}\cmidrule(rl){5-7}
+        \textbf{Software} & {Modelos} & {Distribuição} & {Open Source?} & {Representação Gráfica?} & {Exporta Código?} & {Simulação Interativa?} \\
+        \midrule
+        ODE Designer & EDOs & Desktop com dependências inclusas & Sim & Sim & Sim & Sim \\
+        Snoopy & Redes de Petri & Desktop com dependências inclusas & Não & Sim & Não & Sim \\
+        VCell & EDOs, EDPs e modelos Estocásticos & Desktop com dependências inclusas & Sim & Sim** & Não & Sim \\
+        InsightMaker & EDOs, Dinâmicas de Sistemas, Modelos baseados em Agentes & Aplicação Web & Não* & Sim** & Não & Sim \\
+        Cytoscape & Redes Complexas & Desktop & Sim & Sim & Não & Sim \\
+        EpiFire & Redes de Contatos (\textit{Contact Networks}) & Desktop com dependências inclusas & Sim & Não & Não & Sim \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabela comparativa entre os principais softwares de modelagem computacional e o software desenvolvido neste trabalho. \\ *Apenas a biblioteca de simulação é \textit{open source}, não incluindo a interface gráfica. \\ **Os modelos são escritos em formas de equações e não necessariamente serão representados fielmente pela representação gráfica destes softwares.}
+    \label{tab:comparativo}
+\end{table}
+\end{landscape}
 
 O software desenvolvido neste trabalho possui alguns diferenciais em relação a outros desenvolvidos com propósitos similares:
 

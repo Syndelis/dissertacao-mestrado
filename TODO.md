@@ -10,7 +10,7 @@
         - Facilidade de instalação;
         - Sugestão de melhorias;
 
-- No início do capítulo 3 [Trabalhos Relacionados], incluir o quadro comparativo;
+- [x] No início do capítulo 3 [Trabalhos Relacionados], incluir o quadro comparativo;
     - Exemplo:
     
     | Softwares | Distribuição do software | Representação de modelos suportados | Acesso ao código gerado | Simulação Interativa |
