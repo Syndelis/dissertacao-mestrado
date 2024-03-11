@@ -429,7 +429,7 @@ O restante do texto deste trabalho está organizado da seguinte forma: no Capít
 
 Neste capítulo, são apresentados os principais conceitos que formam a base teórica do trabalho. 
 
-\section{Equações Diferenciais Ordinárias}
+\section{Equações Diferenciais Ordinárias}\label{sec:edos}
 
 Uma Equação Diferencial Ordinária (EDO) é um tipo de modelo matemático que descreve como as populações modeladas evoluem ao longo do tempo. Os modelos de EDOs são bastante difundidos e utilizados em diversas áreas como, por exemplo, na medicina e na neurociência \cite{ADOMIAN1995107}, no estudo do Câncer \cite{spencer2004ordinary, talkington2018ordinary}, no estudo da resposta imune à infecções virais \cite{reis2021validated}, no estudo da eletrofisiologia cardíaca \cite{VIGMOND20083, bucelli2022mathematical}, entre outros exemplos. 
 
@@ -986,9 +986,102 @@ distribuídas em versões mais novas. Como estas bibliotecas mantém retro-compa
 
 Com o intuito de realizar este processo automaticamente, uma esteira de lançamento de versões foi desenvolvida. Ela se encarrega de compilar o software em um contêiner de Docker \cite{merkel2014docker} com uma versão de 2021 do sistema Debian com todas as dependências necessárias para fazer o software funcionar em sistemas Linux e Windows. 
 
-\chapter{Resultados}
+\chapter{Aplicação do software na modelagem computacional}
 \label{chap:resultados}
 %Mostrar exemplos de modelos construídos e simulados com a ferramenta 
+
+\section{Predador-presa}
+
+O modelo predador-presa foi descrito na Seção \ref{sec:edos}. A Figura \ref{fig:predador-presa} mostra o modelo construído no software e a Figura \ref{fig:resultado-predador-presa} mostra um exemplo de resultado da simulação. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/modelos/predador-presa.png} 
+    \caption{Modelo predador-presa construído no software.}
+    \label{fig:predador-presa}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/modelos/resultado-predador-presa.png} 
+    \caption{Exemplo de resultado da simulação do modelo predador-presa.}
+    \label{fig:resultado-predador-presa}
+\end{figure}
+
+\section{Transmissão de doenças}
+%modelo SIRS 
+Existem alguns modelos de EDOs clássicos para modelar a transmissão de um vírus na população como, por exemplo, modelo SIR, SIRS e SIS. Para mostrar a aplicação do software, foi construído o modelo SIRS que é composto pelo seguinte conjunto de EDOs: 
+
+\begin{equation}\label{eq:sirs}
+    \begin{array}{lr}
+    \frac{dS}{dt} = -\beta.S.I + \gamma.R
+    \\
+    \\
+    \frac{dI}{dt} = \beta.S.I - \alpha.I
+    \\
+    \\ 
+    \frac{dR}{dt} = \alpha.I - \gamma.R
+    \end{array}
+\end{equation}
+
+O modelo divide a população em indivíduos suscetíveis ($S$) à doença, infectados ($I$) e recuperados ($R$). Uma parte da população de suscetíveis pode se infectar (termo $\beta.S.I$). Os indivíduos infectados podem se recuperar com uma determinada probabilidade (termo $\alpha.I$) e os indivíduos recuperados podem voltar a ser suscetíveis à doença (termo $\gamma.R$).  
+
+Na Figura \ref{fig:sirs}, podemos ver o modelo SIRS no software e na Figura \ref{fig:resultado-sirs} um exemplo de resultado da simulação do modelo. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/modelos/sirs.png} 
+    \caption{Modelo SIRS construído no software.}
+    \label{fig:sirs}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/modelos/resultado-sirs.png} 
+    \caption{Exemplo de resultado da simulação do modelo SIRS.}
+    \label{fig:resultado-sirs}
+\end{figure}
+
+\section{Reação enzimática}
+
+O modelo da reação enzimática com inibição competitiva modela uma reação química entre um substrato $S$ e uma enzima $E$ para formar um produto $P$. A enzima atua catalisando a reação e formando um complexo temporário $ES$ que pode voltar a se transformar em $E + S$ ou virar $E + P$. Essa reação é inibida por uma substância $I$ que se liga ao mesmo sítio de ligação do substrato $S$ na enzima $E$ formando um outro complexo chamado $EI$. Essa ligação impede a ligação de $S$ com $E$. O complexo $EI$ também tem um tempo de vida
+finito e pode voltar a ser $E + I$.  
+%(Referência: Mathematical modeling for enzyme inhibitors with slow and fast subsystems).
+O sistema de EDOs que modela essa reação é dado na Equação \ref{eq:reacao}.
+
+\begin{equation}\label{eq:reacao}
+    \begin{array}{lr}
+        \frac{dS}{dt} = k_2.ES - k_1.S.E 
+        \\
+        \\
+        \frac{dP}{dt} = k_3.ES
+        \\
+        \\ 
+        \frac{dI}{dt} = k_5.EI - k_4.E.I
+        \\
+        \\ 
+        \frac{dES}{dt} = -k_2.ES + k_1.S.E - k_3.ES
+        \\
+        \\ 
+        \frac{dEI}{dt} = -k_5.EI + k_4.E.I
+        \\
+        \\ 
+        \frac{dE}{dt} = k_2.ES + k_3.ES + k_5.EI - k_1.S.E - k_4.E.I
+    \end{array}
+\end{equation}
+
+A Figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática construído no software. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/modelos/reacaoenzimatica.png} 
+    \caption{Modelo da reação enzimática construído no software.}
+    \label{fig:reacaoenzimatica}
+\end{figure}
+    
+\section{Resposta imune a uma infecção viral}
+
+
 
 %-----------------------------//----------------------------
 \chapter{Conclusão e trabalhos futuros}
