@@ -1081,7 +1081,39 @@ A Figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática cons
     
 \section{Resposta imune a uma infecção viral}
 
+O modelo apresentado nesta seção modela a resposta imune das células T a uma infecção viral. O modelo é descrito a seguir.  
 
+As células epiteliais saudáveis ($E$) são infectadas pelo vírus ($V$) tornando-se infectadas ($I$) e também podem morrer devido ao dano ($D$) causado pelo resposta imune, isto é, devido ao dano mediado pelas células T efetoras ($T$). As células infectadas são eliminadas pelas células T ou podem morrer devido a ação dos vírus intracelulares. Com a morte da célula infectada, são liberados novos vírus no tecido. Os vírus são eliminados pela ação dos anticorpos e outras células de defesa que não são explicitamente representadas no modelo. As células T migram para o tecido devido a ação das citocinas pró-inflamatórias ($C$). Esse processo foi simplificado porque não considera-se, no modelo atual, as células T \textit{helper} e outros níveis de ativação das células T de forma explícita. As citocinas pró-inflamatórias são produzidas pelas células T na presença de marcadores inflamatórios da infecção.   
+
+\begin{equation}
+    \begin{array}{lr}
+        \frac{dD}{dt} = \beta.(T + 2.I) - m_D.D
+        \\
+        \\
+        \frac{dE}{dt} = - k_E.E.V 
+        \\
+        \\
+        \frac{dI}{dt} = k_E.E.V - k_I.I.T - a.I
+        \\
+        \\
+        \frac{dV}{dt} = a.I - k_V.V
+        \\
+        \\
+        \frac{dT}{dt} = s_T.(1+C)  - m_T.T
+        \\
+        \\
+        \frac{dC}{dt} = beta_C.T.(I + V) – m_C.C
+    \end{array}
+\end{equation}
+
+Na Figura \ref{fig:infeccaoviral}, é apresentada parte do modelo construído no software.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/modelos/infeccaoviral.png} 
+    \caption{Modelo da infecção viral construído no software.}
+    \label{fig:infeccaoviral}
+\end{figure}
 
 %-----------------------------//----------------------------
 \chapter{Conclusão e trabalhos futuros}
