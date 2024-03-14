@@ -1003,6 +1003,12 @@ distribuídas em versões mais novas. Como estas bibliotecas mantém retro-compa
 
 Com o intuito de realizar este processo automaticamente, uma esteira de lançamento de versões foi desenvolvida. Ela se encarrega de compilar o software em um contêiner de Docker \cite{merkel2014docker} com uma versão de 2021 do sistema Debian com todas as dependências necessárias para fazer o software funcionar em sistemas Linux e Windows. 
 
+\subsection{Empacotamento ZIP para sistema Windows}
+
+Ao contrário dos sistemas Linux, não existe um formato de arquivos que contenha múltiplos arquivos internamente e seja executável ao mesmo tempo no sistema Windows. Por este motivo, softwares para o SO são comumente distriubídos como pastas compactadas (ZIP) ou instaladores que populam uma pasta com os arquivos necessários.
+
+Portanto, o software é distribuído para Windows por meio de uma pasta compactada, similarmente incluindo as dependências dinâmicas e um interpretador de Python portátil, que inclui o \texttt{scipy}.
+
 \chapter{Aplicação do software na modelagem computacional}
 \label{chap:resultados}
 %Mostrar exemplos de modelos construídos e simulados com a ferramenta 
