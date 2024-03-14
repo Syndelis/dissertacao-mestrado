@@ -761,6 +761,22 @@ A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinaç�
 \label{tab:tipos-de-nos}
 \end{table}
 
+A disposição dos pinos nos nós presentes foi planejada para minimizar a necessidade de manuais e permitir que o usuário aprenda a usar o software por conta própria. Isto porque:
+
+\begin{itemize}
+    \item O nó `Termo' possui um pino de saída e nenhum pino de saída;
+    \item O nó `Expressão' possui $N$ pinos de entrada e 1 pino de saída;
+    \item O nó `Equação' possui 1 pino de entrada e nenhum pino de saída.
+\end{itemize}
+
+Desta forma, é possível concluir que:
+
+\begin{itemize}
+    \item Termos podem ser ligados a expressões e equações. Como não recebem nenhuma ligação, são os nós iniciais;
+    \item Expressões podem ser ligadas a outras expressões e equações;
+    \item Equações são os nós terminais.
+\end{itemize}
+
 \subsection{Representação de expressões na interface}
 \label{subsec:exprtree}
 
