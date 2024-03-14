@@ -8,6 +8,7 @@ on:
       - '.github/**/*.yml'
       - 'diagrams/img/**'
       - '**.puml'
+      - '**.bib'
 
 jobs:
   latexbuild:
