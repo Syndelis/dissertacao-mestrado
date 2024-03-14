@@ -1,0 +1,62 @@
+@startuml gui-ri
+
+skinparam {
+    ArrowFontSize 18
+    SequenceGroupFontSize 18
+    ParticipantFontSize 18
+    ActorFontSize 18
+}
+
+autonumber 1.1
+actor Usuário as U
+
+U -> GUI : Clica em "Simular/Exportar"
+activate GUI
+
+GUI -> RI : Transforma o\nmodelo na RI
+GUI <-- RI : Modelo serializado
+
+GUI -> RI : Gera código a partir\ndo modelo serializado
+GUI <-- RI : Código Gerado
+
+alt Exportação de Código
+
+    autonumber 2.1
+
+    GUI -> U : Pergunta pelo nome do arquivo desejado
+    GUI <-- U : Informa nome do arquivo não vazio
+
+    GUI -> GUI : Salva arquivo em disco com\n o código gerado
+
+else Simulação
+
+    create Python
+
+    alt Simulação interativa
+
+        autonumber 3.1
+
+        GUI -> Python : Executa código gerado
+        GUI <-- Python : Saída da simulação em CSV
+        GUI -> GUI : Carrega os dados\ndo CSV
+        U <-- GUI : Dados da simulação plotados
+
+    else Exportação de PDF
+
+        autonumber 4.1
+
+        GUI -> U : Pergunta pelo nome do arquivo desejado
+        GUI <-- U : Informa nome do arquivo não vazio
+
+        GUI -> Python : Executa código e informa\n nome do arquivo de saída
+
+        Python -> Python : Gera PDF a partir\nda simulação
+
+        deactivate GUI
+
+    end
+
+end
+
+
+@enduml

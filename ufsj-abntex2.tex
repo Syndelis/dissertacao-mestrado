@@ -939,15 +939,20 @@ Durante o desenvolvimento, tentou-se uma solução que combinava C++ para a inte
 \subsection{A biblioteca de RI}
 \label{sub:ri}
 
-Para realizar todas as conversões mencionadas ao longo deste texto, foi desenvolvida uma biblioteca em Rust. A linguagem Rust foi escolhida por trazer maior segurança, confiabilidade e facilidade de desenvolvimento. 
+Com o objetivo de desacoplar a aplicação gráfica das conversões realizadas, o módulo da representação intermediária foi desenvolvido como uma biblioteca à parte. Desta forma, as conversões para JSON e código em Python devem ser realizadas por esta biblioteca, e apenas as reprensentações intermediárias válidas podem ser construídas pela aplicação.
 
-%\textcolor{red}{Como Rust é uma linguagem compilada, é possível compilar bibliotecas estáticas ou dinâmicas para utilizar em C ou C++. No caso deste software, a biblioteca expõe algumas \texttt{structs} e funções utilizando a \textit{FFI} (acrônimo para Interface de Funções Estrangeiras, em inglês) de C, e os arquivos \textit{headers} são gerados automaticamente pelo programa \textbf{cbindgen}\footnote{\href{https://github.com/eqrion/cbindgen}{https://github.com/eqrion/cbindgen}} e \textbf{GitHub Actions}\footnote{\href{https://github.com/marketplace/actions/cbindgen-action}{cbindgen-action}}.}
+Esta abordagem facilita o processo de testagem do módulo. Criou-se vários testes, unitários e de integração, partindo de representações válidas. Como as funções públicas do módulo só possibilitam a criação de representações válidas, então é garantido que a GUI sempre gere modelos que são armazenáveis em disco, simuláveis e exportáveis.
 
-O software utiliza a biblioteca \textbf{serde}\footnote{\href{https://serde.rs/}{https://serde.rs/}} para declarativamente criar as conversões das \texttt{structs} de/para o formato JSON por meio do macro \textit{derive} de Rust. Este macro permite que estruturas implementem certos métodos automaticamente, puramente pela leitura dos campos que esta possui. Este é o caso das \texttt{structs} \texttt{Model}, \texttt{MetaData}, \texttt{Node} e \texttt{Constant}.
+A figura \ref{fig:gui-ri} ilustra os fluxos de simulação e exportação, e como os módulos de GUI e RI interagem durante este processo.
 
-Uma outra vantagem da linguagem Rust é possuir um ecossistema de bibliotecas com pequenos escopos e bem integradas. Neste caso, o motor de \textit{templates} utilizado, \textbf{minijinja}\footnote{\href{https://github.com/mitsuhiko/minijinja}{https://github.com/mitsuhiko/minijinja}}, recebe como entrada para suas conversões estruturas que implementam métodos de serialização e desserialização da biblioteca serde.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.42]{diagrams/img/gui-ri.png} 
+    \caption{Diagrama de sequência representando o processo de exportação de código, simulação interativa e exportação de resultados.}
+    \label{fig:gui-ri}
+\end{figure}
 
-Pelos motivos mencionados acima, a implementação das conversões de/para JSON e para o modelo de EDOs foi tão direta quanto declarar as estruturas e escrever o \textit{template} de EDOs. O \textit{template} do modelo predador-presa é apresentado no Apêndice \ref{ri:predador-presa}.
+A geração de JSONs é feita de forma transparente e automática a partir da estrutura de dados que armazena o modelo na RI. A geração de código, por outro lado, é realizada a partir da substituição de templates com os dados das RI.
 
 \section{Distribuição do software}
 \label{sec:distribuicao}
