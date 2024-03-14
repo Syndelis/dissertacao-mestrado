@@ -3,7 +3,7 @@
 repeat :**GUI**\n Criação do modelo via interface;
 
 :**Simulção**
-Simualção //on-site//;
+Simulação //on-site//;
 
 repeat while (O usuário está contente com o modelo?) is (    não)
 -> sim;
