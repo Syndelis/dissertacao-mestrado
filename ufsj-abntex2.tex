@@ -390,38 +390,29 @@ Modelos matemáticos e computacionais estão se tornando cada vez mais relevante
 
 As simulações computacionais podem auxiliar experimentos \textit{in vitro} e \textit{in vivo} na explicação de diversos fenômenos. As simulações permitem testar vários cenários diferentes, o que poderia ser muito custoso ou até inviável de ser testado \textit{in vitro} e \textit{in vivo}. Além disso, elas podem fornecer previsões testando hipóteses que ainda não foram investigadas. 
 
-O desenvolvimento de modelos computacionais requer um conjunto de etapas importantes que começam com a definição de seu objetivo e terminam com sua validação, passando por múltiplas iterações e melhorias. Dentre estas etapas, uma das mais desafiadoras é a implementação do modelo. Essa etapa requer o conhecimento de métodos numéricos, programação, estruturas de dados, bibliotecas, entre outros recursos. Um erro na implementação pode comprometer todo o trabalho. 
-Nesse contexto, foi desenvolvido um software para auxiliar as etapas de implementação e simulação de modelos de 
+O desenvolvimento de modelos computacionais requer um conjunto de etapas importantes que começam com a definição de seu objetivo e terminam com sua validação, passando por múltiplas iterações e melhorias. Dentre estas etapas, uma das mais desafiadoras é a implementação do modelo. Essa etapa requer o conhecimento de métodos numéricos, programação, estruturas de dados, bibliotecas, entre outros recursos. Um erro na implementação pode comprometer todo o trabalho. Nesse contexto, foi desenvolvido um software para auxiliar as etapas de implementação e simulação de modelos de 
 Equações Diferenciais Ordinárias (EDOs).
 
-O principal objetivo deste trabalho foi desenvolver um software para facilitar a criação e simulação de modelos computacionais, dimiuindo a barreira de entrada na área de Modelagem Computacional e permitindo que menos tempo seja investido na implementação do modelo. A partir do ``desenho'' de um modelo, o software é capaz de gerar o código que implementa o modelo, simulá-lo e até exportar gráficos.
+O presente trabalho pretende responder à seguinte questão científica: 
+\begin{itemize}
+    \item É possível que ferramentas de software automatizem etapas do processo de modelagem computacional?  
+\end{itemize}
+
+Pretende-se mostrar que a resposta da questão anterior é sim, através da apresentação de um software que foi desenvolvido para facilitar as etapas de construção, implementação e simulação de um modelo de EDOs. 
+
+O principal objetivo deste trabalho foi desenvolver um software para facilitar a criação e simulação de modelos computacionais, dimiuindo a barreira de entrada na área de Modelagem Computacional e permitindo que menos tempo seja investido na implementação do modelo. A partir do ``desenho'' de um modelo, o software é capaz de gerar o código que implementa o modelo, simulá-lo e até exportar gráficos com os resultados.
 
 Entre as contribuições deste trabalho, destacam-se as seguintes: 
 
 \begin{itemize}
-    \item A criação de uma representação gráfica intuitiva para modelos matemáticos baseados em Equações Diferenciais; 
+    \item A criação de uma representação gráfica intuitiva para modelos matemáticos baseados em equações diferenciais; 
     \item O desenvolvimento de um gerador de código baseado em \textit{templates} para gerar os códigos que implementam os modelos; 
     \item A construção de modelos de Equações Diferenciais Ordinárias (EDOs) sem a necessidade de iniciar a implementação computacional dos modelos do zero; 
 \end{itemize}
 
-Uma das aplicações do software que foi desenvolvido é no processo de ensino-aprendizagem de modelagem computacional. Os usuários poderão aprender sobre modelagem computacional por meio de um processo de aprendizado ativo com a construção e simulação dos modelos na prática. 
+Uma das aplicações do software que foi desenvolvido é no processo de ensino-aprendizagem de modelagem computacional. Os usuários poderão aprender sobre modelagem computacional por meio de um processo de aprendizado ativo com a construção e simulação dos modelos na prática. Na Seção \ref{sec:ensino-aprendizagem}, será discutido como o software pode ser utilizado junto com uma metodologia ativa de ensino como uma possível abordagem de ensino-aprendizagem de modelagem computacional.  
 
-O restante do texto deste trabalho está organizado da seguinte forma: no Capítulo \ref{chap:referencial} são apresentados alguns conceitos teóricos para um melhor entendimento do trabalho. No Capítulo \ref{chap:relacionados}, são descritos os trabalhos relacionados. O software desenvolvido é descrito no Capítulo \ref{chap:metodologia}. No Capítulo \ref{chap:resultados} são apresentados e discutidos os resultados e, por fim, a conclusão e os trabalhos futuros são descritos no Capítulo \ref{chap:conclusao}. 
-
-%\begin{table}[h!]
-%  \begin{center}
-%    \caption{Exemplo de tabela (Legenda da Tabela)}
-%    \label{tab:tabela1}
-%    \begin{tabular}{l|c|r} % <-- Alinhamento: 1 coluna à esquerda, 2 centralizada e 3à direita, com linhas verticais
-%      \textbf{Valor 1} & \textbf{Valor 2} & \textbf{Valor 3}\\
-%      Vértice & cor & percentual $\gamma$ \\
-%      \hline
-%      A & azul & $3,3\%$\\
-%      B & Vermelho & $38,4\%$\\
-%      C & Laranja & $34,3\%$\\
-%    \end{tabular}
-%  \end{center}
-%\end{table}
+O restante do texto deste trabalho está organizado da seguinte forma: no Capítulo \ref{chap:referencial} são apresentados alguns conceitos teóricos para um melhor entendimento do trabalho. No Capítulo \ref{chap:relacionados}, são descritos os trabalhos relacionados. O software desenvolvido é descrito no Capítulo \ref{chap:metodologia}. No Capítulo \ref{chap:resultados}, são apresentadas algumas aplicações do software na modelagem e, por fim, a conclusão e os trabalhos futuros são descritos no Capítulo \ref{chap:conclusao}. 
 
 %-------------------//-----------------------------
 \chapter{Referencial Teórico}
@@ -586,7 +577,7 @@ O \textit{template} acima utiliza os marcadores definidos pela biblioteca Inja\f
 % Simulação de cenários: 
 % 	Uma abordagem baseada em cenários se mostra interessante porque através desses diferentes cenários é possível compreender melhor como cada célula/substância do modelo interage e como os comportamentos emergem a partir dessas interações. Outra característica importante é a possibilidade de se analisar os efeitos de remover determinada célula/substância do modelo. 
 
-\section{Ensino-aprendizagem de Modelagem Computacional} 
+\section{Ensino-aprendizagem de Modelagem Computacional}\label{sec:ensino-aprendizagem} 
 
 Os modelos são abstrações do mundo real. Com a evolução dos computadores e o seu uso massivo, os modelos computacionais têm contribuído significativamente para o avanço do conhecimento em diversas áreas. Eles nos ajudam a compreender os fenômenos de interesse permitindo “rastrear” e entender as mudanças que estão ocorrendo em um sistema complexo e visualizar, por exemplo, o efeito de uma pequena mudança no restante do sistema. 
 
@@ -1143,24 +1134,13 @@ Na Figura \ref{fig:infeccaoviral}, é apresentada parte do modelo construído no
 \chapter{Conclusão e trabalhos futuros}
 \label{chap:conclusao}
 
-%TODO: conclusões
-Neste trabalho, foi desenvolvido um software para automatizar a criação e simulação de modelos computacionais baseados em EDOs. ... 
+Neste trabalho, foi desenvolvido um software para automatizar a implementação e simulação de modelos computacionais baseados em EDOs. Através do uso da interface gráfica do software, o usuário pode construir e simular um modelo sem desenvolver uma linha de código o que confirma a hipótese do trabalho de que é possível automatizar certas etapas do processo de modelagem. Além disso, a construção das equações do modelo matemático, uma etapa fundamental e ao mesmo tempo desafiadora, é auxiliada pela representação visual que foi criada pois esta permite que o usuário acompanhe a construção de todas as expressões matemáticas do modelo e como elas estão sendo combinadas para formar cada EDO. É possível verificar de forma direta, na interface, as entradas e operações de cada expressão, os sinais de cada entrada, de quais expressões um termo participa e quais expressões fazem parte de uma determinada EDO, entre outras informações relevantes para a construção correta do modelo.   
 
-Destaca-se as seguintes possibilidades de trabalhos futuros: 
-\begin{itemize}
-    \item Geração do código do modelo em Rust e simulação das EDOs em "tempo real";
-    \item Simulação de modelos estocásticos com o algoritmo de Gillespie utilizando o mesmo editor baseado em nós, fornecendo como outra opção de exportação; 
-    \item Suporte a ajuste de parâmetros fornecendo recursos para carregamento dos dados experimentais, escolha das variáveis e parâmetros a serem ajustados e plotagem dos gráficos e dos dados experimentais após a execução do ajuste; 
-    \item Adição de recursos para a análise de sensibilidade de parâmetros;
-    \item Criação e implementação de uma representação baseada em grafos para uma visualização mais alto nível das interações do modelo. O foco será na visualização de modelos do sistema imune; 
-    \item Adição de novos nós como, por exemplo, nós para difusão, quimiotaxia, para dar suporte a criação de modelos de Equações Diferenciais Parciais (EDPs). Implementação da geração de código para as EDPs utilizando o método de diferenças finitas. Essa implementação exigiria uma mudança maior na interface e na representação intermediária para acomodar características e recursos que são próprios de modelos de EDPs; 
-    \item Desenvolvimento de uma versão Web do software para que ele possa ser utilizado por um número maior de pessoas. A criação do modelo será feita através do navegador Web e todo o processamento incluindo a geração de código, execução, geração dos resultados e imagens será feita no servidor. As tecnologias usadas pelo projeto até então são todas compatíveis com a Web. A linguagem Rust, baseada na LLVM, possui suporte nativo à WebAssembly.
-\end{itemize}
+Através da construção de modelos no software, foi possível verificar que o software possui recursos suficientes para a construção de modelos mais simples até modelos mais complexos. Porém, atualmente, para modelos mais complexos a representação visual apresenta uma limitação no sentido de que começa a ficar mais difícil entender o modelo dado a quantidades de nós e de ligações que se cruzam tornando a visualização mais confusa e, consequentemente, prejudicando o entendimento do modelo. Uma possível solução para essa questão seria a possibilidade do usuário pode criar um novo nó customizado a partir da combinação de duas ou mais expressões, isto é, a partir da combinação de dois ou mais nós de expressão. Por exemplo, suponha que o usuário esteja construindo um modelo que usa expressões no formato $k.(A - B)$, onde $k$ é um parâmetro e, $A$ e $B$ são populações. Atualmente, o usuário precisaria criar dois nós do tipo expressão: um para a operação $(A - B)$ e outro para multiplicar $k$ pelo resultado desta expressão. Na possível solução proposta, o usuário selecionaria os dois nós de expressão e solicitaria ao software para criar um novo nó customizado que receberá três entradas e realizará a operação resultado da combinação das expressões. 
 
-%TODO: Falar das limitações do trabalho 
-Como limitações do software, destaca-se que atualmente é difícil criar modelos muito complexos porque dependendo da quantidade de nós e ligações do modelo, fica difícil entender como cada parte do modelo é combinada para formar as EDOs, sendo uma limitação da representação visual.  
+Outra limitação do trabalho foi a não realização de uma avaliação de usabilidade do software. A ideia era avaliar aspectos da interface gráfica e da usabilidade no geral, porém não houve tempo hábil. Planeja-se, futuramente, realizar essa análise de usabilidade. 
 
-%Solução: Uma ideia é oferecer a possibilidade de agrupar um grupo de nós e as ligações entre eles em um submodelo. Os submodelos seriam combinados para formar o modelo completo. 
+O software atual pode ser estendido de várias formas diferentes como, por exemplo: 1) Com a geração de código em Rust e simulação das EDOs em "tempo real" com a plotagem dos resultados à medida que a resolução do modelo avança no tempo; 2) A introdução da simulação de modelos estocásticos com o algoritmo de Gillespie utilizando o mesmo editor baseado em nós e criando um novo template para geração de código do modelo estocástico; 3) Adição de suporte ao ajuste de parâmetros fornecendo recursos para carregamento dos dados experimentais, escolha das variáveis e parâmetros a serem ajustados e plotagem dos gráficos e dos dados experimentais após a execução do ajuste; 4) Adição de métodos e plots para a análise de sensibilidade de parâmetros; 5) Criação e implementação de uma representação baseada em grafos para uma visualização mais alto nível das interações do modelo. O foco será na visualização de modelos do sistema imune; 6) Adição de novos nós como, por exemplo, nós para difusão, quimiotaxia, com o objetivo de dar suporte a criação de modelos de Equações Diferenciais Parciais (EDPs), e a implementação da geração de código para as EDPs utilizando o método de diferenças finitas; 7) Desenvolvimento de uma versão Web do software para que ele possa ser utilizado por um número maior de pessoas. A criação do modelo será feita através do navegador Web e todo o processamento incluindo a geração de código, execução, geração dos resultados e imagens será feita no servidor. As tecnologias usadas pelo projeto até então são todas compatíveis com a Web. A linguagem Rust, baseada na LLVM, possui suporte nativo à WebAssembly.
 
 % % ---
 % % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
