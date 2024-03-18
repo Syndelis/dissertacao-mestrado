@@ -948,7 +948,7 @@ Com o objetivo de desacoplar a aplicação gráfica das conversões realizadas, 
 
 Esta abordagem facilita o processo de testagem do módulo. Criou-se vários testes, unitários e de integração, partindo de representações válidas. Como as funções públicas do módulo só possibilitam a criação de representações válidas, então é garantido que a GUI sempre gere modelos que são armazenáveis em disco, simuláveis e exportáveis.
 
-A figura \ref{fig:gui-ri} ilustra os fluxos de simulação e exportação, e como os módulos de GUI e RI interagem durante este processo.
+A Figura \ref{fig:gui-ri} ilustra os fluxos de simulação e exportação, e como os módulos da GUI e RI interagem durante este processo.
 
 \begin{figure}[h]
     \centering
@@ -994,9 +994,9 @@ Com o intuito de realizar este processo automaticamente, uma esteira de lançame
 
 \subsection{Empacotamento ZIP para sistema Windows}
 
-Ao contrário dos sistemas Linux, não existe um formato de arquivos que contenha múltiplos arquivos internamente e seja executável ao mesmo tempo no sistema Windows. Por este motivo, softwares para o SO são comumente distriubídos como pastas compactadas (ZIP) ou instaladores que populam uma pasta com os arquivos necessários.
+Ao contrário dos sistemas Linux, não existe um formato de arquivos que contenha múltiplos arquivos internamente e seja executável ao mesmo tempo no sistema Windows. Por este motivo, softwares para o SO Windows são comumente distribuídos como pastas compactadas (ZIP) ou instaladores que populam uma pasta com os arquivos necessários.
 
-Portanto, o software é distribuído para Windows por meio de uma pasta compactada, similarmente incluindo as dependências dinâmicas e um interpretador de Python portátil, que inclui o \texttt{scipy}.
+Portanto, o software é distribuído para Windows por meio de uma pasta compactada incluindo as dependências dinâmicas e um interpretador de Python portátil, que inclui o \texttt{scipy}.
 
 \chapter{Aplicação do software na modelagem computacional}
 \label{chap:resultados}
@@ -1023,7 +1023,7 @@ O modelo predador-presa foi descrito na Seção \ref{sec:edos}. A Figura \ref{fi
 
 \section{Transmissão de doenças}
 %modelo SIRS 
-Existem alguns modelos de EDOs clássicos para modelar a transmissão de um vírus na população como, por exemplo, modelo SIR, SIRS e SIS. Para mostrar a aplicação do software, foi construído o modelo SIRS que é composto pelo conjunto de EDOs em \ref{eq:sirs}: 
+Existem alguns modelos de EDOs clássicos para modelar a transmissão de um vírus na população como, por exemplo, os modelos SIR, SIRS e SIS. Para mostrar a aplicação do software, foi construído o modelo SIRS que é composto pelo sistema de EDOs dado na Equação \ref{eq:sirs}. 
 
 \begin{equation}\label{eq:sirs}
     \begin{array}{lr}
@@ -1037,9 +1037,9 @@ Existem alguns modelos de EDOs clássicos para modelar a transmissão de um vír
     \end{array}
 \end{equation}
 
-O modelo divide a população em indivíduos suscetíveis ($S$) à doença, infectados ($I$) e recuperados ($R$). Uma parte da população de suscetíveis pode se infectar (termo $\beta.S.I$). Os indivíduos infectados podem se recuperar com uma determinada probabilidade (termo $\alpha.I$) e os indivíduos recuperados podem voltar a ser suscetíveis à doença (termo $\gamma.R$).  
+O modelo SIRS divide a população em indivíduos suscetíveis ($S$) à doença, infectados ($I$) e recuperados ($R$). Uma parte da população de suscetíveis pode se infectar (termo $\beta.S.I$). Os indivíduos infectados podem se recuperar com uma determinada probabilidade (termo $\alpha.I$) e os indivíduos recuperados podem voltar a ser suscetíveis à doença (termo $\gamma.R$).  
 
-Na Figura \ref{fig:sirs}, podemos ver o modelo SIRS no software e na Figura \ref{fig:resultado-sirs} um exemplo de resultado da simulação do modelo. 
+Na Figura \ref{fig:sirs}, podemos ver o modelo SIRS construído no software e, na Figura \ref{fig:resultado-sirs}, um exemplo de resultado da simulação do modelo. 
 
 \begin{figure}[h]
     \centering
@@ -1083,7 +1083,7 @@ O sistema de EDOs que modela essa reação é dado na Equação \ref{eq:reacao}.
     \end{array}
 \end{equation}
 
-A Figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática construído no software e a figura \ref{fig:resultado-reacaoenzimatica} mostra um exemplo de resultado do modelo.  
+A Figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática construído no software e a Figura \ref{fig:resultado-reacaoenzimatica} mostra um exemplo de resultado do modelo.  
 
 \begin{figure}[h]
     \centering
@@ -1103,7 +1103,7 @@ A Figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática cons
 
 O modelo apresentado nesta seção modela a resposta imune das células T a uma infecção viral. O modelo é descrito a seguir.  
 
-As células epiteliais saudáveis ($E$) são infectadas pelo vírus ($V$) tornando-se infectadas ($I$) e também podem morrer devido ao dano ($D$) causado pelo resposta imune, isto é, devido ao dano mediado pelas células T efetoras ($T$). As células infectadas são eliminadas pelas células T ou podem morrer devido a ação dos vírus intracelulares. Com a morte da célula infectada, são liberados novos vírus no tecido. Os vírus são eliminados pela ação dos anticorpos e outras células de defesa que não são explicitamente representadas no modelo. As células T migram para o tecido devido a ação das citocinas pró-inflamatórias ($C$). Esse processo foi simplificado porque não considera-se, no modelo atual, as células T \textit{helper} e outros níveis de ativação das células T de forma explícita. As citocinas pró-inflamatórias são produzidas pelas células T na presença de marcadores inflamatórios da infecção.   
+As células epiteliais saudáveis ($E$) são infectadas pelo vírus ($V$) tornando-se infectadas ($I$). As células T efetoras também causam dano ao tecido e esse dano é quantificado através de um marcado de inflamação chamado $D$. As células infectadas são eliminadas pelas células T ou podem morrer devido a ação dos vírus intracelulares. Quando a célula infectada morre devido a ação dos vírus, são liberados novos vírus no tecido. Os vírus são eliminados pela ação dos anticorpos e outras células de defesa que não são explicitamente representadas no modelo. As células T migram para o tecido devido a ação das citocinas pró-inflamatórias ($C$). Esse processo foi simplificado porque não considera-se, no modelo atual, as células T \textit{helper} e outros níveis de ativação das células T de forma explícita. As citocinas pró-inflamatórias são produzidas pelas células T na presença de marcadores inflamatórios da infecção.   
 
 \begin{equation}
     \begin{array}{lr}
@@ -1144,12 +1144,12 @@ Um exemplo de resultado do modelo, é apresentado nas Figuras \ref{fig:resultado
     \label{fig:resultado1-infeccaoviral}
 \end{figure}
 
-%\begin{figure}[h]
-%    \centering
-%    \includegraphics[width=\textwidth]{imgs/modelos/resultado2-infeccaoviral.png} 
-%    \caption{Exemplo de resultado do modelo da infecção viral.}
-%    \label{fig:resultado2-infeccaoviral}
-%\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/modelos/resultado2-infeccaoviral.png} 
+    \caption{Exemplo de resultado do modelo da infecção viral mostrando a variável $E$.}
+    \label{fig:resultado2-infeccaoviral}
+\end{figure}
 
 %-----------------------------//----------------------------
 \chapter{Conclusão e trabalhos futuros}
