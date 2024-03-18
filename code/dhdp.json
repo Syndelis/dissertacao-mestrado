@@ -26,19 +26,19 @@
         "x": 165.0,
         "y": 328.0
       },
-      "Predação": {
+      "Predacao": {
         "x": 497.0,
         "y": 329.0
       },
-      "Predação/Predador": {
+      "Predacao/Predador": {
         "x": 743.1011962890625,
         "y": 462.2484130859375
       },
-      "Predação/Presa": {
+      "Predacao/Presa": {
         "x": 750.0,
         "y": 239.0
       },
-      "Reprodução": {
+      "Reproducao": {
         "x": 547.0,
         "y": -40.0
       },
@@ -70,11 +70,11 @@
   },
   "arguments": [
     {
-      "name": "Predação/Predador",
+      "name": "Predacao/Predador",
       "operation": "*",
       "composition": [
         {
-          "name": "Predação",
+          "name": "Predacao",
           "contribution": "+"
         },
         {
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "name": "Predação",
+      "name": "Predacao",
       "operation": "*",
       "composition": [
         {
@@ -102,7 +102,7 @@
       "operation": "-",
       "composition": [
         {
-          "name": "Predação/Predador",
+          "name": "Predacao/Predador",
           "contribution": "+"
         },
         {
@@ -138,7 +138,7 @@
       ]
     },
     {
-      "name": "Reprodução",
+      "name": "Reproducao",
       "operation": "*",
       "composition": [
         {
@@ -160,7 +160,7 @@
       "value": 0.015
     },
     {
-      "name": "Predação/Presa",
+      "name": "Predacao/Presa",
       "operation": "*",
       "composition": [
         {
@@ -168,7 +168,7 @@
           "contribution": "+"
         },
         {
-          "name": "Predação",
+          "name": "Predacao",
           "contribution": "+"
         }
       ]
@@ -178,11 +178,11 @@
       "operation": "-",
       "composition": [
         {
-          "name": "Reprodução",
+          "name": "Reproducao",
           "contribution": "+"
         },
         {
-          "name": "Predação/Presa",
+          "name": "Predacao/Presa",
           "contribution": "+"
         }
       ]
