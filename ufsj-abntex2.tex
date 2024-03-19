@@ -598,7 +598,7 @@ Considerando o uso do software na prática e uma visão geral do chamado ciclo d
 
 O aprendizado, em sala de aula, pode ser conduzido, por exemplo, através de um processo incremental que começa investigando e trabalhando com modelos mais simples até se chegar em modelos mais complexos. Algumas vantagens dessa abordagem incluem:  1) a apresentação de determinados conceitos e técnicas é facilitada em modelos mais simples; 2) em muitos casos reais, modelos complexos utilizam certas expressões, equações e “estratégias” na modelagem que estão presentes em modelos mais simples. Então, muitas vezes, o aluno conseguirá entender melhor um modelo mais complexo entendendo que determinadas partes do mesmo já apareceram em modelos mais simples previamente estudados. 
 
-Uma possível abordagem de ensino seria o professor trabalhar com algum problema escolhido por ele para apresentar e discutir conceitos e/ou técnicas de modelagem de forma semelhante à metodologia \textit{Problem Based Learning} (PBL) \ref{Akcay2009}. O seguinte conjunto de passos é sugerido para o processo de estudo, modelagem e simulação computacional: 
+Uma possível abordagem de ensino seria o professor trabalhar com algum problema escolhido por ele para apresentar e discutir conceitos e/ou técnicas de modelagem de forma semelhante à metodologia \textit{Problem Based Learning} (PBL) \cite{Akcay2009}. O seguinte conjunto de passos é sugerido para o processo de estudo, modelagem e simulação computacional: 
 
 \begin{enumerate}
  \item Descrição do contexto e do problema a ser modelado;
@@ -773,7 +773,7 @@ Na GUI, os nós de expressão apresentam a expressão que estão construindo, pa
 
 Na imagem \ref{fig:expr-tree} são apresentadas as árvores de expressões de todos os nós presentes em \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
 
-Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da estensibilidade serão apresentados em \ref{sec:estensibilidade}, enquanto o futuro será discutido em \ref{sec:futuro}.
+Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da estensibilidade serão apresentados em \ref{sec:estensibilidade}, enquanto os trabalhos futuros serão discutidos no Capítulo \ref{chap:conclusao}.
 
 \begin{figure}[h]
     \centering
@@ -790,7 +790,7 @@ Com a finalidade de possibilitar a escrita e leitura em disco dos modelos desenh
 Apesar de ser usada como forma de armazenar informações do modelo, a RI possui um formato projetado para ser humanamente legível. Esta decisão foi tomada para possibilitar a recuperação do modelo construído sem a necessidade de ter o software instalado. Assim, caso o software caia em desuso, se torne impossível de instalar por algum motivo (um sistema operacional diferente, por exemplo) ou simplesmente tenha mudanças que quebrem compatibilidade implementadas, não significa que o usuário tenha perdido seu 
 modelo.
 
-Em \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa [\ref{ri:predador-presa}] que implementa a equação da presa. Note que é possível reconstruir a equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode ser construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
+Em \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa (RI completa no Apêndice \ref{ri:predador-presa}) que implementa a equação da presa. Note que é possível reconstruir a equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode ser construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
 
 \begin{itemize}
     \item \texttt{"Predacao/Presa"}: \((+a)*(+H)*(+P)\), que simplificando se resume a \(a*H*P\);
@@ -852,11 +852,11 @@ O código gerado, além de ser aprensentado como opção de exportação do mode
 
 É improvável que seja possível construir um software que atenda todas as necessidades de um público-alvo, e o software desenvolvido neste trabalho não é exceção; seria difícil determinar quais são as funcionalidades mínimas necessárias para construir qualquer sistema de EDOs. Visando, então, maximizar os casos de uso aos quais este software atende, foi desenvolvido um sistema de extensões de usuário. 
 
-Além de prover os nós padrões [\ref{tab:tipos-de-nos}] para a construção das EDOs exemplificadas, o software permite que o usuário desenvolva e utilize extensões para realizar operações que não estão prontamente disponíveis pela interface. Estas extensões são desenvolvidas em Python e incluem funções que serão interpretadas como nós na interface.
+Além de prover alguns nós padrões para a construção das EDOs, o software permite que o usuário desenvolva e utilize extensões para realizar operações que não estão prontamente disponíveis pela interface. Estas extensões são desenvolvidas em Python e incluem funções que serão interpretadas como nós na interface.
 
 As funções decoradas por \texttt{@node} num arquivo de extensões serão interpretadas como nós. Seus nomes são usados em sua identificação na interface, e a quantidade de parâmetros que recebem determinam a quantidade de pinos de entradas. Por padrão, estes nós `customizados' construirão expressões mais próximas da representação destas funções em linguagens de programação (como \texttt{funcao(param1, param2, ...)}), porém este comportamento pode ser sobrescrito com o parâmetro \texttt{format} no decorador.
 
-Na listagem \ref{code:ext-sin-pow}, é apresentado um exemplo de arquivo de extensões contendo um nó para calcular o seno de um parâmetro e um nó que eleva um parâmetro ao valor de outro. Este arquivo pode ser importado na interface, que possibilitará o uso dos nós como na figura \ref{fig:ext-sin-pow}.
+Na listagem \ref{code:ext-sin-pow}, é apresentado um exemplo de arquivo de extensões contendo um nó para calcular o seno de um parâmetro e um nó que eleva um parâmetro ao valor de outro. Este arquivo pode ser importado na interface, que possibilitará o uso dos nós como na Figura \ref{fig:ext-sin-pow}.
 
 \begin{lstlisting}[language=Python, label=code:ext-sin-pow, caption=Exemplo de definição dos nós de extensão seno e potência com código Python válido., float, xleftmargin=.35\textwidth]
 import math
@@ -897,35 +897,35 @@ O módulo da GUI, desenvolvido em Rust, é a aplicação principal, e é respons
 Entre seus submódulos principais, estão:
 
 \begin{itemize}
-    \item O submódulo da aplicação, que renderiza o editor de nós e gerencia o estado global. A aplicação também controla as janelas auxiliares que podem ser abertas, como as abas de plotagem de resultados, o gerenciador de extensões e o atribuidor de variáveis. A figura \ref{fig:uml-app} contém o diagrama de classes desse módulo;
+    \item O submódulo da aplicação, que renderiza o editor de nós e gerencia o estado global. A aplicação também controla as janelas auxiliares que podem ser abertas, como as abas de plotagem de resultados, o gerenciador de extensões e o atribuidor de variáveis. A igura \ref{fig:uml-app} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.5]{diagrams/img/app.png} 
         \caption{Diagrama de classes do módulo da aplicação.}
         \label{fig:uml-app}
     \end{figure}
-    \item O submódulo de nós, que define os possíveis tipos de nós. Estes possuem métodos para receber e enviar mensagens (notificando mudanças de estados, como alteração na árvore de expressão) e definir suas cores na interface. A figura \ref{fig:uml-nodes} contém o diagrama de classes desse módulo;
+    \item O submódulo de nós, que define os possíveis tipos de nós. Estes possuem métodos para receber e enviar mensagens (notificando mudanças de estados, como alteração na árvore de expressão) e definir suas cores na interface. A Figura \ref{fig:uml-nodes} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.3]{diagrams/img/nodes.png} 
         \caption{Diagrama de classes do módulo de nós.}
         \label{fig:uml-nodes}
     \end{figure}
-    \item O submódulo de extensão, que define as estruturas necessárias para analisar e carregar a definição de nós customizados em forma de funções de Python. A figura \ref{fig:uml-extensions} contém o diagrama de classes desse módulo;
+    \item O submódulo de extensão, que define as estruturas necessárias para analisar e carregar a definição de nós customizados em forma de funções de Python. A Figura \ref{fig:uml-extensions} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.45]{diagrams/img/extensions.png} 
         \caption{Diagrama de classes do módulo de extensões.}
         \label{fig:uml-extensions}
     \end{figure}
-    \item O submódulo de expressão, que define a árvore de expressões que representa o modelo e as estruturas que podem ser usadas durante a passagem de mensagens para comunicar mudanças parciais. A figura \ref{fig:uml-expr} contém o diagrama de classes desse módulo;
+    \item O submódulo de expressão, que define a árvore de expressões que representa o modelo e as estruturas que podem ser usadas durante a passagem de mensagens para comunicar mudanças parciais. A Figura \ref{fig:uml-expr} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.6]{diagrams/img/exprtree.png} 
         \caption{Diagrama de classes do módulo da árvor de expressões.}
         \label{fig:uml-expr}
     \end{figure}
-    \item O submódulo de mensagens, que implementa a estrutura utilizada pelos outros módulos durante a comunicação intra-aplicação. A figura \ref{fig:uml-msg} contém o diagrama de classes desse módulo.
+    \item O submódulo de mensagens, que implementa a estrutura utilizada pelos outros módulos durante a comunicação intra-aplicação. A Figura \ref{fig:uml-msg} contém o diagrama de classes desse módulo.
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.45]{diagrams/img/messages.png} 
@@ -968,7 +968,7 @@ Por outro lado, é impensável que desenhistas possuam as dependências necessá
 
 Como os objetivos do software desenvolvido neste trabalho são (1) auxiliar no ensino-aprendizagem de modelagem computacional e (2) auxiliar pesquisadores que não são necessarimante programadores, é imprescindível que o software seja facilmente instalado, preferencialmente sendo distribuído como um executável portátil.
 
-Contudo, como explicado no capítulo \ref{chap:software-para-modelagem}, o software depende externamente de um interpretador de Python e a biblioteca \texttt{scipy}. Seria necessário que o usuário instalasse estas dependências por conta própria, o que poderia impactar negativamente a sua facilidade de uso. Ademais, instalações manuais de versões incorretas das dependências poderiam afetar o funcionamento do software, o que causaria confusão para o usuário final.
+Contudo, como explicado no Capítulo \ref{chap:software-para-modelagem}, o software depende externamente de um interpretador de Python e a biblioteca \texttt{scipy}. Seria necessário que o usuário instalasse estas dependências por conta própria, o que poderia impactar negativamente a sua facilidade de uso. Ademais, instalações manuais de versões incorretas das dependências poderiam afetar o funcionamento do software, o que causaria confusão para o usuário final.
 
 Com isto em mente, foi decidido distribuir o software em conjunto com todas as dependências ``vendorizáveis'', isto é, dependências que podem ser distribuídas em versões específicas e possivelmente diferentes das encontradas no sistema operacional.
 
@@ -978,7 +978,7 @@ Sistemas operacionais baseados em Linux são notavelmente diferentes quanto a se
 
 Em contraste com esta abordagem, um formato denominado AppImage\footnote{\href{https://appimage.org/}{AppImage Website}}, inicialmente lançado em 2004, foi criado com o propósito de possibilitar que um pacote seja distribuído para múltiplos sistemas operacionais baseados em Linux sem requerer alterações.
 
-Um arquivo seguindo a especificação do formato inclui múltiplos arquivos armazenados numa estrutura de diretórios similar àquela dos sistemas Linux. Quando executada, a AppImage será descompactada em RAM como um sistema de arquivos virtual, e um arquivo específico será executado como ponto de entrada do software. A figura \ref{fig:appimage} apresenta a hierarquia de diretórios presente na AppImage do software desenvolvido.
+Um arquivo seguindo a especificação do formato inclui múltiplos arquivos armazenados numa estrutura de diretórios similar àquela dos sistemas Linux. Quando executada, a AppImage será descompactada em RAM como um sistema de arquivos virtual, e um arquivo específico será executado como ponto de entrada do software. A Figura \ref{fig:appimage} apresenta a hierarquia de diretórios presente na AppImage do software desenvolvido.
 
 \begin{figure}[h]
     \centering
