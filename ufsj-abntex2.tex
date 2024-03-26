@@ -386,7 +386,7 @@
 
 \chapter{Introdução}
 
-Modelos matemáticos e computacionais estão se tornando cada vez mais relevantes no mundo atual. Diversas áreas do conhecimento se beneficiam da simulação computacional e é através das simulações computacionais que fenômenos em várias áreas estão sendo compreendidos em diferentes escalas espaciais e temporais. Sem o computador não seria possível, por exemplo, simular as reações entre milhões de células \cite{RuyCovidFrontiers}. 
+Modelos matemáticos e computacionais estão se tornando cada vez mais relevantes no mundo atual. Diversas áreas do conhecimento se beneficiam da simulação computacional e é através das simulações computacionais que fenômenos em várias áreas estão sendo compreendidos em diferentes escalas espaciais e temporais \cite{MARTINS201018}. 
 
 As simulações computacionais podem auxiliar experimentos \textit{in vitro} e \textit{in vivo} na explicação de diversos fenômenos. As simulações permitem testar vários cenários diferentes, o que poderia ser muito custoso ou até inviável de ser testado \textit{in vitro} e \textit{in vivo}. Além disso, elas podem fornecer previsões testando hipóteses que ainda não foram investigadas \ref{Walpole2013MultiscaleCM, MARTINS201018}. 
 
@@ -426,12 +426,7 @@ Neste Capítulo, são apresentados os principais conceitos que formam a base te�
 
 Uma Equação Diferencial Ordinária (EDO) é um tipo de modelo matemático que descreve como as populações modeladas evoluem ao longo do tempo. Os modelos de EDOs são bastante difundidos e utilizados em diversas áreas como, por exemplo, na medicina e na neurociência \cite{ADOMIAN1995107}, no estudo do Câncer \cite{spencer2004ordinary, talkington2018ordinary}, no estudo da resposta imune à infecções virais \cite{reis2021validated}, no estudo da eletrofisiologia cardíaca \cite{VIGMOND20083, bucelli2022mathematical}, entre outros exemplos. 
 
-%A seguir, são apresentados alguns modelos de EDOs clássicos. Esses modelos servem de base para vários outros modelos e possuem características interessantes que são utilizadas em vários modelos.   
-A seguir, é apresentado um exemplo de modelo clássico da literatura. 
-
-%\subsection{Modelo predador-presa (Modelo Lotka-Volterra)}
-
-O modelo predador-presa, também conhecido como modelo Lotka-Volterra, modela a dinâmica da interação entre uma presa e um predador. O modelo é descrito pelas seguintes EDOs: 
+O modelo predador-presa, também conhecido como Lotka-Volterra, é um exemplo de modelo clássico da literatura que modela a dinâmica da interação entre uma presa e um predador. O modelo é descrito pelas seguintes EDOs: 
 
 \begin{equation}\label{eq:predadorpresa}
     \begin{array}{lr}
@@ -510,7 +505,7 @@ Existem diversos motivos pelos os quais a programação visual se encontra em t�
 
 A fase de geração de código geralmente é a última fase da compilação. Na maioria dos compiladores, o gerador de código recebe como entrada uma ou mais representações intermediárias do código/texto de entrada e retorna como saída o código/texto na linguagem alvo \cite{dragonBook}. 
 
-Como este trabalho tem o objetivo de possibilitar a geração de código em múltiplas linguagens alvo diferentes, surgiu a necessidade de abstrair mais esta fase, de forma que a implementação de linguagens alvo adicionais seja mais simples dado que ao menos uma já foi implementada.
+Como este trabalho tem o objetivo de possibilitar a geração de código em múltiplas linguagens alvo diferentes, surgiu a necessidade de abstrair mais esta fase, de forma que a implementação de linguagens alvo adicionais seja mais simples considerando que ao menos uma já foi implementada.
 
 Para tal abstração, seguiu-se um padrão utilizado por diversos compiladores diferentes, que consiste na separação do \textit{back-end} (que trabalha com a linguagem alvo) do \textit{front-end} (que trabalha com a linguagem fonte) através da utilização de uma ou mais representações intermediárias. 
 
@@ -532,7 +527,11 @@ Algumas RIs usadas em compiladores incluem:
     \item Código de Três Endereços. 
 \end{itemize}
 
-As Árvores de Sintaxe Abstratas são muito usadas na representação do código fonte de entrada, representando comandos e expressões em cada escopo. As Árvores de Sintaxe Abstratas geralmente são utilizadas para realizar diversas verificações semânticas no código e elas podem ser a entrada para o algoritmo que gera uma outra RI mais próxima da linguagem alvo como, por exemplo, o Código de Três Endereços. O Código de Três Endereços é uma representação que está próxima da linguagem Assembly e pode ser usada como base para várias otimizações independentes de máquina. Geralmente, o Código de Três Endereços otimizado é a entrada recebida pelo gerador de código Assembly. O Código de Três Endereços também pode ser utilizado pelo algoritmo de alocação de registradores como uma abstração inicial para a escolha e atribuição de registradores. Os Grafos Acíclicos Dirigidos são muito usados para realizar algumas otimizações no código como, por exemplo, verificação de variável morta, propagação de constantes e cópias, entre outras otimizações. 
+As Árvores de Sintaxe Abstratas são muito usadas na representação do código fonte de entrada, representando comandos e expressões em cada escopo. As Árvores de Sintaxe Abstratas geralmente são utilizadas para realizar diversas verificações semânticas no código e elas podem ser a entrada para o algoritmo que gera uma outra RI mais próxima da linguagem alvo como, por exemplo, o Código de Três Endereços. 
+
+O Código de Três Endereços é uma representação que está próxima da linguagem Assembly e pode ser usada como base para várias otimizações independentes de máquina. Geralmente, o Código de Três Endereços otimizado é a entrada recebida pelo gerador de código Assembly. O Código de Três Endereços também pode ser utilizado pelo algoritmo de alocação de registradores como uma abstração inicial para a escolha e atribuição de registradores. 
+
+Os Grafos Acíclicos Dirigidos são muito usados para realizar algumas otimizações no código como, por exemplo, verificação de variável morta, propagação de constantes e cópias, entre outras otimizações. 
 
 Como uma alternativa mais abstrata ao Assembly (que é dependente da arquitetura alvo), existe a linguagem intermediária da LLVM (LLVM \textit{Intermediate Representation}), que pode ser transpilada para o Assembly da máquina alvo. A LLVM apresenta uma infraestrutura para facilitar o desenvolvimento de compiladores abstraindo toda a parte do backend. O desenvolvedor não precisa se preocupar em conhecer e programar para as arquiteturas alvo com as quais quer trabalhar porque, considerando que a linguagem criada possa ser transpilada na representação intermediária da LLVM (LLVM IR), ela pode ser compilada em qualquer arquitetura suportada pela infraestrutura que incluem, mas não estão limitadas a, x86, AMD64, ARM, ARM64, WebAssembly\footnote{\href{https://webassembly.org/}{WebAssembly Website}} e RISC-V.
 
@@ -1007,7 +1006,7 @@ Portanto, o software é distribuído para Windows por meio de uma pasta compacta
 
 \textbf{TODO: Explicar porque o software não foi avaliado na prática como uma ferramenta de ensino-aprendizagem de modelagem computacional.}
 
-\textbf{Nas seções a seguir são apresentados alguns exemplos de modelos construídos e simulados com o software ODE-Designer. }
+\textbf{Nas seções a seguir, são apresentados alguns exemplos de modelos construídos e simulados com o software ODE-Designer. }
 
 \section{Predador-presa}
 
