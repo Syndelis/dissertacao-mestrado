@@ -386,9 +386,9 @@
 
 \chapter{Introdução}
 
-Modelos matemáticos e computacionais estão se tornando cada vez mais relevantes no mundo atual. Diversas áreas do conhecimento se beneficiam da simulação computacional e é através das simulações computacionais que fenômenos em várias áreas estão sendo compreendidos em diferentes escalas espaciais e temporais. Sem o computador não seria possível, por exemplo, simular as reações entre milhões de células. 
+Modelos matemáticos e computacionais estão se tornando cada vez mais relevantes no mundo atual. Diversas áreas do conhecimento se beneficiam da simulação computacional e é através das simulações computacionais que fenômenos em várias áreas estão sendo compreendidos em diferentes escalas espaciais e temporais. Sem o computador não seria possível, por exemplo, simular as reações entre milhões de células \cite{RuyCovidFrontiers}. 
 
-As simulações computacionais podem auxiliar experimentos \textit{in vitro} e \textit{in vivo} na explicação de diversos fenômenos. As simulações permitem testar vários cenários diferentes, o que poderia ser muito custoso ou até inviável de ser testado \textit{in vitro} e \textit{in vivo}. Além disso, elas podem fornecer previsões testando hipóteses que ainda não foram investigadas. 
+As simulações computacionais podem auxiliar experimentos \textit{in vitro} e \textit{in vivo} na explicação de diversos fenômenos. As simulações permitem testar vários cenários diferentes, o que poderia ser muito custoso ou até inviável de ser testado \textit{in vitro} e \textit{in vivo}. Além disso, elas podem fornecer previsões testando hipóteses que ainda não foram investigadas \ref{Walpole2013MultiscaleCM, MARTINS201018}. 
 
 O desenvolvimento de modelos computacionais requer um conjunto de etapas importantes que começam com a definição de seu objetivo e terminam com sua validação, passando por múltiplas iterações e melhorias. Dentre estas etapas, uma das mais desafiadoras é a implementação do modelo. Essa etapa requer o conhecimento de métodos numéricos, programação, estruturas de dados, bibliotecas, entre outros recursos. Um erro na implementação pode comprometer todo o trabalho. Nesse contexto, foi desenvolvido um software para auxiliar as etapas de implementação e simulação de modelos de 
 Equações Diferenciais Ordinárias (EDOs).
@@ -398,7 +398,7 @@ O presente trabalho pretende responder à seguinte questão científica:
     \item É possível que ferramentas de software automatizem etapas do processo de modelagem computacional?  
 \end{itemize}
 
-Pretende-se mostrar que a resposta da questão anterior é sim, através da apresentação de um software que foi desenvolvido para facilitar as etapas de construção, implementação e simulação de um modelo de EDOs. 
+Pretende-se investigar a resposta da questão anterior através da apresentação de um software que foi desenvolvido para facilitar as etapas de construção, implementação e simulação de um modelo de EDOs. 
 
 O principal objetivo deste trabalho foi desenvolver um software para facilitar a criação e simulação de modelos computacionais, dimiuindo a barreira de entrada na área de Modelagem Computacional e permitindo que menos tempo seja investido na implementação do modelo. A partir do ``desenho'' de um modelo, o software é capaz de gerar o código que implementa o modelo, simulá-lo e até exportar gráficos com os resultados.
 
@@ -412,13 +412,15 @@ Entre as contribuições deste trabalho, destacam-se as seguintes:
 
 Uma das aplicações do software que foi desenvolvido é no processo de ensino-aprendizagem de modelagem computacional. Os usuários poderão aprender sobre modelagem computacional por meio de um processo de aprendizado ativo com a construção e simulação dos modelos na prática. Na Seção \ref{sec:ensino-aprendizagem}, será discutido como o software pode ser utilizado junto com uma metodologia ativa de ensino como uma possível abordagem de ensino-aprendizagem de modelagem computacional.  
 
-O restante do texto deste trabalho está organizado da seguinte forma: no Capítulo \ref{chap:referencial} são apresentados alguns conceitos teóricos para um melhor entendimento do trabalho. No Capítulo \ref{chap:relacionados}, são descritos os trabalhos relacionados. O software desenvolvido é descrito no Capítulo \ref{chap:metodologia}. No Capítulo \ref{chap:resultados}, são apresentadas algumas aplicações do software na modelagem e, por fim, a conclusão e os trabalhos futuros são descritos no Capítulo \ref{chap:conclusao}. 
+\textbf{O software desenvolvido chama-se ODE-Designer}.
+
+O restante do texto deste trabalho está organizado da seguinte forma: no Capítulo \ref{chap:referencial}, são apresentados alguns conceitos teóricos para um melhor entendimento do trabalho. No Capítulo \ref{chap:relacionados}, são descritos os trabalhos relacionados. O software desenvolvido é descrito no Capítulo \ref{chap:metodologia}. No Capítulo \ref{chap:resultados}, são apresentadas algumas aplicações do software na modelagem e, por fim, a conclusão e os trabalhos futuros são apresentados no Capítulo \ref{chap:conclusao}. 
 
 %-------------------//-----------------------------
 \chapter{Referencial Teórico}
 \label{chap:referencial}
 
-Neste capítulo, são apresentados os principais conceitos que formam a base teórica do trabalho. 
+Neste Capítulo, são apresentados os principais conceitos que formam a base teórica do trabalho. 
 
 \section{Equações Diferenciais Ordinárias}\label{sec:edos}
 
@@ -577,7 +579,7 @@ O \textit{template} acima utiliza os marcadores definidos pela biblioteca Inja\f
 
 \section{Ensino-aprendizagem de Modelagem Computacional}\label{sec:ensino-aprendizagem} 
 
-Os modelos são abstrações do mundo real. Com a evolução dos computadores e o seu uso massivo, os modelos computacionais têm contribuído significativamente para o avanço do conhecimento em diversas áreas. Eles nos ajudam a compreender os fenômenos de interesse permitindo “rastrear” e entender as mudanças que estão ocorrendo em um sistema complexo e visualizar, por exemplo, o efeito de uma pequena mudança no restante do sistema. 
+Os modelos são abstrações do mundo real. Com a evolução dos computadores e o seu uso massivo, os modelos computacionais têm contribuído significativamente para o avanço do conhecimento em diversas áreas. Eles nos ajudam a compreender os fenômenos de interesse permitindo “rastrear” e entender as mudanças que estão ocorrendo em um sistema complexo e visualizar, por exemplo, o efeito de uma pequena mudança no restante do sistema \cite{Eleonora2022}. 
 
 Simulações computacionais são ferramentas fundamentais não só para a pesquisa científica, mas também para a educação. Elas são frequentemente usadas como laboratórios virtuais para promover a compreensão dos alunos sobre os conceitos teóricos que estão na base dos sistemas simulados \cite{Eleonora2022}. 
 
@@ -585,9 +587,9 @@ Após a Segunda Guerra Mundial, o leque de campos disciplinares em que as simula
 
 O uso de modelos computacionais abre novas maneiras para os alunos aprenderem sobre diferentes disciplinas. Os alunos podem aprender através de um processo iterativo de construção do modelo, simulação, modificação do modelo para simulação novamente, explorando todas as características do modelo em si \cite{Eleonora2022}. Plataformas como, por exemplo, a Netlogo \cite{Netlogo2015} permitem este tipo de aprendizagem iterativa e interativa.
 
-Um dos objetivos do software que foi desenvolvido neste trabalho é auxiliar o aprendizado de conceitos importantes nas áreas de modelagem matemática e computacional e ajudar o aluno a desenvolver a habilidade de modelar problemas através da prática de construção e simulação de modelos. O uso combinado do software com alguma metodologia ativa de ensino permitirá aos alunos aprender na prática como construir modelos para diferentes fenômenos de interesse e entender melhor os fenômenos estudados através das simulações computacionais realizadas de forma interativa através da interface gráfica do software. 
+Um dos objetivos do software que foi desenvolvido neste trabalho é auxiliar o aprendizado de conceitos importantes nas áreas de modelagem matemática e computacional e ajudar o aluno a desenvolver a habilidade de modelar problemas através da prática de construção e simulação de modelos. Acredita-se que o uso combinado do software com alguma metodologia ativa de ensino permitirá aos alunos aprender na prática como construir modelos para diferentes fenômenos de interesse e entender melhor os fenômenos estudados através das simulações computacionais realizadas de forma interativa através da interface gráfica do software. 
 
-Considerando o uso do software na prática e uma visão geral do chamado ciclo da modelagem apresentado na Figura \ref{fig:ciclo-modelagem}, destaca-se que o software auxilia o passo 2 e automatiza os passos 3 e 4 facilitando o processo de modelagem por estudantes e pesquisadores. 
+Considerando-se o uso do software na prática e uma visão geral do chamado ciclo da modelagem apresentado na Figura \ref{fig:ciclo-modelagem}, destaca-se que o software auxilia o passo 2 e automatiza os passos 3 e 4 facilitando o processo de modelagem por estudantes e pesquisadores. 
 
 \begin{figure}[h]
     \centering
@@ -610,7 +612,9 @@ Uma possível abordagem de ensino seria o professor trabalhar com algum problema
  \item Avaliação dos resultados do modelo com a ajuda do professor: caso o comportamento desejado ou esperado não seja obtido, voltar para um dos passos anteriores como, por exemplo, o passo 2 ou 3 e repetir o processo. 
 \end{enumerate}
 
-A ideia dessa abordagem é colocar o aluno como protagonista no processo de construção do próprio conhecimento porque o aluno estará ativamente realizando todas as etapas de modelagem do problema. O software irá facilitar a construção e simulação do modelo de forma que os alunos poderão gastar mais tempo formulando as hipóteses e equações do modelo, planejando os cenários a serem simulados e avaliando os resultados obtidos. 
+A ideia dessa abordagem é colocar o aluno como protagonista no processo de construção do próprio conhecimento porque o aluno estará ativamente realizando todas as etapas de modelagem do problema \cite{Akcay2009, Eleonora2022}. 
+
+\textbf{Com o uso do software, acredita-se que os alunos poderão gastar mais tempo formulando as hipóteses e equações do modelo, planejando os cenários a serem simulados e avaliando os resultados obtidos}. 
 
 %---------------------------------//-----------------------------
 \chapter{Trabalhos relacionados}
@@ -897,7 +901,7 @@ O módulo da GUI, desenvolvido em Rust, é a aplicação principal, e é respons
 Entre seus submódulos principais, estão:
 
 \begin{itemize}
-    \item O submódulo da aplicação, que renderiza o editor de nós e gerencia o estado global. A aplicação também controla as janelas auxiliares que podem ser abertas, como as abas de plotagem de resultados, o gerenciador de extensões e o atribuidor de variáveis. A igura \ref{fig:uml-app} contém o diagrama de classes desse módulo;
+    \item O submódulo da aplicação, que renderiza o editor de nós e gerencia o estado global. A aplicação também controla as janelas auxiliares que podem ser abertas, como as abas de plotagem de resultados, o gerenciador de extensões e o atribuidor de variáveis. A Figura \ref{fig:uml-app} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.5]{diagrams/img/app.png} 
@@ -1000,7 +1004,10 @@ Portanto, o software é distribuído para Windows por meio de uma pasta compacta
 
 \chapter{Aplicação do software na modelagem computacional}
 \label{chap:resultados}
-%Mostrar exemplos de modelos construídos e simulados com a ferramenta 
+
+\textbf{TODO: Explicar porque o software não foi avaliado na prática como uma ferramenta de ensino-aprendizagem de modelagem computacional.}
+
+\textbf{Nas seções a seguir são apresentados alguns exemplos de modelos construídos e simulados com o software ODE-Designer. }
 
 \section{Predador-presa}
 
@@ -1101,7 +1108,7 @@ A Figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática cons
     
 \section{Resposta imune a uma infecção viral}
 
-O modelo apresentado nesta seção modela a resposta imune das células T a uma infecção viral. O modelo é descrito a seguir.  
+O modelo apresentado nesta Seção modela a resposta imune das células T a uma infecção viral. O modelo é descrito a seguir.  
 
 As células epiteliais saudáveis ($E$) são infectadas pelo vírus ($V$) tornando-se infectadas ($I$). As células T efetoras também causam dano ao tecido e esse dano é quantificado através de um marcado de inflamação chamado $D$. As células infectadas são eliminadas pelas células T ou podem morrer devido a ação dos vírus intracelulares. Quando a célula infectada morre devido a ação dos vírus, são liberados novos vírus no tecido. Os vírus são eliminados pela ação dos anticorpos e outras células de defesa que não são explicitamente representadas no modelo. As células T migram para o tecido devido a ação das citocinas pró-inflamatórias ($C$). Esse processo foi simplificado porque não considera-se, no modelo atual, as células T \textit{helper} e outros níveis de ativação das células T de forma explícita. As citocinas pró-inflamatórias são produzidas pelas células T na presença de marcadores inflamatórios da infecção.   
 
@@ -1188,19 +1195,6 @@ O software atual pode ser estendido de várias formas diferentes como, por exemp
 % % ------------------------------------------------------Apêndices - Caso não existam, comentar-
 % % ---------------------------------------------------------------------------------------------
 \include{99_apendices}
-
-% \appendix {
-% 
-% \section{Código de Python gerado para o modelo Predador-Presa}
-% \label{code:predador-presa}
-% Código completo \attachfile{code/dhdp.py}
-% \lstinputlisting[language=Python]{code/dhdp.py}
-% 
-% \section{RI do modelo Predador-Presa}
-% \label{ri:predador-presa}
-% Arquivo JSON \attachfile{code/dhdp.json}
-% \lstinputlisting[language=json]{code/dhdp.json}
-% }
 
 % % ---------------------------------------------------------------------------------------------
 % % ---------------------------------------------------------Anexos - Caso não existam, comentar-
