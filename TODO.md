@@ -12,10 +12,10 @@
 
 - Baseados nas sugestões da banca:
     - [x] Adicionar nome do software antes de apresentar o quadro comparativo;
-    - Refs:
+    - [x] Refs:
         - [x] Usar as palavras "apêndice", "figura", "tabela" e "seção" antes de qualquer ref do tipo;
         - [x] Capítulo e Seção capitalizados (?);
-    - Substituir as palavras "imagem" por "figura";
+    - [x] Substituir as palavras "imagem" por "figura";
     - [x] Alterar "mostrar que a resposta da questão anterior é sim" por "investigar se a resposta é ..." no cap 1;
     - Em 2.4, alterar "o software irá ..." por "o software pretende ..." e exemplificar como o software pretende facilitar as coisas que diz;
     - Telas para cada software citado (?);
