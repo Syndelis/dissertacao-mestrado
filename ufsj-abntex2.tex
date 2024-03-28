@@ -400,14 +400,14 @@ O presente trabalho pretende responder à seguinte questão científica:
 
 Pretende-se investigar a resposta da questão anterior através da apresentação de um software que foi desenvolvido para facilitar as etapas de construção, implementação e simulação de um modelo de EDOs. 
 
-O principal objetivo deste trabalho foi desenvolver um software para facilitar a criação e simulação de modelos computacionais, dimiuindo a barreira de entrada na área de Modelagem Computacional e permitindo que menos tempo seja investido na implementação do modelo. A partir do ``desenho'' de um modelo, o software é capaz de gerar o código que implementa o modelo, simulá-lo e até exportar gráficos com os resultados.
+O principal objetivo deste trabalho foi desenvolver um software para facilitar a criação e simulação de modelos computacionais, diminuindo a barreira de entrada na área de Modelagem Computacional e permitindo que menos tempo seja investido na implementação do modelo. A partir do ``desenho'' de um modelo, o software é capaz de gerar o código que implementa o modelo, simulá-lo e até exportar gráficos com os resultados.
 
 Entre as contribuições deste trabalho, destacam-se as seguintes: 
 
 \begin{itemize}
     \item A criação de uma representação gráfica intuitiva para modelos matemáticos baseados em equações diferenciais; 
     \item O desenvolvimento de um gerador de código baseado em \textit{templates} para gerar os códigos que implementam os modelos; 
-    \item A construção de modelos de Equações Diferenciais Ordinárias (EDOs) sem a necessidade de iniciar a implementação computacional dos modelos do zero; 
+    \item A construção de modelos de Equações Diferenciais Ordinárias (EDOs) sem a necessidade de iniciar a implementação computacional dos modelos do zero.
 \end{itemize}
 
 Uma das aplicações do software que foi desenvolvido é no processo de ensino-aprendizagem de modelagem computacional. Os usuários poderão aprender sobre modelagem computacional por meio de um processo de aprendizado ativo com a construção e simulação dos modelos na prática. Na Seção \ref{sec:ensino-aprendizagem}, será discutido como o software pode ser utilizado junto com uma metodologia ativa de ensino como uma possível abordagem de ensino-aprendizagem de modelagem computacional.  
@@ -457,7 +457,7 @@ Neste modelo, temos os seguintes processos sendo modelados:
     \item Morte dos predadores (termo $m.P$). 
 \end{itemize}
 
-Termos de replicação, predação e morte como os vistos neste modelo são muitos comuns e são empregados na maioria dos modelos de EDOs. Esses termos são construídos com base no princípio da Lei de Ação de Massas (\textit{Mass Action Law}) que diz que "O número de interações entre duas partículas depende da concentração de ambas", isto é, esse princípio nos diz que quanto maior é a concentração de duas substâncias maior é a chance delas interagirem, partindo da suposição de que as substâncias em questão possuem a capacidade e "afinidade" para interagir.
+Termos de replicação, predação e morte como os vistos neste modelo são muitos comuns e são empregados na maioria dos modelos de EDOs. Esses termos são construídos com base no princípio da Lei de Ação de Massas (\textit{Mass Action Law}) que diz que "O número de interações entre duas partículas depende da concentração de ambas", isto é, esse princípio nos diz que quanto maior é a concentração de duas substâncias maior é a chance delas interagirem, partindo da suposição de que as substâncias em questão possuem a capacidade e ``afinidade'' para interagir.
 
 A Lei de Ação de Massas pode ser aplicada, a princípio, a qualquer sistema de qualquer área onde as seguintes hipóteses são consideradas: 
     \begin{itemize}
@@ -672,7 +672,7 @@ O InsightMaker \cite{insightmaker} é um \textit{software} de simulação basead
 
 \section{VCell}
 
-O software VCell (Virtual Cell) \cite{vcell,VCellref1} é uma plataforma para modelar sistemas biológicos celulares que é construída em torno de um banco de dados central e disseminada como um aplicativo da web. Os modelos são construídos com base em regras (\textit{Rule-based modelling}). VCell tem os seguintes tipos de simulações disponíveis: determinística (EDO compartimental ou EDP de reação-difusão-advecção com suporte para cinemática 2D), reações estocásticas (solvers de SSA), estocástica espacial (reação-difusão com Smoldyn), híbrida determinística/estocástica e simulações baseadas em agentes. O software permite simular vários processos metabólicos que ocorre dentro das células e através das membranas celulares. Com relação às membranas, há suporte para os seguintes processos: Eletrofisiologia, suporte para o fluxo da membrana e difusão lateral da membrana. 
+O software VCell (Virtual Cell) \cite{vcell,VCellref1} é uma plataforma para modelar sistemas biológicos celulares que é construída em torno de um banco de dados central e disseminada como um aplicativo da web. Os modelos são construídos com base em regras (\textit{Rule-based modelling}). VCell tem os seguintes tipos de simulações disponíveis: determinística (EDO compartimental ou EDP de reação-difusão-advecção com suporte para cinemática 2D), reações estocásticas (solvers de SSA), estocástica espacial (reação-difusão com Smoldyn), híbrida determinística/estocástica e simulações baseadas em agentes. O software permite simular vários processos metabólicos que ocorrem dentro das células e através das membranas celulares. Com relação às membranas, há suporte para os seguintes processos: Eletrofisiologia, suporte para o fluxo da membrana e difusão lateral da membrana. 
 
 Durante alguns testes com o VCell \cite{vcell,VCellref1}, sentiu-se a necessidade da leitura de um manual dado o fato de que o software apresenta muitas opções nas diferentes telas que são abertas para a construção de um modelo de EDOs. Durante os testes, não foi possível entender como o modelo de EDOs é construído e qual é o sistema de equações final que é usado na simulação. Acredita-se que isso tenha ocorrido devido ao software apresentar muitas telas com muitas opções diferentes o que torna difícil entender e navegar pelas diferentes opções. 
 
@@ -722,14 +722,14 @@ Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI [
 
 Dessa forma, o usuário pode criar e simular modelos sem a necessidade de iniciar a implementação computacional do zero e também sem a necessidade de ter conhecimentos dos métodos que são utilizados na implementação. Pelo contrário, o usuário terá acesso aos códigos gerados e poderá aprender com estes e utilizá-los, por exemplo, como base para desenvolver o seu próprio código. 
 
-A simulação das EDOs, tanto pela GUI quanto pelo código de Python exportado, é feita utilizando métodos especializados da biblioteca ciêntífica \texttt{scipy} \cite{scipy}. % TODO: Devemos entrar em detalhes de como isso é feito? Se sim, precisamos de uma explicação do método RK45
+A simulação das EDOs, tanto pela GUI quanto pelo código de Python exportado, é feita utilizando métodos especializados da biblioteca científica \texttt{scipy} \cite{scipy}. % TODO: Devemos entrar em detalhes de como isso é feito? Se sim, precisamos de uma explicação do método RK45
 
 \section{Uma representação visual para EDOs}
 \label{sec:representacao-visual-edo}
 
 Uma representação visual foi desenvolvida para minimizar a necessidade de um conhecimento técnico prévio pelo usuário, assim como a dependência de documentos e manuais. Para atingir este objetivo, foi necessário modelar esta representação utilizando conceitos que fossem naturais para o público-alvo e a forma com a qual este desenvolve EDOs.
 
-A construção de EDOs se baseia em alguns princípios gerais, como a Lei de Ação de Massas. Por exemplo, dado duas populações $A$ e $B$, caso seja desejado simular uma condição que seja mais provável de acontecer dado altas concentrações de ambas as populações, é possível representá-la simplesmente multiplicando ambas as populações. Opcionalmente, adiciona-se uma constante para controlar a taxa de ocorrência.
+A construção de EDOs se baseia em alguns princípios gerais, como a Lei de Ação de Massas. Por exemplo, dadas duas populações $A$ e $B$, caso seja desejado simular uma condição que seja mais provável de acontecer dado altas concentrações de ambas as populações, é possível representá-la simplesmente multiplicando ambas as populações. Opcionalmente, adiciona-se uma constante para controlar a taxa de ocorrência.
 
 No sistema de EDOs \ref{eq:predadorpresa}, é possível visualizar este fenômeno: na equação da presa, a expressão \(-a.H.P\) é utilizada para controlar a taxa de predação, isto é, o quanto a concentração desta população é afetada negativamente pela atividade de predação realizada pelos predadores. Naturalmente, a predação ocorrerá mais frequentemente dado altas concentrações de ambos presa e predador, assim como descrito acima.
 
@@ -772,9 +772,9 @@ Desta forma, é possível concluir que:
 \subsection{Representação de expressões na interface}
 \label{subsec:exprtree}
 
-Na GUI, os nós de expressão apresentam a expressão que estão construindo, para que o usuário não tenha que inspecionar cada nó individiualmente para determinar como uma expressão está sendo formada. Desta forma, não é necessário observar apenas a equação final. Isto é feito por meio de árvores de expressões que cada um destes nós carrega consigo.
+Na GUI, os nós de expressão apresentam a expressão que estão construindo, para que o usuário não tenha que inspecionar cada nó individualmente para determinar como uma expressão está sendo formada. Desta forma, não é necessário observar apenas a equação final. Isto é feito por meio de árvores de expressões que cada um destes nós carrega consigo.
 
-Na imagem \ref{fig:expr-tree} são apresentadas as árvores de expressões de todos os nós presentes em \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
+Na imagem \ref{fig:expr-tree} são apresentadas as árvores de expressões de todos os nós presentes em \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra que expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
 
 Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da extensibilidade serão apresentados em \ref{sec:extensibilidade}, enquanto os trabalhos futuros serão discutidos no Capítulo \ref{chap:conclusao}.
 
@@ -848,7 +848,7 @@ def system(t: np.float64, y: np.ndarray, *constants) -> np.ndarray:
     # ...
 \end{lstlisting}
 
-O código gerado, além de ser aprensentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao}, assim como será discutida a solução implementada.
+O código gerado, além de ser apresentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao}, assim como será discutida a solução implementada.
 
 \section{Extensibilidade}
 \label{sec:extensibilidade}
@@ -885,7 +885,7 @@ Como estes nós são definidos utilizando Python, não há impacto na capacidade
 
 \subsection{Carregamento de extensões}
 
-Como mencionado anteriormente, os nós de extensões são definidos por funções que utilizam um decorador específico. Durante o carregemanto de um arquivo de extensões, o software injeta um trecho especial de código que define o decorador \texttt{@node} para inspecionar a função que está sendo decorada e emitir um JSON com as informações relevantes sobre a função como nome, quantidade e nome dos parâmetros e o formato da representação na interface. Essas informações servem como especificações para novos construtores de nós.
+Como mencionado anteriormente, os nós de extensões são definidos por funções que utilizam um decorador específico. Durante o carregamento de um arquivo de extensões, o software injeta um trecho especial de código que define o decorador \texttt{@node} para inspecionar a função que está sendo decorada e emitir um JSON com as informações relevantes sobre a função como nome, quantidade e nome dos parâmetros e o formato da representação na interface. Essas informações servem como especificações para novos construtores de nós.
 
 \section{Implementação e Tecnologias utilizadas}
 \label{sec:tecnologias}
@@ -947,7 +947,7 @@ Durante o desenvolvimento, tentou-se uma solução que combinava C++ para a inte
 \subsection{A biblioteca de RI}
 \label{sub:ri}
 
-Com o objetivo de desacoplar a aplicação gráfica das conversões realizadas, o módulo da representação intermediária foi desenvolvido como uma biblioteca à parte. Desta forma, as conversões para JSON e código em Python devem ser realizadas por esta biblioteca, e apenas as reprensentações intermediárias válidas podem ser construídas pela aplicação.
+Com o objetivo de desacoplar a aplicação gráfica das conversões realizadas, o módulo da representação intermediária foi desenvolvido como uma biblioteca à parte. Desta forma, as conversões para JSON e código em Python devem ser realizadas por esta biblioteca, e apenas as representações intermediárias válidas podem ser construídas pela aplicação.
 
 Esta abordagem facilita o processo de testagem do módulo. Criou-se vários testes, unitários e de integração, partindo de representações válidas. Como as funções públicas do módulo só possibilitam a criação de representações válidas, então é garantido que a GUI sempre gere modelos que são armazenáveis em disco, simuláveis e exportáveis.
 
@@ -965,7 +965,7 @@ A geração de JSONs é feita de forma transparente e automática a partir da es
 \section{Distribuição do software}
 \label{sec:distribuicao}
 
-A distriuição de software é um tema complexo porque não existe uma única maneira correta de ser feita; todas as abordagens trazem seus prós e contras. Contudo, dependendo de como for feita, pode aumentar ou diminuir o alcance do software e seu público-alvo. Por exemplo, desenvolvedores de softwares cujo público-alvo é composto de programadores experientes em uma certa linguagem de programação podem supor que seus usuários tenham as ferramentas necessárias instaladas e, portanto, podem compilar o código fonte ou instalá-lo por algum gerenciador de pacotes. Exemplos de softwares distribuídos dessa maneira são os compiladores das linguagens de programação C, C++ e Rust.
+A distribuição de software é um tema complexo porque não existe uma única maneira correta de ser feita; todas as abordagens trazem seus prós e contras. Contudo, dependendo de como for feita, pode aumentar ou diminuir o alcance do software e seu público-alvo. Por exemplo, desenvolvedores de softwares cujo público-alvo é composto de programadores experientes em uma certa linguagem de programação podem supor que seus usuários tenham as ferramentas necessárias instaladas e, portanto, podem compilar o código fonte ou instalá-lo por algum gerenciador de pacotes. Exemplos de softwares distribuídos dessa maneira são os compiladores das linguagens de programação C, C++ e Rust.
 
 Por outro lado, é impensável que desenhistas possuam as dependências necessárias para compilar softwares como o Krita\footnote{\href{https://krita.org/en/}{Krita Website}}. Por isso, o software disponibiliza instaladores e executáveis portáteis diretamente pelo site para todos os sistemas operacionais suportados.
 
@@ -1109,7 +1109,7 @@ A Figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática cons
 
 O modelo apresentado nesta Seção modela a resposta imune das células T a uma infecção viral. O modelo é descrito a seguir.  
 
-As células epiteliais saudáveis ($E$) são infectadas pelo vírus ($V$) tornando-se infectadas ($I$). As células T efetoras também causam dano ao tecido e esse dano é quantificado através de um marcado de inflamação chamado $D$. As células infectadas são eliminadas pelas células T ou podem morrer devido a ação dos vírus intracelulares. Quando a célula infectada morre devido a ação dos vírus, são liberados novos vírus no tecido. Os vírus são eliminados pela ação dos anticorpos e outras células de defesa que não são explicitamente representadas no modelo. As células T migram para o tecido devido a ação das citocinas pró-inflamatórias ($C$). Esse processo foi simplificado porque não considera-se, no modelo atual, as células T \textit{helper} e outros níveis de ativação das células T de forma explícita. As citocinas pró-inflamatórias são produzidas pelas células T na presença de marcadores inflamatórios da infecção.   
+As células epiteliais saudáveis ($E$) são infectadas pelo vírus ($V$) tornando-se infectadas ($I$). As células T efetoras também causam dano ao tecido e esse dano é quantificado através de um marcador de inflamação chamado $D$. As células infectadas são eliminadas pelas células T ou podem morrer devido à ação dos vírus intracelulares. Quando a célula infectada morre devido à ação dos vírus, são liberados novos vírus no tecido. Os vírus são eliminados pela ação dos anticorpos e outras células de defesa que não são explicitamente representadas no modelo. As células T migram para o tecido devido à ação das citocinas pró-inflamatórias ($C$). Esse processo foi simplificado porque não considera-se, no modelo atual, as células T \textit{helper} e outros níveis de ativação das células T de forma explícita. As citocinas pró-inflamatórias são produzidas pelas células T na presença de marcadores inflamatórios da infecção.   
 
 \begin{equation}
     \begin{array}{lr}
@@ -1141,7 +1141,7 @@ Na Figura \ref{fig:infeccaoviral}, é apresentada parte do modelo construído no
     \label{fig:infeccaoviral}
 \end{figure}
 
-Um exemplo de resultado do modelo, é apresentado nas Figuras \ref{fig:resultado1-infeccaoviral} e %\ref{fig:resultado2-infeccaoviral}
+Um exemplo de resultado do modelo, é apresentado nas Figuras \ref{fig:resultado1-infeccaoviral} e \ref{fig:resultado2-infeccaoviral}.
 
 \begin{figure}[h]
     \centering

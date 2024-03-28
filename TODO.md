@@ -21,24 +21,25 @@
     - Telas para cada software citado (?);
     - Explicar "editores baseados em nós" na 2.2, entrando em detalhes sobre as nomenclaturas "nó" e "pino";
     - Referências quebradas em 4.1.1 e 2.4;
-    - Erros gramaticais & CIA:
-        - aprensentado
+    - [x] Erros gramaticais & CIA:
+        - [x] aprensentado
         - num -> em um
-        - individiualmente
-        - dimiuindo
-        - distriuição
-        - reprensentações
-        - (3.3) ocorre -> ocorrem
-        - (2.4) "afinidade"para (falta espaço, tipo de aspas errado)
-        - (1) ponto final no último item do itemize;
-        - ciêntífica
-        - (4.1) dado -> dadas
-        - (4.1.1) Isto demonstra expressões (falta o 'que')
-        - carregemanto
-        - igura
-        - (5.4) marcado -> marcador
-        - (5.4) devido a -> devida a
-        - (5.4) figuras 22 e (faltou o 23)
+            - Na realidade, "num" e "numa" são completamente formais. Referência: https://www.dicio.com.br/num-ou-em-um/
+        - [x] individiualmente
+        - [x] dimiuindo
+        - [x] distriuição
+        - [x] reprensentações
+        - [x] (3.3) ocorre -> ocorrem
+        - [x] (2.4) "afinidade"para (falta espaço, tipo de aspas errado)
+        - [x] (1) ponto final no último item do itemize;
+        - [x] ciêntífica
+        - [x] (4.1) dado -> dadas
+        - [x] (4.1.1) Isto demonstra expressões (falta o 'que')
+        - [x] carregemanto
+        - [x] igura
+        - [x] (5.4) marcado -> marcador
+        - [x] (5.4) devido a -> devido à
+        - [x] (5.4) figuras 22 e (faltou o 23)
     - Incluir imagem dos downloads de instaladores e executáveis portáteis do Krita;
     - Link do GitHub do software;
     - "How To" do software, transformando a EDO do modelo HP ou SIR na representação do software;
