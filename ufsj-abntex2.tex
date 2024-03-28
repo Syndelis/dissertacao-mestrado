@@ -648,7 +648,7 @@ Na Tabela \ref{tab:comparativo} é apresentado um quadro comparativo entre o sof
 O software desenvolvido neste trabalho possui alguns diferenciais em relação a outros desenvolvidos com propósitos similares:
 
 \begin{itemize}
-    \item Em sua interface gráfica, é apresentado um editor baseado em nós que fornece ao usuário uma forma de programação visual \ref{sec:programacao-visual} que facilita a construção e simulação de modelos, limitando apenas operações consideradas incorretas;
+    \item Em sua interface gráfica, é apresentado um editor baseado em nós que fornece ao usuário uma forma de programação visual que facilita a construção e simulação de modelos, limitando apenas operações consideradas incorretas;
     %possibilitando um grau de liberdade limitando apenas operações consideradas incorretas;
     
     \item Em seu formato de representação intermediária para salvamento e carregamento dos modelos, o software utiliza uma estrutura extensível para outros tipos de modelos como, por exemplo, equações diferenciais parciais. Esta estrutura também foi projetada para ser humanamente legível, a ponto de ser possível que uma pessoa decodifique o modelo representado apenas lendo o arquivo. Assim, caso o software se prove insuficiente ou indisponível, ainda é possível reverter o arquivo nas equações que o compõe. 
@@ -693,18 +693,18 @@ O software Cytoscape \cite{shannon2003cytoscape} é uma plataforma de software d
 \label{chap:metodologia}
 \label{chap:software-para-modelagem}
 
-O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário [\ref{fig:gui-predador-presa}] (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes e variáveis. Em \ref{sec:representacao-visual-edo}, serão discutidos os tipos de nós presentes na interface.
+O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes e variáveis. A figura \ref{fig:gui-predador-presa} apresenta o editor de nós do software contendo o modelo Predador-Presa. Na Seção \ref{sec:representacao-visual-edo}, serão discutidos os tipos de nós presentes na interface.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{imgs/ode-designer/predador-presa.png} 
-    \caption{Exemplo do modelo Predador-Presa (\ref{eq:predadorpresa}) construído no \textit{software}.}
+    \caption{Exemplo do modelo Predador-Presa (equação \ref{eq:predadorpresa}) construído no \textit{software}.}
     \label{fig:gui-predador-presa}
 \end{figure}
 
 O modelo é construído a partir da criação de nós e suas ligações. Uma equação pode ser expressada por um ou mais termos e combinações, e uma variável alvo para a atribuição do valor.
 
-Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI [\ref{fig:gui-grafico-all}], exportar um PDF dos resultados, ou exportar um código de Python equivalente para o modelo desenhado [\ref{code:predador-presa}]. A experiência de usuário pode ser resumida ao fluxograma \ref{fig::experiencia_usuario}.
+Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI (demonstrado na figura \ref{fig:gui-grafico-all}), exportar um PDF dos resultados, ou exportar um código de Python equivalente para o modelo desenhado (demonstrado pelo anexo \ref{code:predador-presa}, que contém o código do modelo Predador-Presa). A experiência de usuário pode ser resumida ao fluxograma contido na figura \ref{fig::experiencia_usuario}.
 
 \begin{figure}[h]
     \centering
@@ -731,7 +731,7 @@ Uma representação visual foi desenvolvida para minimizar a necessidade de um c
 
 A construção de EDOs se baseia em alguns princípios gerais, como a Lei de Ação de Massas. Por exemplo, dadas duas populações $A$ e $B$, caso seja desejado simular uma condição que seja mais provável de acontecer dado altas concentrações de ambas as populações, é possível representá-la simplesmente multiplicando ambas as populações. Opcionalmente, adiciona-se uma constante para controlar a taxa de ocorrência.
 
-No sistema de EDOs \ref{eq:predadorpresa}, é possível visualizar este fenômeno: na equação da presa, a expressão \(-a.H.P\) é utilizada para controlar a taxa de predação, isto é, o quanto a concentração desta população é afetada negativamente pela atividade de predação realizada pelos predadores. Naturalmente, a predação ocorrerá mais frequentemente dado altas concentrações de ambos presa e predador, assim como descrito acima.
+No sistema de EDOs na equação \ref{eq:predadorpresa}, é possível visualizar este fenômeno: na equação da presa, a expressão \(-a.H.P\) é utilizada para controlar a taxa de predação, isto é, o quanto a concentração desta população é afetada negativamente pela atividade de predação realizada pelos predadores. Naturalmente, a predação ocorrerá mais frequentemente dado altas concentrações de ambos presa e predador, assim como descrito acima.
 
 A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinação das expressões que representam as interações das populações entre si e o meio. Assim, a representação visual foi modelada em um editor de nós, de forma que todas as interações visassem a construção destas expressões. A tabela \ref{tab:tipos-de-nos} descreve os tipos de nós presentes no software e sua relação com o objetivo de construir as expressões.
 
@@ -743,7 +743,7 @@ A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinaç�
     \hline
     Termo & Variáveis, parâmetros e constantes. & Em uma expressão \(k.x.y\), os termos são o parâmetro $k$ e as variáveis $x$ e $y$. \\
     \hline
-    Expressão & Qualquer expressão matemática para a construção das equações do modelo. & Na equação da presa [\ref{eq:predadorpresa}], as expressões são: 1) \(r.H\); 2) \(a.H.P\); e 3) \(r.H - a.H.P\) (combinação de 1 e 2). \\
+    Expressão & Qualquer expressão matemática para a construção das equações do modelo. & Na equação da presa (contida na equação \ref{eq:predadorpresa}), as expressões são: 1) \(r.H\); 2) \(a.H.P\); e 3) \(r.H - a.H.P\) (combinação de 1 e 2). \\
     \hline
     Equação & É um nó especial usado para atribuir uma expressão, que representa todo o lado direito de uma EDO, a uma variável. & A expressão \(r.H - a.H.P\) pode ser usada como entrada de um nó de equação associado à variável $H$. \\
     \hline 
@@ -774,14 +774,14 @@ Desta forma, é possível concluir que:
 
 Na GUI, os nós de expressão apresentam a expressão que estão construindo, para que o usuário não tenha que inspecionar cada nó individualmente para determinar como uma expressão está sendo formada. Desta forma, não é necessário observar apenas a equação final. Isto é feito por meio de árvores de expressões que cada um destes nós carrega consigo.
 
-Na imagem \ref{fig:expr-tree} são apresentadas as árvores de expressões de todos os nós presentes em \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra que expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
+Na figura \ref{fig:expr-tree}, são apresentadas as árvores de expressões de todos os nós representados na interface pela figura \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra que expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
 
-Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da extensibilidade serão apresentados em \ref{sec:extensibilidade}, enquanto os trabalhos futuros serão discutidos no Capítulo \ref{chap:conclusao}.
+Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da extensibilidade serão apresentados na Seção \ref{sec:extensibilidade}, enquanto os trabalhos futuros serão discutidos no Capítulo \ref{chap:conclusao}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.63]{diagrams/img/expr-tree.png} 
-    \caption{Árvores de expressões para cada nó de expressão no modelo predador-presa [\ref{fig:gui-predador-presa}]}
+    \caption{Árvores de expressões para cada nó de expressão no modelo predador-presa, apresentado na figura \ref{fig:gui-predador-presa}.}
     \label{fig:expr-tree}
 \end{figure}
 
@@ -793,7 +793,7 @@ Com a finalidade de possibilitar a escrita e leitura em disco dos modelos desenh
 Apesar de ser usada como forma de armazenar informações do modelo, a RI possui um formato projetado para ser humanamente legível. Esta decisão foi tomada para possibilitar a recuperação do modelo construído sem a necessidade de ter o software instalado. Assim, caso o software caia em desuso, se torne impossível de instalar por algum motivo (um sistema operacional diferente, por exemplo) ou simplesmente tenha mudanças que quebrem compatibilidade implementadas, não significa que o usuário tenha perdido seu 
 modelo.
 
-Em \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa (RI completa no Apêndice \ref{ri:predador-presa}) que implementa a equação da presa. Note que é possível reconstruir a equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode ser construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
+Na listagem \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa (RI completa no Apêndice \ref{ri:predador-presa}) que implementa a equação da presa. Note que é possível reconstruir a equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode ser construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
 
 \begin{itemize}
     \item \texttt{"Predacao/Presa"}: \((+a)*(+H)*(+P)\), que simplificando se resume a \(a*H*P\);
@@ -848,7 +848,7 @@ def system(t: np.float64, y: np.ndarray, *constants) -> np.ndarray:
     # ...
 \end{lstlisting}
 
-O código gerado, além de ser apresentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes em \ref{sec:distribuicao}, assim como será discutida a solução implementada.
+O código gerado, além de ser apresentado como opção de exportação do modelo para o usuário, também é utilizado internamente pelo software para produzir os resultados que são plotados na interface. Como benefício desta abordagem, os gráficos plotados tanto pelo software quanto pelo código exportado são idênticos. Por outro lado, a dependência de Python para a simulação traz complicações quanto à distribuição do software, que será discutida em mais detalhes na Seção \ref{sec:distribuicao}, assim como será discutida a solução implementada.
 
 \section{Extensibilidade}
 \label{sec:extensibilidade}
@@ -877,7 +877,7 @@ def pow(x, y):
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.45]{imgs/ode-designer/ext-sin-pow.png} 
-    \caption{Os nós definidos em \ref{code:ext-sin-pow} sendo utilizados na interface.}
+    \caption{Os nós definidos na listagem \ref{code:ext-sin-pow} sendo utilizados na interface.}
     \label{fig:ext-sin-pow}
 \end{figure}
 
