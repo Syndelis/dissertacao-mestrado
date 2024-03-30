@@ -480,7 +480,7 @@ Na figura \ref{fig:hostprey}, é dado um exemplo de resultado obtido com a simul
 
 %\subsection{Modelo SIR de transmissão de doenças}
 
-\section{Programação Visual e Editores baseados em Nós}
+\section{Programação Visual}
 \label{sec:programacao-visual}
 
 Programação visual é uma maneira do usuário programar a máquina por meio de elementos gráficos que abstraem instruções do computador. Comumente, estes elementos representam múltiplas operações por vez, com o objetivo de facilitar a programação.
@@ -491,7 +491,13 @@ O conceito de utilizar elementos visuais para a assistência da programação n�
 
 Outras aplicações se especializam em algum nicho da computação, como é o caso do simulador lógico Logisim \cite{logisim}, que abstrai componentes lógicos e permite o usuário criar circuitos em uma espécie de \textit{protoboard} digital.
 
-Muitas vezes, \textit{softwares} que incluem programação visual para a abstração de operações utilizam uma interface conhecida como editor de nós:
+\subsection{Editores baseados em nós}
+
+Muitas vezes, \textit{softwares} que incluem programação visual para a abstração de operações utilizam interfaces conhecidas como ``editores baseados em nós'', que são caracterizados pela presença de blocos flutuantes conhecidos como ``nós''.
+
+Estes nós são responsáveis por criar ou manipular informações, que podem ser repassadas a outros nós, se assemelhando a uma esteira de produção. A passagem destas informações é feita por componentes contidos nos nós conhecidos como ``pinos'', que permitem a entrada ou saída dos dados. Comumente, o fluxo de passagem de dados ocorre da esquerda para a direita, tendo os pinos à esquerda de um nó como pinos de entrada e pinos à direita como pinos de saída.
+
+Exemplos destes \textit{softwares} são:
 
 \begin{itemize}
     \item O \textit{software} de modelagem, animação e edição de vídeos, Blender \cite{blender}, utiliza um editor de nós para abstrair operações de manipulação de imagens e materiais;
