@@ -40,6 +40,6 @@
         - [x] (5.4) marcado -> marcador
         - [x] (5.4) devido a -> devido à
         - [x] (5.4) figuras 22 e (faltou o 23)
-    - Incluir imagem dos downloads de instaladores e executáveis portáteis do Krita;
+    - [x] Incluir imagem dos downloads de instaladores e executáveis portáteis do Krita;
     - [x] Link do GitHub do software;
     - [x] "How To" do software, transformando a EDO do modelo HP ou SIR na representação do software;
