@@ -1007,6 +1007,93 @@ Ao contrário dos sistemas Linux, não existe um formato de arquivos que contenh
 
 Portanto, o software é distribuído para Windows por meio de uma pasta compactada incluindo as dependências dinâmicas e um interpretador de Python portátil, que inclui o \texttt{scipy}.
 
+\section{Utilizando o software}
+
+Nesta seção, o software desenvolvido será utilizado para representar o modelo de difusão de Bass \cite{Bass1969}, que descreve o processo de adoção de novos produtos por uma população. A EDO, presente na equação \ref{eq:bass}, modela as interações entre o processo de adoção e influência, classificando os adotantes em inovadores e imitadores.
+
+\begin{equation}\label{eq:bass}
+    \frac{dF}{dt} = (1 - F)(p + qF)
+\end{equation}
+
+Em que,
+
+\[
+    \begin{array}{lr}
+    F & \text{Fração da base de instalação}\\
+    p & \text{Coeficiente de inovação}\\
+    q & \text{Coeficiente de imitação}\\
+    \end{array}
+\]
+
+Ao iniciar o software, o usuário se deparará com um editor vazio e um menu lateral com algumas opções de nós para serem criados. A criação dos nós pode ser feita tanto pelo menu lateral (destacado como `1' na figura \ref{fig:criando-nos}), quanto pelo menu de contexto acessível pelo botão direito do mouse (destacado como `2' na figura \ref{fig:criando-nos}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/ode-designer/passo-a-passo/criando-nos.png} 
+    \caption{As opções de criação de nós. Destacado como `1' está o menu lateral com as opções de nós e o campo de nome. Destacado como `2' está o menu de contexto acessível com o clique do botão direito do mouse.}
+    \label{fig:criando-nos}
+\end{figure}
+
+No software, é necessário criar um nó de termo para cada variável, parâmetro e constante. Portanto, pode-se afirmar que a equação \ref{eq:bass} possui os seguintes termos (presentes na figura \ref{fig:termos}):
+
+\begin{itemize}
+    \item 1 variável: $F$;
+    \item 2 parâmetros: $p$ e $q$;
+    \item 1 constante: o número $1$.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/ode-designer/passo-a-passo/termos.png} 
+    \caption{Os nós termos criados. Note que a constante ``one'' (em inglês ``um'') tem seu valor definido como 1. Os outros termos possuem os valores $F = 0$, $p = 0.03$ e $q = 0.38$.}
+    \label{fig:termos}
+\end{figure}
+
+A próxima etapa da construção do modelo envolve as expressões. No software, cada expressão pode ser usada para combinar duas ou mais subexpressões (incluindo termos) utilizando apenas uma operação matemática. Desta forma, é necessário um nó de expressão para cada operação binária, que para a equação \ref{eq:bass} significa um total de 4 expressões (presentes na figura \ref{fig:expressoes}):
+
+\begin{itemize}
+    \item $(1 - F)(p + qF)$: 4 expressões, sendo 1 expressão e 3 subexpressões:
+    \begin{itemize}
+        \item $(1 - F)$: 1 expressão final;
+        \item $(p + qF)$: 2 expressões, sendo 1 expressão e 1 subexpressão:
+        \begin{itemize}
+            \item $qF$: 1 expressão final.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/ode-designer/passo-a-passo/expressoes.png} 
+    \caption{As 4 expressões construídas no software: (1) $qF$, (2) $1-F$, (3) $p+qF$ e (4) $(p+qF)*(1-F)$.}
+    \label{fig:expressoes}
+\end{figure}
+
+A última etapa na construção de um modelo envolve atribuir equações a variáveis. No caso da equação \ref{eq:bass}, há apenas uma equação, $\frac{dF}{dt} = \dots$. Na figura \ref{fig:equacao} é demonstrado um nó para esta equação, faltando apenas atribuí-la a uma variável. A atribuição da variável garante que um termo terá seu valor atualizado entre diferentes tempos da simulação.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/ode-designer/passo-a-passo/equacao.png} 
+    \caption{A equação $\frac{dF}{dt} = \dots$ descrita como um nó. Nesta etapa, é necessário selecionar um termo como variável, clicando no botão ``choose'' (em inglês, ``escolher'').}
+    \label{fig:equacao}
+\end{figure}
+
+Finalmente, as figuras \ref{fig:modelo-final} e \ref{fig:resultado} apresentam, respectivamente, o modelo final e o resultado da simulação.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/ode-designer/passo-a-passo/modelo-final.png} 
+    \caption{O modelo final construído para a equação \ref{eq:bass}.}
+    \label{fig:modelo-final}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/ode-designer/passo-a-passo/resultado.png} 
+    \caption{O resultado da simulação para os parâmetros $F_0 = 0$, $p = 0.03$, $q = 0.38$.}
+    \label{fig:resultado}
+\end{figure}
+
 \chapter{Aplicação do software na modelagem computacional}
 \label{chap:resultados}
 
