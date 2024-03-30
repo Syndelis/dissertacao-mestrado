@@ -19,7 +19,7 @@
     - [x] Alterar "mostrar que a resposta da questão anterior é sim" por "investigar se a resposta é ..." no cap 1;
     - Em 2.4, alterar "o software irá ..." por "o software pretende ..." e exemplificar como o software pretende facilitar as coisas que diz;
     - Telas para cada software citado (?);
-    - Explicar "editores baseados em nós" na 2.2, entrando em detalhes sobre as nomenclaturas "nó" e "pino";
+    - [x] Explicar "editores baseados em nós" na 2.2, entrando em detalhes sobre as nomenclaturas "nó" e "pino";
     - [x] Referências quebradas em 4.1.1 e 2.4;
     - [x] Erros gramaticais & CIA:
         - [x] aprensentado
@@ -41,5 +41,5 @@
         - [x] (5.4) devido a -> devido à
         - [x] (5.4) figuras 22 e (faltou o 23)
     - Incluir imagem dos downloads de instaladores e executáveis portáteis do Krita;
-    - Link do GitHub do software;
-    - "How To" do software, transformando a EDO do modelo HP ou SIR na representação do software;
+    - [x] Link do GitHub do software;
+    - [x] "How To" do software, transformando a EDO do modelo HP ou SIR na representação do software;
