@@ -248,10 +248,7 @@
 % ---------------------------------------------------------------------------------------------
 \include{00_pretextual}
 
-% ---------------------------------------------------------------------------------------------
-% --------------------------------------------------------------------inserir lista de figuras-
-% --------------------------------------------se não houver nenhuma figura, comente esta seção-
-% ---------------------------------------------------------------------------------------------
+
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
@@ -412,7 +409,7 @@ Entre as contribuições deste trabalho, destacam-se as seguintes:
 
 Uma das aplicações do software que foi desenvolvido é no processo de ensino-aprendizagem de modelagem computacional. Os usuários poderão aprender sobre modelagem computacional por meio de um processo de aprendizado ativo com a construção e simulação dos modelos na prática. Na Seção \ref{sec:ensino-aprendizagem}, será discutido como o software pode ser utilizado junto com uma metodologia ativa de ensino como uma possível abordagem de ensino-aprendizagem de modelagem computacional.  
 
-\textbf{O software desenvolvido chama-se ODE-Designer}.
+O software desenvolvido chama-se ODE-Designer.
 
 O restante do texto deste trabalho está organizado da seguinte forma: no Capítulo \ref{chap:referencial}, são apresentados alguns conceitos teóricos para um melhor entendimento do trabalho. No Capítulo \ref{chap:relacionados}, são descritos os trabalhos relacionados. O software desenvolvido é descrito no Capítulo \ref{chap:metodologia}. No Capítulo \ref{chap:resultados}, são apresentadas algumas aplicações do software na modelagem e, por fim, a conclusão e os trabalhos futuros são apresentados no Capítulo \ref{chap:conclusao}. 
 
@@ -466,7 +463,7 @@ A Lei de Ação de Massas pode ser aplicada, a princípio, a qualquer sistema de
         \item Não é considerada nenhuma estrutura espacial no modelo.
     \end{itemize}
 
-Na figura \ref{fig:hostprey}, é dado um exemplo de resultado obtido com a simulação do modelo predador-presa. 
+Na Figura \ref{fig:hostprey}, é dado um exemplo de resultado obtido com a simulação do modelo predador-presa. 
 
 \begin{figure}[h]
     \centering
@@ -495,9 +492,9 @@ Outras aplicações se especializam em algum nicho da computação, como é o ca
 
 Muitas vezes, \textit{softwares} que incluem programação visual para a abstração de operações utilizam interfaces conhecidas como ``editores baseados em nós'', que são caracterizados pela presença de blocos flutuantes conhecidos como ``nós''.
 
-Estes nós são responsáveis por criar ou manipular informações, que podem ser repassadas a outros nós, se assemelhando a uma esteira de produção. A passagem destas informações é feita por componentes contidos nos nós conhecidos como ``pinos'', que permitem a entrada ou saída dos dados. Comumente, o fluxo de passagem de dados ocorre da esquerda para a direita, tendo os pinos à esquerda de um nó como pinos de entrada e pinos à direita como pinos de saída.
+Estes nós são responsáveis por criar ou manipular informações, que podem ser repassadas a outros nós, se assemelhando a uma esteira de produção. A passagem destas informações é feita por componentes contidos nos nós conhecidos como ``pinos'', que permitem a entrada ou saída dos dados. Comumente, o fluxo de passagem de dados ocorre da esquerda para a direita, sendo que os pinos à esquerda de um nó são os pinos de entrada e pinos à direita são os pinos de saída.
 
-Exemplos destes \textit{softwares} são:
+Alguns exemplos de \textit{softwares} desse tipo são:
 
 \begin{itemize}
     \item O \textit{software} de modelagem, animação e edição de vídeos, Blender \cite{blender}, utiliza um editor de nós para abstrair operações de manipulação de imagens e materiais;
@@ -594,7 +591,7 @@ O uso de modelos computacionais abre novas maneiras para os alunos aprenderem so
 
 Um dos objetivos do software que foi desenvolvido neste trabalho é auxiliar o aprendizado de conceitos importantes nas áreas de modelagem matemática e computacional e ajudar o aluno a desenvolver a habilidade de modelar problemas através da prática de construção e simulação de modelos. Acredita-se que o uso combinado do software com alguma metodologia ativa de ensino permitirá aos alunos aprender na prática como construir modelos para diferentes fenômenos de interesse e entender melhor os fenômenos estudados através das simulações computacionais realizadas de forma interativa através da interface gráfica do software. 
 
-Considerando-se o uso do software na prática e uma visão geral do chamado ciclo da modelagem apresentado na figura \ref{fig:ciclo-modelagem}, destaca-se que o software auxilia o passo 2 e automatiza os passos 3 e 4 facilitando o processo de modelagem por estudantes e pesquisadores. 
+Considerando-se o uso do software na prática e uma visão geral do chamado ciclo da modelagem apresentado na Figura \ref{fig:ciclo-modelagem}, destaca-se que o software auxilia o passo 2 e automatiza os passos 3 e 4 facilitando o processo de modelagem por estudantes e pesquisadores. 
 
 \begin{figure}[h]
     \centering
@@ -627,7 +624,7 @@ Com o uso do software, acredita-se que os alunos poderão investir mais tempo fo
 
 Com o avanço de tecnologias para o desenvolvimento de aplicações gráficas e também da internet, ocorreu um aumento expressivo na quantidade de \textit{softwares} desenvolvidos para modelagem e simulação computacional. 
 
-Na tabela \ref{tab:comparativo} é apresentado um quadro comparativo entre o software deste trabalho e softwares similares. Para realizar a comparação, foram selecionadas algumas características consideradas relevantes no contexto de softwares para modelagem e simulação computacional. 
+Na Tabela \ref{tab:comparativo} é apresentado um quadro comparativo entre o software deste trabalho e softwares similares. Para realizar a comparação, foram selecionadas algumas características consideradas relevantes no contexto de softwares para modelagem e simulação computacional. 
 
 \begin{landscape}
 \begin{table}[h]
@@ -699,18 +696,18 @@ O software Cytoscape \cite{shannon2003cytoscape} é uma plataforma de software d
 \label{chap:metodologia}
 \label{chap:software-para-modelagem}
 
-O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes e variáveis. A figura \ref{fig:gui-predador-presa} apresenta o editor de nós do software contendo o modelo Predador-Presa. Na Seção \ref{sec:representacao-visual-edo}, serão discutidos os tipos de nós presentes na interface.
+O \textit{software} desenvolvido neste trabalho consiste em uma interface gráfica de usuário (mais comumente referida pelo acrônimo em inglês, GUI, que significa \textit{Graphical User Interface}) que apresenta um editor baseado em nós. Os nós representam abstrações de componentes comumente usados na construção de EDOs, como constantes e variáveis. A Figura \ref{fig:gui-predador-presa} apresenta o editor de nós do software contendo o modelo Predador-Presa. Na Seção \ref{sec:representacao-visual-edo}, serão discutidos os tipos de nós presentes na interface.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{imgs/ode-designer/predador-presa.png} 
-    \caption{Exemplo do modelo Predador-Presa (equação \ref{eq:predadorpresa}) construído no \textit{software}.}
+    \caption{Exemplo do modelo Predador-Presa (Equação \ref{eq:predadorpresa}) construído no \textit{software}.}
     \label{fig:gui-predador-presa}
 \end{figure}
 
-O modelo é construído a partir da criação de nós e suas ligações. Uma equação pode ser expressada por um ou mais termos e combinações, e uma variável alvo para a atribuição do valor.
+O modelo é construído a partir da criação de nós e suas ligações. Uma Equação pode ser expressada por um ou mais termos e combinações, e uma variável alvo para a atribuição do valor.
 
-Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI (demonstrado na figura \ref{fig:gui-grafico-all}), exportar um PDF dos resultados, ou exportar um código de Python equivalente para o modelo desenhado (demonstrado pelo anexo \ref{code:predador-presa}, que contém o código do modelo Predador-Presa). A experiência de usuário pode ser resumida ao fluxograma contido na figura \ref{fig::experiencia_usuario}.
+Após construído o modelo, o usuário poderá simulá-lo diretamente pela GUI (demonstrado na Figura \ref{fig:gui-grafico-all}), exportar um PDF dos resultados, ou exportar um código de Python equivalente para o modelo desenhado (demonstrado pelo anexo \ref{code:predador-presa}, que contém o código do modelo Predador-Presa). A experiência de usuário pode ser resumida ao fluxograma contido na Figura \ref{fig::experiencia_usuario}.
 
 \begin{figure}[h]
     \centering
@@ -737,9 +734,9 @@ Uma representação visual foi desenvolvida para minimizar a necessidade de um c
 
 A construção de EDOs se baseia em alguns princípios gerais, como a Lei de Ação de Massas. Por exemplo, dadas duas populações $A$ e $B$, caso seja desejado simular uma condição que seja mais provável de acontecer dado altas concentrações de ambas as populações, é possível representá-la simplesmente multiplicando ambas as populações. Opcionalmente, adiciona-se uma constante para controlar a taxa de ocorrência.
 
-No sistema de EDOs na equação \ref{eq:predadorpresa}, é possível visualizar este fenômeno: na equação da presa, a expressão \(-a.H.P\) é utilizada para controlar a taxa de predação, isto é, o quanto a concentração desta população é afetada negativamente pela atividade de predação realizada pelos predadores. Naturalmente, a predação ocorrerá mais frequentemente dado altas concentrações de ambos presa e predador, assim como descrito acima.
+No sistema de EDOs na Equação \ref{eq:predadorpresa}, é possível visualizar este fenômeno: na Equação da presa, a expressão \(-a.H.P\) é utilizada para controlar a taxa de predação, isto é, o quanto a concentração desta população é afetada negativamente pela atividade de predação realizada pelos predadores. Naturalmente, a predação ocorrerá mais frequentemente dado altas concentrações de ambos presa e predador, assim como descrito acima.
 
-A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinação das expressões que representam as interações das populações entre si e o meio. Assim, a representação visual foi modelada em um editor de nós, de forma que todas as interações visassem a construção destas expressões. A tabela \ref{tab:tipos-de-nos} descreve os tipos de nós presentes no software e sua relação com o objetivo de construir as expressões. A figura \ref{fig:tipos-de-nos} demonstra os respectivos nós da tabela como apresentados no software.
+A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinação das expressões que representam as interações das populações entre si e o meio. Assim, a representação visual foi modelada em um editor de nós, de forma que todas as interações visassem a construção destas expressões. A Tabela \ref{tab:tipos-de-nos} descreve os tipos de nós presentes no software e sua relação com o objetivo de construir as expressões. A Figura \ref{fig:tipos-de-nos} mostra os respectivos nós da Tabela \ref{tab:tipos-de-nos} construídos na GUI do software.
 
 \begin{table}
 \begin{center}
@@ -749,9 +746,9 @@ A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinaç�
     \hline
     Termo & Variáveis, parâmetros e constantes. & Em uma expressão \(k.x.y\), os termos são o parâmetro $k$ e as variáveis $x$ e $y$. \\
     \hline
-    Expressão & Qualquer expressão matemática para a construção das equações do modelo. & Na equação da presa (contida na equação \ref{eq:predadorpresa}), as expressões são: 1) \(r.H\); 2) \(a.H.P\); e 3) \(r.H - a.H.P\) (combinação de 1 e 2). \\
+    Expressão & Qualquer expressão matemática para a construção das equações do modelo. & Na Equação da presa (contida na Equação \ref{eq:predadorpresa}), as expressões são: 1) \(r.H\); 2) \(a.H.P\); e 3) \(r.H - a.H.P\) (combinação de 1 e 2). \\
     \hline
-    Equação & É um nó especial usado para atribuir uma expressão, que representa todo o lado direito de uma EDO, a uma variável. & A expressão \(r.H - a.H.P\) pode ser usada como entrada de um nó de equação associado à variável $H$. \\
+    Equação & É um nó especial usado para atribuir uma expressão, que representa todo o lado direito de uma EDO, a uma variável. & A expressão \(r.H - a.H.P\) pode ser usada como entrada de um nó de Equação associado à variável $H$. \\
     \hline 
 \end{tabular}
 \end{center}
@@ -761,8 +758,8 @@ A partir desta premissa, pode-se resumir o desenvolvimento de EDOs à combinaç�
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.6]{imgs/ode-designer/tipos-nos.png} 
-    \caption{Os nós descritos em \ref{tab:tipos-de-nos}, apresentados no software.}
+    \includegraphics[scale=0.55]{imgs/ode-designer/tipos-nos.png} 
+    \caption{Visualização dos nós Termo, Expressão e \textit{Assigner} (ou Equação) no editor baseado em nós do software. Um exemplo de uso desses nós foi apresentado na Tabela \ref{tab:tipos-de-nos}. }
     \label{fig:tipos-de-nos}
 \end{figure}
 
@@ -785,16 +782,16 @@ Desta forma, é possível concluir que:
 \subsection{Representação de expressões na interface}
 \label{subsec:exprtree}
 
-Na GUI, os nós de expressão apresentam a expressão que estão construindo, para que o usuário não tenha que inspecionar cada nó individualmente para determinar como uma expressão está sendo formada. Desta forma, não é necessário observar apenas a equação final. Isto é feito por meio de árvores de expressões que cada um destes nós carrega consigo.
+Na GUI, os nós de expressão apresentam a expressão que estão construindo, para que o usuário não tenha que inspecionar cada nó individualmente para determinar como uma expressão está sendo formada. Desta forma, não é necessário observar apenas a Equação final. Isto é feito por meio de árvores de expressões que cada um destes nós carrega consigo.
 
-Na figura \ref{fig:expr-tree}, são apresentadas as árvores de expressões de todos os nós representados na interface pela figura \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra que expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
+Na Figura \ref{fig:expr-tree}, são apresentadas as árvores de expressões de todos os nós representados na interface pela Figura \ref{fig:gui-predador-presa}. Note que os nós `Predação/Presa' e `Predação/Predador' referenciam o mesmo nó base `Predação'. Isto demonstra que expressões podem ser usadas como entradas para outras expressões na forma de subexpressões. As subexpressões, além de possibilitar o usuário de evitar repetições na construção de modelos, permitem que os nós façam alterações relevantes para o contexto, como a adição de parênteses nas operações de multiplicação e divisão.
 
 Esta representação foi desenvolvida de maneira agnóstica ao modelo, com o objetivo de permitir que o software seja extensível e, no futuro, oferte outros tipos de modelos. Um exemplo deste esforço se dá pela árvore de expressões não supôr que toda operação é infixada, também permitindo operações pós-fixadas. Exemplos da extensibilidade serão apresentados na Seção \ref{sec:extensibilidade}, enquanto os trabalhos futuros serão discutidos no Capítulo \ref{chap:conclusao}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.63]{diagrams/img/expr-tree.png} 
-    \caption{Árvores de expressões para cada nó de expressão no modelo predador-presa, apresentado na figura \ref{fig:gui-predador-presa}.}
+    \caption{Árvores de expressões para cada nó de expressão no modelo predador-presa, apresentado na Figura \ref{fig:gui-predador-presa}.}
     \label{fig:expr-tree}
 \end{figure}
 
@@ -806,7 +803,7 @@ Com a finalidade de possibilitar a escrita e leitura em disco dos modelos desenh
 Apesar de ser usada como forma de armazenar informações do modelo, a RI possui um formato projetado para ser humanamente legível. Esta decisão foi tomada para possibilitar a recuperação do modelo construído sem a necessidade de ter o software instalado. Assim, caso o software caia em desuso, se torne impossível de instalar por algum motivo (um sistema operacional diferente, por exemplo) ou simplesmente tenha mudanças que quebrem compatibilidade implementadas, não significa que o usuário tenha perdido seu 
 modelo.
 
-Na listagem \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa (RI completa no apêndice \ref{ri:predador-presa}) que implementa a equação da presa. Note que é possível reconstruir a equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode ser construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
+Na listagem \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-Presa (RI completa no apêndice \ref{ri:predador-presa}) que implementa a Equação da presa. Note que é possível reconstruir a Equação manualmente: cada entrada em \texttt{"arguments"} representa um termo (representado pelos campos nome e valor) ou uma combinação (representada pelos campos nome, operação e composição). Com este último, uma expressão pode ser construída a partir da repetida concatenação de todos os elementos de sua composição, inserindo a operação entre eles. Seguindo esta regra, tem-se as seguintes expressões:
 
 \begin{itemize}
     \item \texttt{"Predacao/Presa"}: \((+a)*(+H)*(+P)\), que simplificando se resume a \(a*H*P\);
@@ -814,7 +811,7 @@ Na listagem \ref{ri:presa}, pode-se observar o trecho da RI do modelo Predador-P
     \item \texttt{"Eq/Presa"}: A subtração de \texttt{"Predacao/Presa"} e \texttt{"Reprodução"}, que resulta em \(r*H-a*H*P\);
 \end{itemize}
 
-\begin{lstlisting}[language=json, label=ri:presa, caption=Trecho da RI que define termos e combinações usadas para definir a equação da presa.][H]
+\begin{lstlisting}[language=json, label=ri:presa, caption=Trecho da RI que define termos e combinações usadas para definir a Equação da presa.][H]
 "arguments": [
     { "name": "Eq/Presa", "operation": "-",
         "composition": [
@@ -872,7 +869,7 @@ Além de prover alguns nós padrões para a construção das EDOs, o software pe
 
 As funções decoradas por \texttt{@node} num arquivo de extensões serão interpretadas como nós. Seus nomes são usados em sua identificação na interface, e a quantidade de parâmetros que recebem determinam a quantidade de pinos de entradas. Por padrão, estes nós `customizados' construirão expressões mais próximas da representação destas funções em linguagens de programação (como \texttt{funcao(param1, param2, ...)}), porém este comportamento pode ser sobrescrito com o parâmetro \texttt{format} no decorador.
 
-Na listagem \ref{code:ext-sin-pow}, é apresentado um exemplo de arquivo de extensões contendo um nó para calcular o seno de um parâmetro e um nó que eleva um parâmetro ao valor de outro. Este arquivo pode ser importado na interface, que possibilitará o uso dos nós como na figura \ref{fig:ext-sin-pow}.
+Na listagem \ref{code:ext-sin-pow}, é apresentado um exemplo de arquivo de extensões contendo um nó para calcular o seno de um parâmetro e um nó que eleva um parâmetro ao valor de outro. Este arquivo pode ser importado na interface, que possibilitará o uso dos nós como na Figura \ref{fig:ext-sin-pow}.
 
 \begin{lstlisting}[language=Python, label=code:ext-sin-pow, caption=Exemplo de definição dos nós de extensão seno e potência com código Python válido., float, xleftmargin=.35\textwidth]
 import math
@@ -913,35 +910,35 @@ O módulo da GUI, desenvolvido em Rust, é a aplicação principal, e é respons
 Entre seus submódulos principais, estão:
 
 \begin{itemize}
-    \item O submódulo da aplicação, que renderiza o editor de nós e gerencia o estado global. A aplicação também controla as janelas auxiliares que podem ser abertas, como as abas de plotagem de resultados, o gerenciador de extensões e o atribuidor de variáveis. A figura \ref{fig:uml-app} contém o diagrama de classes desse módulo;
+    \item O submódulo da aplicação, que renderiza o editor de nós e gerencia o estado global. A aplicação também controla as janelas auxiliares que podem ser abertas, como as abas de plotagem de resultados, o gerenciador de extensões e o atribuidor de variáveis. A Figura \ref{fig:uml-app} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.5]{diagrams/img/app.png} 
         \caption{Diagrama de classes do módulo da aplicação.}
         \label{fig:uml-app}
     \end{figure}
-    \item O submódulo de nós, que define os possíveis tipos de nós. Estes possuem métodos para receber e enviar mensagens (notificando mudanças de estados, como alteração na árvore de expressão) e definir suas cores na interface. A figura \ref{fig:uml-nodes} contém o diagrama de classes desse módulo;
+    \item O submódulo de nós, que define os possíveis tipos de nós. Estes possuem métodos para receber e enviar mensagens (notificando mudanças de estados, como alteração na árvore de expressão) e definir suas cores na interface. A Figura \ref{fig:uml-nodes} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.3]{diagrams/img/nodes.png} 
         \caption{Diagrama de classes do módulo de nós.}
         \label{fig:uml-nodes}
     \end{figure}
-    \item O submódulo de extensão, que define as estruturas necessárias para analisar e carregar a definição de nós customizados em forma de funções de Python. A figura \ref{fig:uml-extensions} contém o diagrama de classes desse módulo;
+    \item O submódulo de extensão, que define as estruturas necessárias para analisar e carregar a definição de nós customizados em forma de funções de Python. A Figura \ref{fig:uml-extensions} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.45]{diagrams/img/extensions.png} 
         \caption{Diagrama de classes do módulo de extensões.}
         \label{fig:uml-extensions}
     \end{figure}
-    \item O submódulo de expressão, que define a árvore de expressões que representa o modelo e as estruturas que podem ser usadas durante a passagem de mensagens para comunicar mudanças parciais. A figura \ref{fig:uml-expr} contém o diagrama de classes desse módulo;
+    \item O submódulo de expressão, que define a árvore de expressões que representa o modelo e as estruturas que podem ser usadas durante a passagem de mensagens para comunicar mudanças parciais. A Figura \ref{fig:uml-expr} contém o diagrama de classes desse módulo;
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.6]{diagrams/img/exprtree.png} 
         \caption{Diagrama de classes do módulo da árvor de expressões.}
         \label{fig:uml-expr}
     \end{figure}
-    \item O submódulo de mensagens, que implementa a estrutura utilizada pelos outros módulos durante a comunicação intra-aplicação. A figura \ref{fig:uml-msg} contém o diagrama de classes desse módulo.
+    \item O submódulo de mensagens, que implementa a estrutura utilizada pelos outros módulos durante a comunicação intra-aplicação. A Figura \ref{fig:uml-msg} contém o diagrama de classes desse módulo.
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.45]{diagrams/img/messages.png} 
@@ -964,7 +961,7 @@ Com o objetivo de desacoplar a aplicação gráfica das conversões realizadas, 
 
 Esta abordagem facilita o processo de testagem do módulo. Criou-se vários testes, unitários e de integração, partindo de representações válidas. Como as funções públicas do módulo só possibilitam a criação de representações válidas, então é garantido que a GUI sempre gere modelos que são armazenáveis em disco, simuláveis e exportáveis.
 
-A figura \ref{fig:gui-ri} ilustra os fluxos de simulação e exportação, e como os módulos da GUI e RI interagem durante este processo.
+A Figura \ref{fig:gui-ri} ilustra os fluxos de simulação e exportação, e como os módulos da GUI e RI interagem durante este processo.
 
 \begin{figure}[h]
     \centering
@@ -980,7 +977,7 @@ A geração de JSONs é feita de forma transparente e automática a partir da es
 
 A distribuição de software é um tema complexo porque não existe uma única maneira correta de ser feita; todas as abordagens trazem seus prós e contras. Contudo, dependendo de como for feita, pode aumentar ou diminuir o alcance do software e seu público-alvo. Por exemplo, desenvolvedores de softwares cujo público-alvo é composto de programadores experientes em uma certa linguagem de programação podem supor que seus usuários tenham as ferramentas necessárias instaladas e, portanto, podem compilar o código fonte ou instalá-lo por algum gerenciador de pacotes. Exemplos de softwares distribuídos dessa maneira são os compiladores das linguagens de programação C, C++ e Rust.
 
-Por outro lado, é impensável que desenhistas possuam as dependências necessárias para compilar softwares como o Krita\footnote{\href{https://krita.org/en/}{Krita Website}}. Por isso, o software disponibiliza instaladores e executáveis portáteis diretamente pelo site para todos os sistemas operacionais suportados, como mostra a figura \ref{fig:krita-downloads}.
+Por outro lado, é impensável que desenhistas possuam as dependências necessárias para compilar softwares como o Krita\footnote{\href{https://krita.org/en/}{Krita Website}}. Por isso, o software disponibiliza instaladores e executáveis portáteis diretamente pelo site para todos os sistemas operacionais suportados, como mostra a Figura \ref{fig:krita-downloads}.
 
 \begin{figure}[h]
     \centering
@@ -1001,7 +998,7 @@ Sistemas operacionais baseados em Linux são notavelmente diferentes quanto a se
 
 Em contraste com esta abordagem, um formato denominado AppImage\footnote{\href{https://appimage.org/}{AppImage Website}}, inicialmente lançado em 2004, foi criado com o propósito de possibilitar que um pacote seja distribuído para múltiplos sistemas operacionais baseados em Linux sem requerer alterações.
 
-Um arquivo seguindo a especificação do formato inclui múltiplos arquivos armazenados numa estrutura de diretórios similar àquela dos sistemas Linux. Quando executada, a AppImage será descompactada em RAM como um sistema de arquivos virtual, e um arquivo específico será executado como ponto de entrada do software. A figura \ref{fig:appimage} apresenta a hierarquia de diretórios presente na AppImage do software desenvolvido.
+Um arquivo seguindo a especificação do formato inclui múltiplos arquivos armazenados numa estrutura de diretórios similar àquela dos sistemas Linux. Quando executada, a AppImage será descompactada em RAM como um sistema de arquivos virtual, e um arquivo específico será executado como ponto de entrada do software. A Figura \ref{fig:appimage} apresenta a hierarquia de diretórios presente na AppImage do software desenvolvido.
 
 \begin{figure}[h]
     \centering
@@ -1023,7 +1020,7 @@ Portanto, o software é distribuído para Windows por meio de uma pasta compacta
 
 \section{Utilizando o software}
 
-Nesta seção, o software desenvolvido será utilizado para representar o modelo de difusão de Bass \cite{Bass1969}, que descreve o processo de adoção de novos produtos por uma população. A EDO, presente na equação \ref{eq:bass}, modela as interações entre o processo de adoção e influência, classificando os adotantes em inovadores e imitadores.
+Nesta Seção, o software desenvolvido será utilizado para representar o modelo de difusão de Bass \cite{Bass1969}, que descreve o processo de adoção de novos produtos por uma população. A EDO, presente na Equação \ref{eq:bass}, modela as interações entre o processo de adoção e influência, classificando os adotantes em inovadores e imitadores.
 
 \begin{equation}\label{eq:bass}
     \frac{dF}{dt} = (1 - F)(p + qF)
@@ -1039,7 +1036,7 @@ Em que,
     \end{array}
 \]
 
-Ao iniciar o software, o usuário se deparará com um editor vazio e um menu lateral com algumas opções de nós para serem criados. A criação dos nós pode ser feita tanto pelo menu lateral (destacado como `1' na figura \ref{fig:criando-nos}), quanto pelo menu de contexto acessível pelo botão direito do mouse (destacado como `2' na figura \ref{fig:criando-nos}).
+Ao iniciar o software, o usuário se deparará com um editor vazio e um menu lateral com algumas opções de nós para serem criados. A criação dos nós pode ser feita tanto pelo menu lateral (destacado como `1' na Figura \ref{fig:criando-nos}), quanto pelo menu de contexto acessível pelo botão direito do mouse (destacado como `2' na Figura \ref{fig:criando-nos}).
 
 \begin{figure}[h]
     \centering
@@ -1048,7 +1045,7 @@ Ao iniciar o software, o usuário se deparará com um editor vazio e um menu lat
     \label{fig:criando-nos}
 \end{figure}
 
-No software, é necessário criar um nó de termo para cada variável, parâmetro e constante. Portanto, pode-se afirmar que a equação \ref{eq:bass} possui os seguintes termos (presentes na figura \ref{fig:termos}):
+No software, é necessário criar um nó de termo para cada variável, parâmetro e constante. Portanto, pode-se afirmar que a Equação \ref{eq:bass} possui os seguintes termos (presentes na Figura \ref{fig:termos}):
 
 \begin{itemize}
     \item 1 variável: $F$;
@@ -1063,7 +1060,7 @@ No software, é necessário criar um nó de termo para cada variável, parâmetr
     \label{fig:termos}
 \end{figure}
 
-A próxima etapa da construção do modelo envolve as expressões. No software, cada expressão pode ser usada para combinar duas ou mais subexpressões (incluindo termos) utilizando apenas uma operação matemática. Desta forma, é necessário um nó de expressão para cada operação binária, que para a equação \ref{eq:bass} significa um total de 4 expressões (presentes na figura \ref{fig:expressoes}):
+A próxima etapa da construção do modelo envolve as expressões. No software, cada expressão pode ser usada para combinar duas ou mais subexpressões (incluindo termos) utilizando apenas uma operação matemática. Desta forma, é necessário um nó de expressão para cada operação binária, que para a Equação \ref{eq:bass} significa um total de 4 expressões (presentes na Figura \ref{fig:expressoes}):
 
 \begin{itemize}
     \item $(1 - F)(p + qF)$: 4 expressões, sendo 1 expressão e 3 subexpressões:
@@ -1083,21 +1080,21 @@ A próxima etapa da construção do modelo envolve as expressões. No software, 
     \label{fig:expressoes}
 \end{figure}
 
-A última etapa na construção de um modelo envolve atribuir equações a variáveis. No caso da equação \ref{eq:bass}, há apenas uma equação, $\frac{dF}{dt} = \dots$. Na figura \ref{fig:equacao} é demonstrado um nó para esta equação, faltando apenas atribuí-la a uma variável. A atribuição da variável garante que um termo terá seu valor atualizado entre diferentes tempos da simulação.
+A última etapa na construção de um modelo envolve atribuir equações a variáveis. No caso da Equação \ref{eq:bass}, há apenas uma Equação, $\frac{dF}{dt} = \dots$. Na Figura \ref{fig:equacao} é demonstrado um nó para esta Equação, faltando apenas atribuí-la a uma variável. A atribuição da variável garante que um termo terá seu valor atualizado entre diferentes tempos da simulação.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{imgs/ode-designer/passo-a-passo/equacao.png} 
-    \caption{A equação $\frac{dF}{dt} = \dots$ descrita como um nó. Nesta etapa, é necessário selecionar um termo como variável, clicando no botão ``choose'' (em inglês, ``escolher'').}
+    \caption{A Equação $\frac{dF}{dt} = \dots$ descrita como um nó. Nesta etapa, é necessário selecionar um termo como variável, clicando no botão ``choose'' (em inglês, ``escolher'').}
     \label{fig:equacao}
 \end{figure}
 
-Finalmente, as figuras \ref{fig:modelo-final} e \ref{fig:resultado} apresentam, respectivamente, o modelo final e o resultado da simulação.
+Finalmente, as Figuras \ref{fig:modelo-final} e \ref{fig:resultado} apresentam, respectivamente, o modelo final e o resultado da simulação.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{imgs/ode-designer/passo-a-passo/modelo-final.png} 
-    \caption{O modelo final construído para a equação \ref{eq:bass}.}
+    \caption{O modelo final construído para a Equação \ref{eq:bass}.}
     \label{fig:modelo-final}
 \end{figure}
 
@@ -1111,13 +1108,13 @@ Finalmente, as figuras \ref{fig:modelo-final} e \ref{fig:resultado} apresentam, 
 \chapter{Aplicação do software na modelagem computacional}
 \label{chap:resultados}
 
-\textbf{TODO: Explicar porque o software não foi avaliado na prática como uma ferramenta de ensino-aprendizagem de modelagem computacional.}
+%\textbf{TODO: Explicar porque o software não foi avaliado na prática como uma ferramenta de ensino-aprendizagem de modelagem computacional.}
 
-\textbf{Nas seções a seguir, são apresentados alguns exemplos de modelos construídos e simulados com o software ODE-Designer. }
+Nas seções a seguir, são apresentados alguns exemplos de modelos construídos e simulados com o software ODE-Designer.
 
 \section{Predador-presa}
 
-O modelo predador-presa foi descrito na Seção \ref{sec:edos}. A figura \ref{fig:predador-presa} mostra o modelo construído no software e a figura \ref{fig:resultado-predador-presa} mostra um exemplo de resultado da simulação. 
+O modelo predador-presa foi descrito na Seção \ref{sec:edos}. A Figura \ref{fig:predador-presa} mostra o modelo construído no software e a Figura \ref{fig:resultado-predador-presa} mostra um exemplo de resultado da simulação. 
 
 \begin{figure}[h]
     \centering
@@ -1152,7 +1149,7 @@ Existem alguns modelos de EDOs clássicos para modelar a transmissão de um vír
 
 O modelo SIRS divide a população em indivíduos suscetíveis ($S$) à doença, infectados ($I$) e recuperados ($R$). Uma parte da população de suscetíveis pode se infectar (termo $\beta.S.I$). Os indivíduos infectados podem se recuperar com uma determinada probabilidade (termo $\alpha.I$) e os indivíduos recuperados podem voltar a ser suscetíveis à doença (termo $\gamma.R$).  
 
-Na figura \ref{fig:sirs}, podemos ver o modelo SIRS construído no software e, na figura \ref{fig:resultado-sirs}, um exemplo de resultado da simulação do modelo. 
+Na Figura \ref{fig:sirs}, podemos ver o modelo SIRS construído no software e, na Figura \ref{fig:resultado-sirs}, um exemplo de resultado da simulação do modelo. 
 
 \begin{figure}[h]
     \centering
@@ -1196,7 +1193,7 @@ O sistema de EDOs que modela essa reação é dado na Equação \ref{eq:reacao}.
     \end{array}
 \end{equation}
 
-A figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática construído no software e a figura \ref{fig:resultado-reacaoenzimatica} mostra um exemplo de resultado do modelo.  
+A Figura \ref{fig:reacaoenzimatica} mostra o modelo da reação enzimática construído no software e a Figura \ref{fig:resultado-reacaoenzimatica} mostra um exemplo de resultado do modelo.  
 
 \begin{figure}[h]
     \centering
@@ -1239,7 +1236,7 @@ As células epiteliais saudáveis ($E$) são infectadas pelo vírus ($V$) tornan
     \end{array}
 \end{equation}
 
-Na figura \ref{fig:infeccaoviral}, é apresentada parte do modelo construído no software.
+Na Figura \ref{fig:infeccaoviral}, é apresentada parte do modelo construído no software.
 
 \begin{figure}[h]
     \centering
@@ -1248,7 +1245,7 @@ Na figura \ref{fig:infeccaoviral}, é apresentada parte do modelo construído no
     \label{fig:infeccaoviral}
 \end{figure}
 
-Um exemplo de resultado do modelo, é apresentado nas figuras \ref{fig:resultado1-infeccaoviral} e \ref{fig:resultado2-infeccaoviral}.
+Um exemplo de resultado do modelo, é apresentado nas Figuras \ref{fig:resultado1-infeccaoviral} e \ref{fig:resultado2-infeccaoviral}.
 
 \begin{figure}[h]
     \centering
@@ -1270,13 +1267,13 @@ Um exemplo de resultado do modelo, é apresentado nas figuras \ref{fig:resultado
 
 Neste trabalho, foi desenvolvido um software para automatizar a implementação e simulação de modelos computacionais baseados em EDOs. Por meio do uso da interface gráfica do software, o usuário pode construir e simular um modelo sem desenvolver uma linha de código. Isto confirma a hipótese levantada pelo trabalho de que é possível automatizar certas etapas do processo de modelagem. Além disso, a construção das equações do modelo matemático, uma etapa fundamental e ao mesmo tempo desafiadora, é auxiliada pela representação visual que foi criada, visto que esta permite que o usuário acompanhe a construção de todas as expressões matemáticas do modelo e como elas estão sendo combinadas para formar o sistema de EDOs. É possível verificar de forma direta, na interface, as entradas e operações de cada expressão, os sinais de cada entrada, de quais expressões um termo participa e quais expressões fazem parte de uma determinada EDO, entre outras informações relevantes para a construção correta do modelo.   
 
-\textbf{A partir da construção de modelos no software, foi possível verificar que o software possui recursos suficientes para a construção de modelos mais simples até modelos mais complexos. Acredita-se que o software poderá ser utilizado efetivamente no processo de ensino-aprendizagem de modelagem computacional e também na pesquisa por profissionais de diferentes áreas por ser uma ferramenta que auxilia o desenvolvimento de modelos de complexidade baixa ou média. }
+A partir da construção de modelos no software, foi possível verificar que o software possui recursos suficientes para a construção de modelos mais simples até modelos mais complexos. Acredita-se que o software poderá ser utilizado efetivamente no processo de ensino-aprendizagem de modelagem computacional e também na pesquisa por profissionais de diferentes áreas por ser uma ferramenta que facilita o desenvolvimento de modelos de complexidade baixa ou média. Acreditamos também que o software pode ser usado como uma ferramenta de prototipação e teste rápido de modelos por automatizar as etapas de implementação e simulação computacional.
 
 O software atual pode ser estendido de várias formas diferentes como, por exemplo: 1) Com a geração de código em Rust e simulação das EDOs em ``tempo real'' com a plotagem dos resultados à medida que a resolução do modelo avança no tempo; 2) A introdução da simulação de modelos estocásticos com o algoritmo de Gillespie utilizando o mesmo editor baseado em nós e criando um novo template para geração de código do modelo estocástico; 3) Adição de suporte ao ajuste de parâmetros fornecendo recursos para carregamento dos dados experimentais, escolha das variáveis e parâmetros a serem ajustados e plotagem dos gráficos e dos dados experimentais após a execução do ajuste; 4) Adição de métodos e plots para a análise de sensibilidade de parâmetros; 5) Criação e implementação de uma representação baseada em grafos para uma visualização mais alto nível das interações do modelo. O foco será na visualização de modelos do sistema imune; 6) Adição de novos nós como, por exemplo, nós para difusão, quimiotaxia, com o objetivo de dar suporte a criação de modelos de Equações Diferenciais Parciais (EDPs), e a implementação da geração de código para as EDPs utilizando o método de diferenças finitas; 7) Desenvolvimento de uma versão Web do software para que ele possa ser utilizado por um número maior de pessoas. A criação do modelo será feita através do navegador Web e todo o processamento incluindo a geração de código, execução, geração dos resultados e imagens será feita no servidor. As tecnologias usadas pelo projeto até então são todas compatíveis com a Web. A linguagem Rust, baseada na LLVM, possui suporte nativo à WebAssembly.
 
 Atualmente, a representação visual apresenta uma limitação na qual pode se tornar mais difícil entender um modelo dado uma grande quantidade de nós e de ligações. Isto acontece porque muitas ligações se cruzam na interface, e tornam a visualização mais confusa, prejudicando o entendimento do modelo. Uma possível solução para essa questão seria a possibilidade do usuário poder criar um novo nó customizado a partir da combinação de duas ou mais expressões. Por exemplo, suponha que o usuário esteja construindo um modelo que usa expressões no formato $k.(A - B)$, no qual $k$ é um parâmetro e $A$ e $B$ são populações. Atualmente, o usuário precisaria criar dois nós do tipo expressão: um para a operação $(A - B)$ e outro para multiplicar $k$ pelo resultado desta expressão. Na possível solução proposta, o usuário selecionaria os dois nós de expressão e solicitaria ao software para criar um novo nó customizado que receberá três entradas e realizará a operação resultado da combinação das expressões. Uma possível implementação desta solução poderia aproveitar a extensibilidade do software como descrita na Seção \ref{sec:extensibilidade}.
 
-Outra limitação do trabalho foi a não realização de uma avaliação de usabilidade do software. O objetivo seria avaliar aspectos da interface gráfica e da usabilidade no geral, porém não houve tempo hábil. Planeja-se, futuramente, realizar essa análise de usabilidade \textbf{em disciplinas da graduação e da pós-graduação que possuam alguma interseção com a área de modelagem computacional}.  
+Outra limitação do trabalho foi a não realização de uma avaliação de usabilidade do software. O objetivo seria avaliar aspectos da interface gráfica e da usabilidade no geral, porém não houve tempo hábil para realizar essa avaliação. Planeja-se, futuramente, realizar essa análise de usabilidade em disciplinas da graduação e da pós-graduação que possuam alguma interseção com a área de modelagem computacional. 
 
 
 % % ---
