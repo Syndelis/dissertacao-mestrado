@@ -1063,18 +1063,14 @@ No software, é necessário criar um nó de termo para cada variável, parâmetr
     \label{fig:termos}
 \end{figure}
 
-A próxima etapa da construção do modelo envolve as expressões. No software, cada expressão pode ser usada para combinar duas ou mais subexpressões (incluindo termos) utilizando apenas uma operação matemática. Desta forma, é necessário um nó de expressão para cada operação binária, que para a Equação \ref{eq:bass} significa um total de 4 expressões (presentes na Figura \ref{fig:expressoes}):
+A próxima etapa da construção do modelo envolve as expressões. No software, cada expressão pode ser usada para combinar duas ou mais subexpressões (incluindo termos) utilizando apenas uma operação matemática. Desta forma, é necessário um nó de expressão para cada operação binária. A Figura \ref{fig:bass-subexpressoes} apresenta as subexpressões e termos necessários para a construção da Equação \ref{eq:bass}, apresentando as 4 subexpressões necessárias que são demonstradas no software pela Figura \ref{fig:expressoes}.
 
-\begin{itemize}
-    \item $(1 - F)(p + qF)$: 4 expressões, sendo 1 expressão e 3 subexpressões:
-    \begin{itemize}
-        \item $(1 - F)$: 1 expressão final;
-        \item $(p + qF)$: 2 expressões, sendo 1 expressão e 1 subexpressão:
-        \begin{itemize}
-            \item $qF$: 1 expressão final.
-        \end{itemize}
-    \end{itemize}
-\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\textwidth]{diagrams/img/subexpressions.png}
+    \caption{As subexpressões e termos usados para construir a Equação \ref{eq:bass}. Esta desconstrução é útil para a representação no software.}
+    \label{fig:bass-subexpressoes}
+\end{figure}
 
 \begin{figure}[h]
     \centering

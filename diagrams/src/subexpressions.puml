@@ -1,0 +1,37 @@
+@startuml
+!theme vibrant
+
+usecase ({1 - F}{p + qF}) as toplevel
+usecase (p + qF) as rightside
+usecase (1 - F) as leftside
+
+toplevel -down-> leftside
+toplevel -down-> rightside
+
+rightside -down-> (p)
+rightside -down-> (qF)
+(qF) -down-> (q)
+(qF) -down-> (F)
+
+leftside -down-> (1)
+leftside -down-> (F)
+
+note top of toplevel
+    4 expressões totais,
+    somando as subexpressões
+end note
+
+note top of rightside
+    Dois operadores, portanto
+    duas expressões
+end note
+
+note as final
+    Expressões finais
+    (um único operador)
+end note
+
+final .. leftside
+final .. (qF)
+
+@enduml

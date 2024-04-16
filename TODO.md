@@ -12,5 +12,5 @@
 
 - Baseados nas sugestões da banca:
     - [x] Circular "Run" e "Tempos" na última imagem do passo-a-passo;
-    - Substituir itemizes da expressão por uma imagem como a do expr-tree.png;
+    - [x] Substituir itemizes da expressão por uma imagem como a do expr-tree.png;
     - Escrever sobre a corretude do software no terceiro parágrafo da conclusão;
