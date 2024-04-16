@@ -11,35 +11,6 @@
         - Sugestão de melhorias;
 
 - Baseados nas sugestões da banca:
-    - [x] Adicionar nome do software antes de apresentar o quadro comparativo;
-    - [x] Refs:
-        - [x] Usar as palavras "apêndice", "figura", "tabela" e "seção" antes de qualquer ref do tipo;
-        - [x] Capítulo e Seção capitalizados (?);
-    - [x] Substituir as palavras "imagem" por "figura";
-    - [x] Alterar "mostrar que a resposta da questão anterior é sim" por "investigar se a resposta é ..." no cap 1;
-    - [x] Em 2.4, alterar "o software irá ..." por "o software pretende ..." e exemplificar como o software pretende facilitar as coisas que diz;
-    - Telas para cada software citado (?);
-    - [x] Explicar "editores baseados em nós" na 2.2, entrando em detalhes sobre as nomenclaturas "nó" e "pino";
-    - [x] Referências quebradas em 4.1.1 e 2.4;
-    - [x] Erros gramaticais & CIA:
-        - [x] aprensentado
-        - num -> em um
-            - Na realidade, "num" e "numa" são completamente formais. Referência: https://www.dicio.com.br/num-ou-em-um/
-        - [x] individiualmente
-        - [x] dimiuindo
-        - [x] distriuição
-        - [x] reprensentações
-        - [x] (3.3) ocorre -> ocorrem
-        - [x] (2.4) "afinidade"para (falta espaço, tipo de aspas errado)
-        - [x] (1) ponto final no último item do itemize;
-        - [x] ciêntífica
-        - [x] (4.1) dado -> dadas
-        - [x] (4.1.1) Isto demonstra expressões (falta o 'que')
-        - [x] carregemanto
-        - [x] igura
-        - [x] (5.4) marcado -> marcador
-        - [x] (5.4) devido a -> devido à
-        - [x] (5.4) figuras 22 e (faltou o 23)
-    - [x] Incluir imagem dos downloads de instaladores e executáveis portáteis do Krita;
-    - [x] Link do GitHub do software;
-    - [x] "How To" do software, transformando a EDO do modelo HP ou SIR na representação do software;
+    - [x] Circular "Run" e "Tempos" na última imagem do passo-a-passo;
+    - Substituir itemizes da expressão por uma imagem como a do expr-tree.png;
+    - Escrever sobre a corretude do software no terceiro parágrafo da conclusão;
