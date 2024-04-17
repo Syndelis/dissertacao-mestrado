@@ -57,7 +57,7 @@ jobs:
         run: |
           mkdir ./public
           pdflatex -output-directory ./public ufsj-abntex2.tex
-          make4ht --output-dir ./public ufsj-abntex2.tex "mathjax"
+          make4ht --output-dir ./public ufsj-abntex2.tex
           mv public/ufsj-abntex2.html public/index.html
 
       - name: Save TeX Live Cache
